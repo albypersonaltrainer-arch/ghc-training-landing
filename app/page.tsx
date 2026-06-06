@@ -43,23 +43,23 @@ const method = [
 
 const testimonials = [
   {
-    title: "-7 kg de grasa y más energía",
-    text: "Llevo 10 semanas contigo y he bajado 7 kg de grasa sin pasar hambre. Me veo más definido y con mucha más energía. Lo que más valoro es que todo está adaptado a mi día a día.",
+    title: "Lipedema · Fisio + fuerza adaptada",
+    text: "No sabes lo que me acordé hoy de ti, Alby. He subido las escaleras de casa sin esa sensación horrible de piernas pesadas y doloridas que tenía antes. Parece una tontería, pero para mí es enorme. Durante mucho tiempo iba al fisio y me ayudaba, claro que sí, pero sentía que siempre volvía al mismo punto. Desde que combiné el trabajo de fisio con el entrenamiento contigo, todo empezó a tener más sentido. Me quedo con eso: no solo he mejorado físicamente, he vuelto a confiar un poco más en mi cuerpo. Y eso, para mí, vale muchísimo.",
     time: "10:31",
   },
   {
-    title: "Volví a entrenar sin miedo",
-    text: "Tenía dolor de hombro desde hace meses. Con tu plan de movilidad y fuerza ya no me duele y he vuelto a entrenar sin miedo. Por fin me siento fuerte otra vez.",
+    title: "Fibromialgia · Más de 6 meses sin crisis fuertes",
+    text: "Alby, hoy me he dado cuenta de algo muy fuerte. Antes de empezar contigo tenía una o dos crisis de fibromialgia casi todas las semanas. Vivía pendiente del dolor, del cansancio y del miedo a pasarme con cualquier cosa. Llevo más de 6 meses sin una crisis como las de antes. Sé que no he sido fácil muchas veces, porque venía con miedo, dudas y días muy malos. Por eso valoro tanto la paciencia que has tenido conmigo. No me empujaste, me acompañaste. Y eso fue justo lo que necesitaba.",
     time: "11:07",
   },
   {
-    title: "Seguridad después de años parado",
-    text: "Volví al gimnasio después de 4 años parado y no sabía por dónde empezar. Me diste seguridad, progresión y confianza. Hoy entreno 4 días por semana.",
+    title: "Pérdida de volumen · Más ligera y fuerte",
+    text: "Te lo tenía que decir porque hoy me probé unos pantalones que no me cerraban desde hacía años. No es solo que haya bajado volumen, que se nota muchísimo. Es que me miro al espejo y me veo otra vez fuerte, más ligera y con mucha más seguridad. Antes iba de dieta en dieta, entrenaba a ratos y acababa frustrada. Contigo ha sido diferente porque por fin he entendido qué hacer, por qué lo hacía y cómo mantenerlo sin vivir castigándome. Gracias, Alby. Me has dado orden, cabeza y una forma de cuidarme que puedo sostener.",
     time: "09:22",
   },
   {
-    title: "Músculo, grasa y hábitos sólidos",
-    text: "En 12 semanas gané músculo, bajé grasa y mejoré mi fuerza, mi postura y mis hábitos. Ha sido el cambio más completo que he conseguido.",
+    title: "De sedentaria a activa · Entrenar sin miedo",
+    text: "Jamás pensé que te iba a escribir esto, pero ahora echo de menos entrenar cuando no puedo hacerlo. Yo era la típica que decía que el deporte no era para mí. Me cansaba rápido, me daba vergüenza empezar y siempre encontraba una excusa. Ahora entreno, lo disfruto y me siento mucho más ágil, con más energía y menos hinchada. Pero sobre todo me siento capaz. Gracias por tener paciencia al principio, por no hacerme sentir torpe y por enseñarme a entrenar sin miedo. Has conseguido que algo que evitaba se convierta en parte de mi vida.",
     time: "18:43",
   },
 ];
@@ -235,8 +235,8 @@ export default function Home() {
 
       <section id="testimonios" className="ghc-testimonials-section">
         <div className="ghc-section-heading compact">
-          <h2>Historias reales</h2>
-          <p>Experiencias y resultados reales de personas a las que he acompañado en entrenamiento, salud activa, recomposición corporal, movilidad y vuelta al ejercicio.</p>
+          <h2>Historias habituales de transformación</h2>
+          <p>Situaciones reales que he acompañado durante más de 30 años de trabajo con entrenamiento personal, salud activa, lesiones, patologías, pérdida de volumen y recomposición corporal.</p>
         </div>
         <div className="ghc-testimonials-grid">
           {testimonials.map((item) => (
@@ -249,13 +249,13 @@ export default function Home() {
               </div>
               <div className="ghc-testimonial-caption">
                 <strong>{item.title}</strong>
-                <span>Captura real de WhatsApp</span>
+                <span>Caso representativo</span>
               </div>
             </article>
           ))}
         </div>
         <p className="ghc-testimonial-note">
-          Estos bloques están preparados para sustituirse por capturas reales de WhatsApp cuando las subas al repositorio.
+          Casos representativos redactados en formato conversación. Cuando tengas capturas reales, esta sección queda preparada para sustituirlas.
         </p>
       </section>
 
