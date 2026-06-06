@@ -1,13 +1,11 @@
 import Image from "next/image";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34686638097";
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34628798859";
 const whatsappMessage = encodeURIComponent(
   "Hola Alby, quiero información sobre la Valoración GHC Training."
 );
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-const sumupValoracionUrl = process.env.NEXT_PUBLIC_SUMUP_VALORACION_URL || "";
-
 const services = [
   {
     icon: "01",
@@ -229,7 +227,7 @@ function CheckIcon() {
 function CtaButtons() {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <a href={sumupValoracionUrl || whatsappUrl} className="ghc-primary-button">
+      <a href={whatsappUrl} className="ghc-primary-button">
         Quiero mi valoración GHC
         <span aria-hidden="true">→</span>
       </a>
@@ -398,13 +396,13 @@ export default function Home() {
               </div>
               <div className="ghc-testimonial-caption">
                 <strong>{item.title}</strong>
-                <span>Caso representativo</span>
+                <span>Caso de éxito</span>
               </div>
             </article>
           ))}
         </div>
         <p className="ghc-testimonial-note">
-          Casos representativos redactados en formato conversación. Cuando tengas capturas reales, esta sección queda preparada para sustituirlas.
+          Casos de éxito redactados en formato conversación. Cuando tengas capturas reales, esta sección queda preparada para sustituirlas.
         </p>
       </section>
 
@@ -466,10 +464,6 @@ export default function Home() {
         </div>
         <div className="ghc-final-actions">
           <CtaButtons />
-          <div className="ghc-sumup-box">
-            <strong>SumUp</strong>
-            <span>{sumupValoracionUrl ? "Pago seguro disponible para Valoración GHC" : "Preparado para añadir enlace de pago SumUp"}</span>
-          </div>
         </div>
       </section>
 

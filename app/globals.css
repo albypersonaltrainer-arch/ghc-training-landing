@@ -548,19 +548,6 @@ a { color: inherit; text-decoration: none; }
 .ghc-final-cta ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem 1rem; padding: 0; margin: 0; list-style: none; }
 .ghc-final-cta li { display: flex; align-items: center; gap: .5rem; color: rgba(242,244,241,.86); }
 .ghc-final-actions { display: grid; gap: 1rem; }
-.ghc-sumup-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  min-height: 56px;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 16px;
-  background: rgba(255,255,255,.045);
-}
-.ghc-sumup-box strong { font-size: 1.2rem; letter-spacing: -.03em; }
-.ghc-sumup-box span { color: rgba(242,244,241,.70); font-size: .9rem; }
-
 .ghc-footer {
   display: flex;
   align-items: center;
