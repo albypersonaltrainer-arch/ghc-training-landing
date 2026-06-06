@@ -319,6 +319,19 @@ a { color: inherit; text-decoration: none; }
     grid-template-columns: 1fr;
   }
 }
+
+.ghc-payment-instruction {
+  margin: -.25rem 0 1rem;
+  padding: .8rem .9rem;
+  border: 1px solid rgba(34,214,91,.22);
+  border-radius: 16px;
+  background: rgba(34,214,91,.07);
+  color: rgba(17,22,20,.78);
+  font-size: .84rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
 .ghc-service-includes {
   display: grid;
   gap: .62rem;

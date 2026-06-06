@@ -340,6 +340,10 @@ export default function Home() {
               </a>
             </div>
 
+            <p className="ghc-payment-instruction">
+              Tras realizar el pago, enviar el justificante por WhatsApp con nombre completo y servicio contratado para confirmar la reserva.
+            </p>
+
             <ul className="ghc-service-includes">
               {service.includes.map((item) => (
                 <li key={item}>
@@ -358,7 +362,7 @@ export default function Home() {
       </section>
 
       <p className="ghc-services-note">
-        Cada precio es clicable y puede llevar a su enlace de pago correspondiente. Los precios presenciales están pensados para Madrid. Si hubiera una necesidad especial de desplazamiento, frecuencia o formato, se valoraría antes de confirmar la reserva. El servicio online está disponible para España y América Latina.
+        Cada precio es clicable y lleva a su enlace de pago correspondiente. Después de pagar, enviar el justificante por WhatsApp al +34 628 79 88 59 con nombre completo y servicio contratado. Así puedo identificar la reserva, confirmar disponibilidad y coordinar los siguientes pasos. El servicio online está disponible para España y América Latina.
       </p>
 
       <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
