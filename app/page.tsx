@@ -41,6 +41,16 @@ const method = [
   ["Evolucionar", "Consolidar resultados sostenibles, no parches rápidos."],
 ];
 
+
+const authorityItems = [
+  { icon: "🏆", title: "Más de 30 años", text: "experiencia real" },
+  { icon: "💪", title: "Entrenamiento personal", text: "adaptado a ti" },
+  { icon: "🥗", title: "Nutrición personalizada", text: "estrategia real" },
+  { icon: "❤️", title: "Salud activa", text: "mejor calidad de vida" },
+  { icon: "🧠", title: "Lesiones y patologías", text: "trabajo progresivo" },
+  { icon: "📍", title: "Madrid y online", text: "España completa" },
+];
+
 const testimonials = [
   {
     title: "Lipedema · Fisio + fuerza adaptada",
@@ -186,12 +196,13 @@ export default function Home() {
       </section>
 
       <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
-        <div><strong>Más de 30 años</strong><span>experiencia real</span></div>
-        <div><strong>Entrenamiento personal</strong><span>adaptado a ti</span></div>
-        <div><strong>Nutrición personalizada</strong><span>estrategia real</span></div>
-        <div><strong>Salud activa</strong><span>mejor calidad de vida</span></div>
-        <div><strong>Lesiones y patologías</strong><span>trabajo progresivo</span></div>
-        <div><strong>Madrid y online</strong><span>España completa</span></div>
+        {authorityItems.map((item) => (
+          <div key={item.title} className="ghc-authority-item">
+            <span className="ghc-authority-emoji" aria-hidden="true">{item.icon}</span>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+          </div>
+        ))}
       </section>
 
       <section id="metodo" className="ghc-split-section">

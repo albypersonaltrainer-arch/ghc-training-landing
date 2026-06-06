@@ -266,6 +266,26 @@ a { color: inherit; text-decoration: none; }
 }
 .ghc-authority-strip div { padding: 1rem; border-right: 1px solid var(--ghc-border); }
 .ghc-authority-strip div:last-child { border-right: 0; }
+.ghc-authority-item {
+  position: relative;
+  min-height: 122px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .28rem;
+}
+.ghc-authority-emoji {
+  display: inline-grid !important;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 0 0 .35rem !important;
+  border-radius: 12px;
+  background: rgba(34,214,91,.10);
+  box-shadow: inset 0 0 0 1px rgba(34,214,91,.18);
+  font-size: 1.05rem !important;
+  line-height: 1;
+}
 .ghc-authority-strip strong { display: block; font-size: .9rem; font-weight: 950; }
 .ghc-authority-strip span { display: block; margin-top: .25rem; font-size: .76rem; color: rgba(17,22,20,.62); font-weight: 800; }
 
