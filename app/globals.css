@@ -227,17 +227,23 @@ a { color: inherit; text-decoration: none; }
 .ghc-card-icon {
   display: grid;
   place-items: center;
-  width: 58px;
-  height: 58px;
+  min-width: 92px;
+  width: fit-content;
+  height: 44px;
+  padding: 0 .85rem;
   margin-bottom: 1rem;
-  border-radius: 18px;
+  border-radius: 999px;
   background: #0a0f0d;
   color: var(--ghc-green);
+  font-size: .78rem;
   font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   box-shadow: inset 0 0 0 1px rgba(34,214,91,.35);
+  white-space: nowrap;
 }
 .ghc-service-card h2 {
-  min-height: 58px;
+  min-height: 50px;
   margin: 0 0 .8rem;
   font-size: 1.35rem;
   letter-spacing: -.03em;

@@ -18,7 +18,7 @@ const paymentLinks = {
 
 const services = [
   {
-    icon: "01",
+    icon: "1 semana",
     title: "Valoración GHC",
     text: "Sesión profesional de unos 60 minutos para conocer tu punto de partida real antes de diseñar cualquier plan.",
     onlineLabel: "Online",
@@ -38,8 +38,8 @@ const services = [
     note: "Descontable si continúas",
   },
   {
-    icon: "04",
-    title: "Plan GHC 4 Semanas",
+    icon: "4 semanas",
+    title: "Plan GHC",
     text: "Primer bloque real de trabajo con entrenamiento personalizado, pauta nutricional y seguimiento para empezar con orden.",
     onlineLabel: "Online",
     onlineAmount: "220 €",
@@ -58,8 +58,8 @@ const services = [
     note: "Primer bloque real",
   },
   {
-    icon: "12",
-    title: "Programa GHC 12 Semanas",
+    icon: "12 semanas",
+    title: "Programa GHC",
     text: "Programa completo de 3 meses para transformar hábitos, composición corporal, fuerza, movilidad y salud activa.",
     onlineLabel: "Online",
     onlineAmount: "580 €",
