@@ -6,6 +6,16 @@ const whatsappMessage = encodeURIComponent(
   "Hola Alby, quiero información sobre la Valoración GHC Training."
 );
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+const paymentLinks = {
+  valoracionOnline: process.env.NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL || whatsappUrl,
+  valoracionPresencial: process.env.NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL || whatsappUrl,
+  plan4Online: process.env.NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL || whatsappUrl,
+  plan4Presencial: process.env.NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL || whatsappUrl,
+  programa12Online: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL || whatsappUrl,
+  programa12Presencial: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL || whatsappUrl,
+};
+
 const services = [
   {
     icon: "01",
@@ -13,8 +23,10 @@ const services = [
     text: "Sesión profesional de unos 60 minutos para conocer tu punto de partida real antes de diseñar cualquier plan.",
     onlineLabel: "Online",
     onlineAmount: "75 €",
+    onlineHref: paymentLinks.valoracionOnline,
     presencialLabel: "Presencial Madrid",
     presencialAmount: "120 €",
+    presencialHref: paymentLinks.valoracionPresencial,
     includes: [
       "Entrevista inicial y análisis de objetivo",
       "Historial físico, lesiones, patologías y hábitos",
@@ -31,8 +43,10 @@ const services = [
     text: "Primer bloque real de trabajo con entrenamiento personalizado, pauta nutricional y seguimiento para empezar con orden.",
     onlineLabel: "Online",
     onlineAmount: "220 €",
+    onlineHref: paymentLinks.plan4Online,
     presencialLabel: "Presencial Madrid",
-    presencialAmount: "desde 360 €",
+    presencialAmount: "360 €",
+    presencialHref: paymentLinks.plan4Presencial,
     includes: [
       "Valoración inicial y estudio del caso",
       "Entrenamiento personalizado durante 4 semanas",
@@ -49,8 +63,10 @@ const services = [
     text: "Programa completo de 3 meses para transformar hábitos, composición corporal, fuerza, movilidad y salud activa.",
     onlineLabel: "Online",
     onlineAmount: "580 €",
+    onlineHref: paymentLinks.programa12Online,
     presencialLabel: "Presencial Madrid",
-    presencialAmount: "desde 960 €",
+    presencialAmount: "960 €",
+    presencialHref: paymentLinks.programa12Presencial,
     includes: [
       "Valoración inicial completa",
       "3 bloques de entrenamiento de 4 semanas",
@@ -300,14 +316,28 @@ export default function Home() {
             <p>{service.text}</p>
 
             <div className="ghc-service-pricing" aria-label={`Precios de ${service.title}`}>
-              <div className="ghc-price-pill ghc-price-pill-primary">
+              <a
+                href={service.onlineHref}
+                className="ghc-price-pill ghc-price-pill-primary"
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Pagar ${service.title} ${service.onlineLabel} ${service.onlineAmount}`}
+              >
                 <span>{service.onlineLabel}</span>
                 <strong>{service.onlineAmount}</strong>
-              </div>
-              <div className="ghc-price-pill">
+                <em>Pagar ahora</em>
+              </a>
+              <a
+                href={service.presencialHref}
+                className="ghc-price-pill"
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Pagar ${service.title} ${service.presencialLabel} ${service.presencialAmount}`}
+              >
                 <span>{service.presencialLabel}</span>
                 <strong>{service.presencialAmount}</strong>
-              </div>
+                <em>Pagar ahora</em>
+              </a>
             </div>
 
             <ul className="ghc-service-includes">
@@ -328,7 +358,7 @@ export default function Home() {
       </section>
 
       <p className="ghc-services-note">
-        Los precios presenciales pueden variar según desplazamiento, zona, frecuencia y disponibilidad. El servicio online está disponible para España y América Latina.
+        Cada precio es clicable y puede llevar a su enlace de pago correspondiente. Los precios presenciales están pensados para Madrid. Si hubiera una necesidad especial de desplazamiento, frecuencia o formato, se valoraría antes de confirmar la reserva. El servicio online está disponible para España y América Latina.
       </p>
 
       <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
