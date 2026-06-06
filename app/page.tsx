@@ -43,13 +43,93 @@ const method = [
 
 
 const authorityItems = [
-  { icon: "🏆", title: "Más de 30 años", text: "experiencia real" },
-  { icon: "💪", title: "Entrenamiento personal", text: "adaptado a ti" },
-  { icon: "🥗", title: "Nutrición personalizada", text: "estrategia real" },
-  { icon: "❤️", title: "Salud activa", text: "mejor calidad de vida" },
-  { icon: "🧠", title: "Lesiones y patologías", text: "trabajo progresivo" },
-  { icon: "📍", title: "Madrid y online", text: "España completa" },
-];
+  { icon: "trophy", title: "Más de 30 años", text: "experiencia real" },
+  { icon: "training", title: "Entrenamiento personal", text: "adaptado a ti" },
+  { icon: "nutrition", title: "Nutrición personalizada", text: "estrategia real" },
+  { icon: "heart", title: "Salud activa", text: "mejor calidad de vida" },
+  { icon: "brain", title: "Lesiones y patologías", text: "trabajo progresivo" },
+  { icon: "location", title: "Madrid y online", text: "España completa" },
+] as const;
+
+type AuthorityIconName = (typeof authorityItems)[number]["icon"];
+
+function AuthorityIcon({ name }: { name: AuthorityIconName }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2.1,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+    className: "ghc-authority-icon-svg",
+  };
+
+  if (name === "trophy") {
+    return (
+      <svg {...common}>
+        <path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" />
+        <path d="M8 6H5.5a2.5 2.5 0 0 0 2.8 3.7" />
+        <path d="M16 6h2.5a2.5 2.5 0 0 1-2.8 3.7" />
+        <path d="M12 13v4" />
+        <path d="M8.5 20h7" />
+        <path d="M10 17h4" />
+      </svg>
+    );
+  }
+
+  if (name === "training") {
+    return (
+      <svg {...common}>
+        <path d="M5 8v8" />
+        <path d="M8 7v10" />
+        <path d="M16 7v10" />
+        <path d="M19 8v8" />
+        <path d="M8 12h8" />
+      </svg>
+    );
+  }
+
+  if (name === "nutrition") {
+    return (
+      <svg {...common}>
+        <path d="M12 7c4.5 0 7 2.6 7 6.1A6.9 6.9 0 0 1 12 20a6.9 6.9 0 0 1-7-6.9C5 9.6 7.5 7 12 7Z" />
+        <path d="M12 7c.2-2 1.4-3.2 3.6-3.8" />
+        <path d="M12 7c-1.2-1.6-2.7-2.1-4.6-1.8" />
+        <path d="M12 10v6" />
+      </svg>
+    );
+  }
+
+  if (name === "heart") {
+    return (
+      <svg {...common}>
+        <path d="M20.2 8.6c0 5.1-8.2 10.1-8.2 10.1S3.8 13.7 3.8 8.6A4.2 4.2 0 0 1 11 5.7l1 1 1-1a4.2 4.2 0 0 1 7.2 2.9Z" />
+        <path d="M7.5 12h2.2l1.1-2.2 2.3 4.5 1.2-2.3h2.2" />
+      </svg>
+    );
+  }
+
+  if (name === "brain") {
+    return (
+      <svg {...common}>
+        <path d="M9 5.2a3.2 3.2 0 0 0-3 4.3 3.3 3.3 0 0 0 .4 6.2A3.7 3.7 0 0 0 12 19V6.4A3.3 3.3 0 0 0 9 5.2Z" />
+        <path d="M15 5.2a3.2 3.2 0 0 1 3 4.3 3.3 3.3 0 0 1-.4 6.2A3.7 3.7 0 0 1 12 19" />
+        <path d="M8 10h2" />
+        <path d="M14 10h2" />
+        <path d="M8.5 14.5H11" />
+        <path d="M13 14.5h2.5" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...common}>
+      <path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2.2" />
+    </svg>
+  );
+}
 
 const testimonials = [
   {
@@ -198,7 +278,7 @@ export default function Home() {
       <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
         {authorityItems.map((item) => (
           <div key={item.title} className="ghc-authority-item">
-            <span className="ghc-authority-emoji" aria-hidden="true">{item.icon}</span>
+            <span className="ghc-authority-emoji" aria-hidden="true"><AuthorityIcon name={item.icon} /></span>
             <strong>{item.title}</strong>
             <span>{item.text}</span>
           </div>
