@@ -3,13 +3,15 @@ type GHCTrainingLogoProps = {
   showText?: boolean;
   tagline?: boolean;
   variant?: "light" | "dark";
+  darkText?: boolean;
 };
 
 export default function GHCTrainingLogo({
   size = "md",
   showText = true,
   tagline = true,
-  variant = "light",
+  variant,
+  darkText,
 }: GHCTrainingLogoProps) {
   const sizes = {
     sm: {
@@ -34,9 +36,14 @@ export default function GHCTrainingLogo({
 
   const current = sizes[size];
 
-  const titleColor = variant === "dark" ? "#F2F4F1" : "#101412";
+  const resolvedVariant =
+    variant ?? (darkText === false ? "dark" : "light");
+
+  const titleColor = resolvedVariant === "dark" ? "#F2F4F1" : "#101412";
   const verticalColor =
-    variant === "dark" ? "rgba(242,244,241,0.72)" : "rgba(16,20,18,0.72)";
+    resolvedVariant === "dark"
+      ? "rgba(242,244,241,0.72)"
+      : "rgba(16,20,18,0.72)";
 
   return (
     <div
