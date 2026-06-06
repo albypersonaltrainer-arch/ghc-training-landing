@@ -1,0 +1,483 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ghc-green: #22d65b;
+  --ghc-green-dark: #10983d;
+  --ghc-cream: #f7f6f1;
+  --ghc-cream-2: #f1f0ea;
+  --ghc-ink: #111614;
+  --ghc-graphite: #101412;
+  --ghc-carbon: #070a09;
+  --ghc-steel: #8a8f98;
+  --ghc-border: rgba(17, 22, 20, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--ghc-cream); }
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--ghc-cream);
+  color: var(--ghc-ink);
+  overflow-x: hidden;
+}
+::selection { background: rgba(34, 214, 91, 0.25); color: var(--ghc-carbon); }
+
+a { color: inherit; text-decoration: none; }
+
+.ghc-page-shell {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 72% 5%, rgba(34,214,91,.10), transparent 24rem),
+    radial-gradient(circle at 12% 0%, rgba(138,143,152,.20), transparent 24rem),
+    linear-gradient(180deg, #fbfaf6 0%, #f7f6f1 45%, #f1f0ea 100%);
+}
+
+.ghc-page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .065;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.ghc-page-shell > * { position: relative; z-index: 1; }
+
+.ghc-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 1rem 0;
+  backdrop-filter: blur(20px);
+}
+
+.nav-link { position: relative; transition: color .2s ease; }
+.nav-link:hover { color: var(--ghc-green-dark); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ghc-green);
+}
+
+.ghc-whatsapp-header,
+.ghc-primary-button,
+.ghc-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  border-radius: 999px;
+  font-weight: 900;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.ghc-whatsapp-header {
+  min-height: 46px;
+  padding: 0 1.25rem;
+  background: linear-gradient(135deg, #22d65b, #0bb84b);
+  color: white;
+  box-shadow: 0 16px 35px rgba(34,214,91,.22);
+}
+.ghc-whatsapp-header:hover,
+.ghc-primary-button:hover,
+.ghc-secondary-button:hover { transform: translateY(-1px); }
+
+.ghc-primary-button {
+  min-height: 54px;
+  padding: 0 1.45rem;
+  background: linear-gradient(135deg, #22d65b, #0dbb4d);
+  color: white;
+  box-shadow: 0 18px 38px rgba(34,214,91,.24);
+}
+.ghc-secondary-button {
+  min-height: 54px;
+  padding: 0 1.35rem;
+  border: 1px solid rgba(17,22,20,.22);
+  background: rgba(255,255,255,.56);
+  color: var(--ghc-graphite);
+}
+
+.ghc-hero-section {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(460px, 1.08fr);
+  align-items: center;
+  gap: 2rem;
+  width: min(1180px, calc(100% - 32px));
+  min-height: 650px;
+  margin: 0 auto;
+  padding: 2.25rem 0 1.25rem;
+}
+
+.ghc-hero-copy { max-width: 610px; padding: 2rem 0; }
+.ghc-kicker {
+  margin: 0 0 1rem;
+  font-size: .78rem;
+  font-weight: 950;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ghc-green-dark);
+}
+.ghc-hero-copy h1 {
+  margin: 0;
+  max-width: 650px;
+  font-size: clamp(2.65rem, 5.3vw, 5.2rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+  font-weight: 950;
+  color: #151b18;
+}
+.ghc-hero-copy h1 span { color: #10983d; }
+.ghc-hero-text {
+  max-width: 570px;
+  margin: 1.45rem 0 1.25rem;
+  color: rgba(17,22,20,.74);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.72;
+}
+.ghc-statement {
+  display: grid;
+  gap: .25rem;
+  margin: 1.2rem 0 1.55rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--ghc-green);
+  font-size: 1.05rem;
+}
+.ghc-statement strong { font-weight: 950; color: #111614; }
+.ghc-statement span { font-weight: 800; color: #2b3430; }
+.ghc-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem 1rem;
+  margin-top: 1.1rem;
+  color: rgba(17,22,20,.66);
+  font-size: .86rem;
+  font-weight: 800;
+}
+.ghc-trust-row span::before { content: "◦"; color: var(--ghc-green-dark); margin-right: .45rem; }
+
+.ghc-hero-image-wrap {
+  position: relative;
+  min-height: 570px;
+  align-self: stretch;
+  overflow: hidden;
+  border-radius: 0 0 0 80px;
+  background: #111;
+  box-shadow: 0 32px 90px rgba(7,10,9,.18);
+}
+.ghc-hero-image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #fbfaf6 0%, rgba(251,250,246,.72) 11%, transparent 31%),
+    linear-gradient(180deg, transparent 58%, rgba(247,246,241,.92) 98%);
+}
+.ghc-hero-image { object-fit: cover; object-position: center; }
+
+.ghc-services-grid,
+.ghc-authority-strip,
+.ghc-split-section,
+.ghc-modalities-section,
+.ghc-testimonials-section,
+.ghc-pathology-band,
+.ghc-faq-section,
+.ghc-final-cta,
+.ghc-footer {
+  width: min(1180px, calc(100% - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ghc-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+  margin-top: -1rem;
+}
+.ghc-service-card {
+  min-height: 245px;
+  padding: 1.55rem;
+  border: 1px solid var(--ghc-border);
+  border-radius: 24px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 18px 60px rgba(17,22,20,.07);
+}
+.ghc-card-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 1rem;
+  border-radius: 18px;
+  background: #0a0f0d;
+  color: var(--ghc-green);
+  font-weight: 950;
+  box-shadow: inset 0 0 0 1px rgba(34,214,91,.35);
+}
+.ghc-service-card h2 { margin: 0 0 .8rem; font-size: 1.35rem; letter-spacing: -.03em; }
+.ghc-service-card h2::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 2px;
+  margin-top: .6rem;
+  background: var(--ghc-green);
+  border-radius: 999px;
+}
+.ghc-service-card p { margin: 0; color: rgba(17,22,20,.73); line-height: 1.58; }
+.ghc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  font-size: .86rem;
+}
+.ghc-card-footer span { display: inline-flex; align-items: center; gap: .45rem; color: rgba(17,22,20,.70); font-weight: 800; }
+.ghc-card-footer strong { font-weight: 950; }
+
+.ghc-authority-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-top: 1rem;
+  border: 1px solid var(--ghc-border);
+  border-radius: 20px;
+  background: rgba(255,255,255,.58);
+  overflow: hidden;
+}
+.ghc-authority-strip div { padding: 1rem; border-right: 1px solid var(--ghc-border); }
+.ghc-authority-strip div:last-child { border-right: 0; }
+.ghc-authority-strip strong { display: block; font-size: .9rem; font-weight: 950; }
+.ghc-authority-strip span { display: block; margin-top: .25rem; font-size: .76rem; color: rgba(17,22,20,.62); font-weight: 800; }
+
+.ghc-split-section {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 2rem;
+  padding: 5.5rem 0 2.5rem;
+}
+.ghc-split-section h2,
+.ghc-section-heading h2,
+.ghc-pathology-band h2,
+.ghc-faq-section h2,
+.ghc-final-cta h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 3.55rem);
+  line-height: 1.05;
+  letter-spacing: -.045em;
+  color: #111614;
+}
+.ghc-split-section p { color: rgba(17,22,20,.70); line-height: 1.75; font-size: 1.05rem; }
+.ghc-method-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.ghc-method-grid article,
+.ghc-modalities-grid article,
+.ghc-faq-grid article {
+  border: 1px solid var(--ghc-border);
+  border-radius: 22px;
+  background: rgba(255,255,255,.62);
+  padding: 1.25rem;
+  box-shadow: 0 14px 45px rgba(17,22,20,.045);
+}
+.ghc-method-grid strong { display: block; color: var(--ghc-green-dark); font-size: 1.05rem; }
+.ghc-method-grid span { display: block; margin-top: .45rem; color: rgba(17,22,20,.68); line-height: 1.55; }
+
+.ghc-modalities-section { padding: 3.5rem 0 2rem; }
+.ghc-section-heading { max-width: 760px; margin-bottom: 1.4rem; }
+.ghc-section-heading.compact { text-align: center; margin: 0 auto 1.6rem; }
+.ghc-section-heading p { color: rgba(17,22,20,.70); line-height: 1.7; }
+.ghc-modalities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ghc-modalities-grid h3,
+.ghc-faq-grid h3 { margin: 0 0 .7rem; font-size: 1.15rem; letter-spacing: -.02em; }
+.ghc-modalities-grid p,
+.ghc-faq-grid p { margin: 0; color: rgba(17,22,20,.68); line-height: 1.62; }
+
+.ghc-testimonials-section { padding: 4rem 0 2rem; }
+.ghc-testimonials-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.ghc-testimonial-card {
+  overflow: hidden;
+  border: 1px solid var(--ghc-border);
+  border-radius: 22px;
+  background: rgba(255,255,255,.70);
+  padding: .85rem;
+}
+.ghc-whatsapp-capture {
+  min-height: 154px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.15rem;
+  border-radius: 17px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34,214,91,.08), transparent 16rem),
+    linear-gradient(135deg, #111614, #060807);
+  position: relative;
+}
+.ghc-whatsapp-capture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .08;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.ghc-whatsapp-bubble {
+  position: relative;
+  z-index: 1;
+  max-width: 88%;
+  border-radius: 16px 16px 16px 4px;
+  background: #e7f3dc;
+  color: #172018;
+  padding: .9rem 1rem 1.25rem;
+  font-size: .96rem;
+  line-height: 1.36;
+  box-shadow: 0 14px 30px rgba(0,0,0,.16);
+}
+.ghc-whatsapp-bubble span {
+  position: absolute;
+  right: .65rem;
+  bottom: .35rem;
+  font-size: .68rem;
+  color: rgba(17,22,20,.46);
+}
+.ghc-testimonial-caption { display: flex; align-items: center; justify-content: space-between; gap: .7rem; padding: .75rem .3rem .2rem; }
+.ghc-testimonial-caption strong { font-size: .9rem; }
+.ghc-testimonial-caption span { color: rgba(17,22,20,.50); font-size: .78rem; font-weight: 800; }
+.ghc-testimonial-note { margin: 1rem auto 0; max-width: 780px; text-align: center; color: rgba(17,22,20,.52); font-size: .9rem; }
+
+.ghc-pathology-band {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1.4rem;
+  border: 1px solid var(--ghc-border);
+  border-radius: 26px;
+  background: rgba(255,255,255,.68);
+}
+.ghc-pathology-icon {
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 999px;
+  border: 1px solid rgba(34,214,91,.52);
+  color: var(--ghc-green-dark);
+  font-size: 2.8rem;
+  font-weight: 300;
+}
+.ghc-pathology-band h2 { font-size: clamp(1.6rem, 2.5vw, 2.55rem); }
+.ghc-pathology-band p { margin: .9rem 0; color: rgba(17,22,20,.70); line-height: 1.65; }
+.ghc-medical-note {
+  border-radius: 14px;
+  background: rgba(34,214,91,.10);
+  padding: .85rem 1rem;
+  color: rgba(17,22,20,.72);
+  font-size: .92rem;
+  font-weight: 750;
+}
+
+.ghc-faq-section { padding: 4.25rem 0 2rem; }
+.ghc-faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+
+.ghc-final-cta {
+  display: grid;
+  grid-template-columns: 1fr .95fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(34,214,91,.17), transparent 22rem),
+    linear-gradient(135deg, #101412, #050706);
+  color: #f2f4f1;
+  box-shadow: 0 24px 70px rgba(7,10,9,.22);
+}
+.ghc-final-cta h2 { color: #f2f4f1; }
+.ghc-final-cta p { margin: .6rem 0 1.2rem; color: var(--ghc-green); font-size: 1.55rem; font-family: var(--font-noto-serif); }
+.ghc-final-cta ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem 1rem; padding: 0; margin: 0; list-style: none; }
+.ghc-final-cta li { display: flex; align-items: center; gap: .5rem; color: rgba(242,244,241,.86); }
+.ghc-final-actions { display: grid; gap: 1rem; }
+.ghc-sumup-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 56px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 16px;
+  background: rgba(255,255,255,.045);
+}
+.ghc-sumup-box strong { font-size: 1.2rem; letter-spacing: -.03em; }
+.ghc-sumup-box span { color: rgba(242,244,241,.70); font-size: .9rem; }
+
+.ghc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  padding: 1.4rem 0 2rem;
+  color: rgba(17,22,20,.58);
+  font-size: .9rem;
+}
+.ghc-footer a { font-weight: 900; color: var(--ghc-green-dark); }
+.ghc-footer p { margin: 0; }
+
+@media (max-width: 980px) {
+  .ghc-hero-section { grid-template-columns: 1fr; min-height: auto; }
+  .ghc-hero-image-wrap { min-height: 480px; border-radius: 34px; }
+  .ghc-hero-image-wrap::before { background: linear-gradient(180deg, transparent 58%, rgba(247,246,241,.92) 98%); }
+  .ghc-services-grid,
+  .ghc-modalities-grid { grid-template-columns: 1fr; }
+  .ghc-authority-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ghc-authority-strip div { border-bottom: 1px solid var(--ghc-border); }
+  .ghc-split-section,
+  .ghc-final-cta { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .ghc-header { width: min(100% - 24px, 1180px); }
+  .ghc-whatsapp-header { padding: 0 .9rem; font-size: .86rem; }
+  .ghc-hero-section,
+  .ghc-services-grid,
+  .ghc-authority-strip,
+  .ghc-split-section,
+  .ghc-modalities-section,
+  .ghc-testimonials-section,
+  .ghc-pathology-band,
+  .ghc-faq-section,
+  .ghc-final-cta,
+  .ghc-footer { width: min(100% - 24px, 1180px); }
+  .ghc-hero-copy { padding-top: 1rem; }
+  .ghc-hero-copy h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+  .ghc-hero-image-wrap { min-height: 410px; }
+  .ghc-authority-strip,
+  .ghc-method-grid,
+  .ghc-testimonials-grid,
+  .ghc-faq-grid { grid-template-columns: 1fr; }
+  .ghc-pathology-band { grid-template-columns: 1fr; }
+  .ghc-final-cta { padding: 1.25rem; }
+  .ghc-final-cta ul { grid-template-columns: 1fr; }
+  .ghc-footer { flex-direction: column; align-items: flex-start; }
+}
