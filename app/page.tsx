@@ -18,7 +18,7 @@ const paymentLinks = {
 
 const services = [
   {
-    icon: "1 semana",
+    icon: "1 sesión",
     title: "Valoración GHC",
     text: "Sesión profesional de unos 60 minutos para conocer tu punto de partida real antes de diseñar cualquier plan.",
     onlineLabel: "Online",
