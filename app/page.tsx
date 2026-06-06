@@ -12,21 +12,54 @@ const services = [
   {
     icon: "01",
     title: "Valoración GHC",
-    text: "Evaluación física, historial de salud, hábitos, objetivo, movilidad, lesiones y punto de partida real.",
-    meta: "Sesión 60–75 min",
-    note: "Pago único",
+    text: "Sesión profesional de unos 60 minutos para conocer tu punto de partida real antes de diseñar cualquier plan.",
+    onlineLabel: "Online",
+    onlineAmount: "75 €",
+    presencialLabel: "Presencial Madrid",
+    presencialAmount: "120 €",
+    includes: [
+      "Entrevista inicial y análisis de objetivo",
+      "Historial físico, lesiones, patologías y hábitos",
+      "Estudio corporal: peso, medidas, perímetros y evolución física",
+      "Valoración antropométrica y perimétrica básica",
+      "Movilidad, postura, fuerza básica y hoja de ruta orientativa",
+    ],
+    meta: "Unos 60 min",
+    note: "Descontable si continúas",
   },
   {
     icon: "04",
     title: "Plan GHC 4 Semanas",
-    text: "Valoración, entrenamiento personalizado, pauta nutricional y seguimiento básico para arrancar con criterio.",
+    text: "Primer bloque real de trabajo con entrenamiento personalizado, pauta nutricional y seguimiento para empezar con orden.",
+    onlineLabel: "Online",
+    onlineAmount: "220 €",
+    presencialLabel: "Presencial Madrid",
+    presencialAmount: "desde 360 €",
+    includes: [
+      "Valoración inicial y estudio del caso",
+      "Entrenamiento personalizado durante 4 semanas",
+      "Pauta nutricional personalizada durante 4 semanas",
+      "Seguimiento por WhatsApp y ajustes básicos",
+      "Si ya hiciste la valoración online: 145 € restantes",
+    ],
     meta: "4 semanas",
     note: "Primer bloque real",
   },
   {
     icon: "12",
     title: "Programa GHC 12 Semanas",
-    text: "Tres bloques progresivos de entrenamiento y nutrición, ajustes semanales y revisiones en semanas 4, 8 y 12.",
+    text: "Programa completo de 3 meses para transformar hábitos, composición corporal, fuerza, movilidad y salud activa.",
+    onlineLabel: "Online",
+    onlineAmount: "580 €",
+    presencialLabel: "Presencial Madrid",
+    presencialAmount: "desde 960 €",
+    includes: [
+      "Valoración inicial completa",
+      "3 bloques de entrenamiento de 4 semanas",
+      "3 bloques de nutrición ajustados según evolución",
+      "Seguimiento semanal y revisiones en semanas 4, 8 y 12",
+      "Se descuenta la valoración si continúas",
+    ],
     meta: "12 semanas",
     note: "Mayor acompañamiento",
   },
@@ -267,6 +300,27 @@ export default function Home() {
             <div className="ghc-card-icon">{service.icon}</div>
             <h2>{service.title}</h2>
             <p>{service.text}</p>
+
+            <div className="ghc-service-pricing" aria-label={`Precios de ${service.title}`}>
+              <div className="ghc-price-pill ghc-price-pill-primary">
+                <span>{service.onlineLabel}</span>
+                <strong>{service.onlineAmount}</strong>
+              </div>
+              <div className="ghc-price-pill">
+                <span>{service.presencialLabel}</span>
+                <strong>{service.presencialAmount}</strong>
+              </div>
+            </div>
+
+            <ul className="ghc-service-includes">
+              {service.includes.map((item) => (
+                <li key={item}>
+                  <CheckIcon />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
             <div className="ghc-card-footer">
               <span><CheckIcon /> {service.meta}</span>
               <strong>{service.note}</strong>
@@ -274,6 +328,10 @@ export default function Home() {
           </article>
         ))}
       </section>
+
+      <p className="ghc-services-note">
+        Los precios presenciales pueden variar según desplazamiento, zona, frecuencia y disponibilidad. El servicio online está disponible para España y América Latina.
+      </p>
 
       <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
         {authorityItems.map((item) => (
