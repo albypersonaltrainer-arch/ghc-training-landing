@@ -169,7 +169,7 @@ const faqs = [
   },
   {
     q: "¿Trabajas online fuera de Madrid?",
-    a: "Sí. Trabajo online para toda España con valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento, dieta y seguimiento.",
+    a: "Sí. Trabajo online para España y América Latina con valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento personalizado, nutrición personalizada online y seguimiento.",
   },
   {
     q: "¿Qué diferencia hay entre valoración, plan de 4 semanas y programa de 12 semanas?",
@@ -306,7 +306,7 @@ export default function Home() {
       <section className="ghc-modalities-section">
         <div className="ghc-section-heading">
           <p className="ghc-kicker">Modalidades</p>
-          <h2>Entrenamiento privado en Madrid y acompañamiento online en España.</h2>
+          <h2>Entrenamiento privado en Madrid y acompañamiento online para España y América Latina.</h2>
         </div>
         <div className="ghc-modalities-grid">
           <article>
@@ -314,8 +314,8 @@ export default function Home() {
             <p>Me desplazo a tu domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado para que puedas entrenar con comodidad, privacidad y sin perder tiempo.</p>
           </article>
           <article>
-            <h3>Online para toda España</h3>
-            <p>Valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento, dieta y seguimiento online.</p>
+            <h3>Online para España y América Latina</h3>
+            <p>Valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento personalizado, nutrición personalizada online y seguimiento para España y América Latina.</p>
           </article>
           <article>
             <h3>Presencial fuera de Madrid</h3>
@@ -353,12 +353,29 @@ export default function Home() {
       <section className="ghc-pathology-band">
         <div className="ghc-pathology-icon">+</div>
         <div>
-          <h2>Entrenamiento especializado en lesiones, fibromialgia, lipedema, linfedema, dolor crónico y salud activa</h2>
+          <p className="ghc-kicker">Fuerza como pilar de salud</p>
+          <h2>Entrenar con criterio cuando tu cuerpo necesita algo más que fuerza de voluntad</h2>
           <p>
-            Trabajo con un enfoque individualizado para mejorar funcionalidad, fuerza, movilidad, hábitos y calidad de vida. No sustituyo el trabajo médico ni fisioterapéutico: lo complemento desde el entrenamiento, la nutrición estratégica y la salud activa.
+            El sistema GHC se basa en una idea sencilla: la fuerza es uno de los pilares más importantes de la salud. Pero fuerza no significa entrenar fuerte desde el primer día, levantar mucho peso o sufrir para mejorar. Fuerza significa recuperar capacidad, proteger articulaciones, moverte con más seguridad, ganar autonomía y volver a sentir que tu cuerpo responde.
           </p>
+          <p>
+            Por eso, en GHC Training no trabajamos con planes genéricos. Cada proceso se adapta a tu punto de partida: tu edad, tu historial, tu movilidad, tus lesiones, tus patologías, tu nivel actual, tu energía, tu entorno y tu objetivo.
+          </p>
+          <p>
+            La clave está en la progresión. Empezamos donde tu cuerpo puede empezar, no donde una tabla estándar dice que deberías estar. A partir de ahí, avanzamos paso a paso, ajustando cargas, ejercicios, movilidad, descanso, nutrición y hábitos según tu evolución real.
+          </p>
+          <p>
+            Trabajo con personas que quieren perder grasa, ganar músculo o recomponer su cuerpo, pero también con quienes necesitan entrenar con más cuidado por lesiones, dolor crónico, fibromialgia, lipedema, linfedema, sobrepeso, falta de movilidad o años sin entrenar.
+          </p>
+          <p>
+            El acompañamiento puede ser presencial privado en Madrid u online para España y América Latina, con valoración, entrenamiento personalizado, nutrición estratégica y seguimiento adaptado a cada caso.
+          </p>
+          <div className="ghc-pathology-highlight">
+            No se trata de hacer más. Se trata de hacer lo adecuado, en el momento adecuado y con la progresión adecuada.<br />
+            <strong>La fuerza no es solo rendimiento. Es salud, autonomía, longevidad y calidad de vida.</strong>
+          </div>
           <div className="ghc-medical-note">
-            Este servicio complementa, pero no reemplaza, el trabajo médico ni de fisioterapia. Siempre trabajamos con respeto a tu diagnóstico y tratamiento profesional.
+            Este trabajo no sustituye al médico ni al fisioterapeuta. Lo complementa desde mi área: fuerza adaptada, movimiento, nutrición estratégica, salud activa y acompañamiento real, respetando siempre tu diagnóstico y tratamiento profesional.
           </div>
         </div>
       </section>
