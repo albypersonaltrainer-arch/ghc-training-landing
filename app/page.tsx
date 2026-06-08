@@ -7,6 +7,20 @@ const whatsappMessage = encodeURIComponent(
 );
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
+const contactEmail = "info@ghctraining.com";
+const valuationEmailSubject = encodeURIComponent("Quiero mi valoración GHC");
+const valuationEmailBody = encodeURIComponent(`Hola Alby,
+
+Quiero información para empezar con una valoración GHC.
+
+Nombre completo:
+Teléfono / WhatsApp:
+Modalidad: Online / Presencial Madrid
+Objetivo principal:
+
+Gracias.`);
+const valuationEmailUrl = `mailto:${contactEmail}?subject=${valuationEmailSubject}&body=${valuationEmailBody}`;
+
 const paymentLinks = {
   valoracionOnline: process.env.NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL || whatsappUrl,
   valoracionPresencial: process.env.NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL || whatsappUrl,
@@ -243,7 +257,7 @@ function CheckIcon() {
 function CtaButtons() {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <a href={whatsappUrl} className="ghc-primary-button">
+      <a href={valuationEmailUrl} className="ghc-primary-button">
         Quiero mi valoración GHC
         <span aria-hidden="true">→</span>
       </a>
