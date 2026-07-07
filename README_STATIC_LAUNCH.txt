@@ -1,31 +1,5 @@
-GHC Training SEO static launch - VERIFIED NO BUILD
+GHC Training SEO static launch
 
-Paquete estático para desplegar en Vercel sin Node, npm, pnpm, Next, Supabase, Stripe ni Resend.
-
-REPO CORRECTO:
-ghc-training-landing
-
-NO TOCAR:
-ghc-nexus
-
-Vercel:
-- Framework Preset: Other
-- Build Command: vacío
-- Install Command: vacío
-- Output Directory: .
-- Root Directory: ./
-
-El archivo vercel.json fuerza:
-- framework: null (Other)
-- buildCommand: "" (sin build)
-- installCommand: "" (sin install)
-- outputDirectory: "."
-
-Rutas principales:
-/
- /servicios
- /valoracion-inicial
- /entrenador-personal-madrid
- /entrenador-personal-online
- /robots.txt
- /sitemap.xml
+Este paquete no usa Node, npm, pnpm, Next ni dependencias.
+Subir el contenido descomprimido a la raiz del repo ghc-training-landing.
+Rutas: /, /servicios, /valoracion-inicial, /sitemap.xml, /robots.txt.
