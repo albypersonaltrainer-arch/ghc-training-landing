@@ -1,0 +1,4 @@
+{
+  "installCommand": "corepack enable && corepack prepare pnpm@9.15.4 --activate && pnpm install --no-frozen-lockfile --no-verify-store-integrity",
+  "buildCommand": "pnpm run build"
+}
