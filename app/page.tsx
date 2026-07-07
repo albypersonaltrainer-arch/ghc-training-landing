@@ -1,6 +1,5 @@
 import Image from "next/image";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
-import { featuredServiceLinks } from "@/lib/seoPages";
 
 const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34628798859";
 const whatsappMessage = encodeURIComponent(
@@ -283,7 +282,6 @@ export default function Home() {
           <a href="#metodo" className="nav-link">Método GHC</a>
           <a href="#testimonios" className="nav-link">Testimonios</a>
           <a href="#faq" className="nav-link">FAQ</a>
-          <a href="/valoracion-inicial" className="nav-link">Valoración</a>
         </nav>
         <a href={whatsappUrl} className="ghc-whatsapp-header">
           <WhatsAppIcon />
@@ -501,22 +499,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ghc-popular-services" aria-label="Servicios populares GHC Training">
-        <div className="ghc-section-heading compact">
-          <p className="ghc-kicker">Servicios populares</p>
-          <h2>Encuentra el punto de partida según tu caso.</h2>
-          <p>He creado páginas específicas para que puedas llegar rápido a la opción más cercana a tu objetivo: Madrid, online, pérdida de grasa, dolor de espalda o valoración inicial.</p>
-        </div>
-        <div className="ghc-popular-services-grid">
-          {featuredServiceLinks.map((link) => (
-            <a key={link.slug} href={`/${link.slug}`}>
-              <span>{link.label}</span>
-              <strong>Ver servicio →</strong>
-            </a>
-          ))}
-        </div>
-      </section>
-
       <section className="ghc-final-cta">
         <div>
           <h2>Da el primer paso hacia tu mejor versión.</h2>
@@ -536,11 +518,7 @@ export default function Home() {
       <footer className="ghc-footer">
         <GHCTrainingLogo size="sm" darkText={false} />
         <p>© 2026 GHC Training · Alby Aguiar · Salud a través de la fuerza.</p>
-        <div className="ghc-footer-links">
-          <a href="/servicios">Servicios</a>
-          <a href="/valoracion-inicial">Valoración inicial</a>
-          <a href={whatsappUrl}>Contacto por WhatsApp</a>
-        </div>
+        <a href={whatsappUrl}>Contacto por WhatsApp</a>
       </footer>
     </main>
   );
