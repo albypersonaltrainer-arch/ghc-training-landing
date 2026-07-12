@@ -195,7 +195,7 @@ function AuthorityIcon({ name }: { name: AuthorityIconName }) {
 const testimonials = [
   {
     title: "Lipedema · Fisio + fuerza adaptada",
-    text: "No sabes lo que me acordé hoy de ti, Alby. He subido las escaleras de casa sin esa sensación horrible de piernas pesadas y doloridas que tenía antes. Parece una tontería, pero para mí es enorme. Durante mucho tiempo iba al fisio y me ayudaba, claro que sí, pero sentía que siempre volvía al mismo punto. Desde que combiné el trabajo de fisio con el entrenamiento contigo, todo empezó a tener más sentido. Me quedo con eso: no solo he mejorado físicamente, he vuelto a confiar un poco más en mi cuerpo. Y eso, para mí, vale muchísimo.",
+    text: "No sabes lo que me acordé hoy de ti, Alby. He subido las escaleras de casa sin esa sensación horrible de piernas pesadas y doloridas que tenía antes. Parece una tontería, pero para mí es enorme. Durante mucho tiempo iba al fisio y me ayudaba, claro que sí, pero sentía que siempre volvía al mismo punto. Desde que empecé a seguir el entrenamiento que diseñaste para mí y lo combiné con el trabajo de fisio, todo empezó a tener más sentido. Me quedo con eso: no solo he mejorado físicamente, he vuelto a confiar un poco más en mi cuerpo. Y eso, para mí, vale muchísimo.",
     time: "10:31",
   },
   {
@@ -225,8 +225,8 @@ const faqs = [
     a: "Puedo ayudarte a estructurar fuerza, movilidad, nutrición estratégica y salud activa, respetando siempre tu diagnóstico y el seguimiento de tus profesionales sanitarios.",
   },
   {
-    q: "¿Te desplazas a domicilio en Madrid?",
-    a: "Sí. Me desplazo a domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado para entrenar con privacidad y comodidad.",
+    q: "¿Te desplazas para realizar valoraciones y revisiones en Madrid?",
+    a: "Sí. La valoración y las revisiones presenciales pueden realizarse a domicilio, en un gimnasio privado, urbanización, empresa, hotel o espacio acordado. Cuando es necesario, revisamos movimientos concretos y explicamos cómo aplicar la planificación antes de que entrenes con autonomía.",
   },
   {
     q: "¿Trabajas online fuera de Madrid?",
@@ -410,20 +410,20 @@ export default function Home() {
       <section className="ghc-modalities-section">
         <div className="ghc-section-heading">
           <p className="ghc-kicker">Modalidades</p>
-          <h2>Entrenamiento privado en Madrid y acompañamiento online para España y América Latina.</h2>
+          <h2>Valoración, planificación y revisiones en Madrid, con acompañamiento online para España y América Latina.</h2>
         </div>
         <div className="ghc-modalities-grid">
           <article>
-            <h3>Presencial privado en Madrid</h3>
-            <p>Me desplazo a tu domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado para que puedas entrenar con comodidad, privacidad y sin perder tiempo.</p>
+            <h3>Valoración y revisiones presenciales en Madrid</h3>
+            <p>La valoración, la explicación de la planificación y las revisiones periódicas pueden realizarse en tu domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado. Después entrenas con autonomía, con una planificación personalizada y libertad para organizar tus horarios.</p>
           </article>
           <article>
             <h3>Online para España y América Latina</h3>
             <p>Valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento personalizado, nutrición personalizada online y seguimiento para España y América Latina.</p>
           </article>
           <article>
-            <h3>Presencial fuera de Madrid</h3>
-            <p>Disponible bajo presupuesto según ciudad, desplazamiento, duración y disponibilidad. Solo cuando tiene sentido para ambas partes.</p>
+            <h3>Valoraciones presenciales fuera de Madrid</h3>
+            <p>Las valoraciones o revisiones presenciales fuera de Madrid se estudian individualmente según la ciudad, el desplazamiento, la disponibilidad y las necesidades del caso.</p>
           </article>
         </div>
       </section>
@@ -472,7 +472,7 @@ export default function Home() {
             Trabajo con personas que quieren perder grasa, ganar músculo o recomponer su cuerpo, pero también con quienes necesitan entrenar con más cuidado por lesiones, dolor crónico, fibromialgia, lipedema, linfedema, sobrepeso, falta de movilidad o años sin entrenar.
           </p>
           <p>
-            El acompañamiento puede ser presencial privado en Madrid u online para España y América Latina, con valoración, entrenamiento personalizado, nutrición estratégica y seguimiento adaptado a cada caso.
+            El proceso puede realizarse online para España y América Latina o incluir valoración y revisiones presenciales en Madrid. En ambos casos, partimos del estudio de tu situación para diseñar una planificación personalizada, guiar su aplicación y revisar tu evolución. Tú decides cuándo entrenar, sin depender de una cita fija, pero con dirección y revisión profesional.
           </p>
           <div className="ghc-pathology-highlight">
             No se trata de hacer más. Se trata de hacer lo adecuado, en el momento adecuado y con la progresión adecuada.<br />
