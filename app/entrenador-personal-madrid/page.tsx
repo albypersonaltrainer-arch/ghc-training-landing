@@ -70,8 +70,8 @@ const methodSteps = [
   },
   {
     number: "04",
-    title: "Aplicamos",
-    text: "Desarrollamos el entrenamiento contigo, cuidando la técnica, la progresión y la respuesta de tu cuerpo.",
+    title: "Te guiamos",
+    text: "Te explicamos cómo aplicar la planificación, revisamos movimientos concretos cuando es necesario y te damos criterios para entrenar con autonomía.",
   },
   {
     number: "05",
@@ -167,8 +167,8 @@ const faqs = [
     a: "Incluye una entrevista inicial y la revisión de los aspectos necesarios para comprender tu situación, como objetivos, historial, movilidad, fuerza, molestias, experiencia y disponibilidad. La valoración nos permite establecer prioridades y decidir cómo debería comenzar el proceso.",
   },
   {
-    q: "¿Dónde se realizan los entrenamientos?",
-    a: "Las sesiones presenciales se realizan en Madrid, en el espacio acordado previamente. Puede ser un domicilio, una urbanización, una empresa, un hotel, un gimnasio que permita el acceso u otro entorno adecuado.",
+    q: "¿Dónde se realizan la valoración y las revisiones presenciales?",
+    a: "La valoración y las revisiones presenciales se realizan en Madrid, en el espacio acordado previamente. Puede ser un domicilio, una urbanización, una empresa, un hotel, un gimnasio que permita el acceso u otro entorno adecuado. Después entrenas con autonomía en casa, gimnasio o parque, según tu planificación.",
   },
   {
     q: "¿Cuántos días por semana necesito entrenar?",
@@ -570,11 +570,14 @@ export default function EntrenadorPersonalMadridPage() {
         <section className={styles.madridSection}>
           <div className={styles.madridIntro}>
             <p className={styles.kicker}>Madrid · Presencial</p>
-            <h2>Nos vemos en persona y trabajamos en el espacio acordado</h2>
+            <h2>Nos vemos en persona para valorar y revisar tu proceso</h2>
             <p>
               La modalidad presencial nos permite observar cómo te mueves,
-              acompañar directamente la ejecución y adaptar cada sesión a tu
-              respuesta real.
+              revisar movimientos concretos cuando sea necesario y explicarte
+              cómo aplicar tu planificación. Después entrenas con autonomía,
+              en el horario y entorno que mejor encajen contigo. La siguiente
+              revisión se realiza a las 4, 8 o 12 semanas, según el programa
+              contratado.
             </p>
           </div>
 
@@ -705,9 +708,11 @@ export default function EntrenadorPersonalMadridPage() {
             <p className={styles.kicker}>Dos modalidades, un mismo criterio</p>
             <h2>Entrenamiento presencial u online</h2>
             <p>
-              Si estás en Madrid y buscas acompañamiento en persona, la
-              modalidad presencial nos permite valorar tu caso directamente y
-              desarrollar el entrenamiento contigo en el espacio acordado.
+              Si estás en Madrid y quieres realizar la valoración o las
+              revisiones en persona, la modalidad presencial nos permite
+              analizar tu caso directamente, revisar movimientos concretos y
+              explicarte la planificación en el espacio acordado. Tú decides
+              cuándo entrenar, sin depender de un horario fijo con un entrenador.
             </p>
             <p>
               Si la distancia, los horarios o tu situación hacen más
