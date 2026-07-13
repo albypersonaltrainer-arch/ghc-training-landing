@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 import styles from "./page.module.css";
@@ -241,20 +242,34 @@ export default function MetodoGHCPage() {
 
       <main>
         <section className={styles.hero}>
-          <div className={styles.breadcrumb}><Link href="/">GHC Training</Link><span aria-hidden="true">/</span><span>Método GHC</span></div>
-          <p className={styles.kicker}>VALORACIÓN · PLANIFICACIÓN · SEGUIMIENTO · AJUSTES</p>
-          <h1>Método GHC: entrenamiento personalizado con criterio</h1>
-          <div className={styles.heroLead}>
-            <p>El Método GHC es nuestro sistema de trabajo para transformar una situación, una necesidad o un objetivo en un programa de entrenamiento realmente personalizado.</p>
-            <p>Nuestra prioridad es comprender a cada persona: su punto de partida, sus necesidades, sus objetivos, su experiencia, sus limitaciones, su disponibilidad y las circunstancias reales que pueden influir en el proceso.</p>
-            <p>A partir de esa información definimos prioridades, diseñamos una estrategia y acompañamos su evolución mediante seguimiento, revisión y ajustes continuos.</p>
-            <p>Valoramos, diseñamos, guiamos, revisamos y ajustamos para que el entrenamiento tenga dirección, coherencia y continuidad. Así evitamos que el proceso se reduzca a una rutina estándar o a una selección de ejercicios sin un criterio claro.</p>
+          <div className={styles.heroContent}>
+            <div className={styles.breadcrumb}><Link href="/">GHC Training</Link><span aria-hidden="true">/</span><span>Método GHC</span></div>
+            <p className={styles.kicker}>VALORACIÓN · PLANIFICACIÓN · SEGUIMIENTO · AJUSTES</p>
+            <h1>Método GHC: entrenamiento personalizado con criterio</h1>
+            <div className={styles.heroLead}>
+              <p>El Método GHC es nuestro sistema de trabajo para transformar una situación, una necesidad o un objetivo en un programa de entrenamiento realmente personalizado.</p>
+              <p>Nuestra prioridad es comprender a cada persona: su punto de partida, sus necesidades, sus objetivos, su experiencia, sus limitaciones, su disponibilidad y las circunstancias reales que pueden influir en el proceso.</p>
+              <p>A partir de esa información definimos prioridades, diseñamos una estrategia y acompañamos su evolución mediante seguimiento, revisión y ajustes continuos.</p>
+              <p>Valoramos, diseñamos, guiamos, revisamos y ajustamos para que el entrenamiento tenga dirección, coherencia y continuidad. Así evitamos que el proceso se reduzca a una rutina estándar o a una selección de ejercicios sin un criterio claro.</p>
+            </div>
+            <div className={styles.ctaRow}>
+              <a href={whatsappUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">Solicitar una valoración <ArrowIcon /></a>
+              <a href="#como-funciona" className={styles.secondaryButton}>Ver cómo funciona el método <ArrowIcon /></a>
+            </div>
+            <p className={styles.heroNote}>Aplicable a programas online y a valoraciones y revisiones presenciales en Madrid.</p>
           </div>
-          <div className={styles.ctaRow}>
-            <a href={whatsappUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">Solicitar una valoración <ArrowIcon /></a>
-            <a href="#como-funciona" className={styles.secondaryButton}>Ver cómo funciona el método <ArrowIcon /></a>
+
+          <div className={styles.heroVisual}>
+            <div className={styles.heroImage}>
+              <Image
+                src="/alby-ghc-training.png"
+                alt="Alby Aguiar, fundador y director de GHC Training"
+                fill
+                priority
+                sizes="(max-width: 980px) 100vw, 40vw"
+              />
+            </div>
           </div>
-          <p className={styles.heroNote}>Aplicable a programas online y a valoraciones y revisiones presenciales en Madrid.</p>
         </section>
 
         <section className={styles.introSection}>
