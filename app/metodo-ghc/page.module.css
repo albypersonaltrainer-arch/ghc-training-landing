@@ -1,0 +1,757 @@
+.page {
+  --green: #22d65b;
+  --green-dark: #08752f;
+  --green-cta: #08752f;
+  --green-cta-hover: #075f29;
+  --green-cta-active: #064c22;
+  --ink: #111614;
+  --graphite: #101412;
+  --cream: #f7f6f1;
+  --cream-2: #efeee8;
+  --steel: #68716d;
+  --white: #fff;
+  --muted: rgba(17, 22, 20, 0.72);
+  --border: rgba(17, 22, 20, 0.13);
+  min-height: 100vh;
+  color: var(--ink);
+  background: linear-gradient(180deg, #fbfaf7 0%, var(--cream) 48%, var(--cream-2) 100%);
+}
+
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 82% 5%, rgba(34, 214, 91, 0.12), transparent 28rem),
+    radial-gradient(circle at 8% 20%, rgba(104, 113, 109, 0.09), transparent 24rem);
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.header,
+.hero,
+.introSection,
+.stagesSection,
+.adaptSection,
+.applicationSection,
+.autonomySection,
+.benefitsSection,
+.audienceSection,
+.assessmentSection,
+.reviewSection,
+.criteriaSection,
+.progressSection,
+.faqSection,
+.finalCta,
+.footer {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(17, 22, 20, 0.1);
+  background: rgba(251, 250, 247, 0.94);
+  box-shadow: 0 12px 32px rgba(17, 22, 20, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  color: rgba(17, 22, 20, 0.72);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.nav a,
+.breadcrumb a,
+.footer a {
+  transition: color 0.2s ease;
+}
+
+.nav a:hover,
+.breadcrumb a:hover {
+  color: var(--green-dark);
+}
+
+.headerButton,
+.primaryButton,
+.secondaryButton,
+.lightButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 50px;
+  padding: 0 1.3rem;
+  border-radius: 999px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.headerButton {
+  min-height: 44px;
+  padding-inline: 1.05rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-cta), var(--green-cta-hover));
+  box-shadow: 0 14px 34px rgba(8, 117, 47, 0.24);
+}
+
+.primaryButton {
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-cta), var(--green-cta-hover));
+  box-shadow: 0 18px 38px rgba(8, 117, 47, 0.26);
+}
+
+.secondaryButton {
+  color: var(--graphite);
+  border: 1px solid rgba(17, 22, 20, 0.2);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.lightButton {
+  color: #f5f7f5;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.headerButton:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.lightButton:hover {
+  transform: translateY(-2px);
+}
+
+.headerButton:hover,
+.primaryButton:hover {
+  background: linear-gradient(135deg, var(--green-cta-hover), var(--green-cta-active));
+}
+
+.headerButton:active,
+.primaryButton:active {
+  transform: translateY(0);
+  background: var(--green-cta-active);
+}
+
+.headerButton:focus-visible,
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.lightButton:focus-visible,
+.nav a:focus-visible,
+.breadcrumb a:focus-visible,
+.footer a:focus-visible,
+.faqList summary:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 4px;
+}
+
+.buttonIcon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.hero {
+  min-height: 760px;
+  padding: 7rem 0 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.heroContent {
+  min-width: 0;
+}
+
+.heroVisual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.heroImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(17, 22, 20, 0.12);
+  border-radius: 30px;
+  background: #e9ebe6;
+  box-shadow: 0 30px 80px rgba(17, 22, 20, 0.16);
+}
+
+.heroImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.heroImage img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 2.3rem;
+  color: rgba(17, 22, 20, 0.55);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.kicker {
+  margin: 0 0 0.9rem;
+  color: var(--green-dark);
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.17em;
+}
+
+.hero h1,
+.sectionHeading h2,
+.finalCta h2 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.hero h1 {
+  max-width: 920px;
+  font-size: clamp(3rem, 7vw, 6.7rem);
+}
+
+.heroLead {
+  max-width: 850px;
+  margin: 2.1rem 0;
+  display: grid;
+  gap: 0.9rem;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.76;
+}
+
+.heroLead p,
+.sectionHeading p,
+.prose p,
+.proseColumns p,
+.applicationGrid p,
+.stageCard p,
+.medicalNote p,
+.reviewCallout p,
+.finalCta p,
+.faqList p {
+  margin: 0;
+}
+
+.heroNote {
+  margin: 1.3rem 0 0;
+  color: var(--steel);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.introSection,
+.adaptSection,
+.autonomySection,
+.benefitsSection,
+.audienceSection,
+.assessmentSection,
+.reviewSection,
+.criteriaSection,
+.progressSection,
+.faqSection {
+  padding-block: 7rem;
+}
+
+.sectionHeading {
+  max-width: 850px;
+  margin-bottom: 3rem;
+}
+
+.sectionHeading h2,
+.finalCta h2 {
+  font-size: clamp(2.35rem, 5vw, 4.5rem);
+}
+
+.sectionHeading > p:not(.kicker) {
+  max-width: 760px;
+  margin-top: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.proseColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.proseColumns > div,
+.prose {
+  display: grid;
+  gap: 1rem;
+  color: var(--muted);
+  line-height: 1.76;
+}
+
+.proseColumns ul,
+.criteriaSection ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.proseColumns li,
+.criteriaSection li {
+  margin-block: 0.55rem;
+}
+
+.emphasis {
+  color: var(--ink) !important;
+  font-weight: 850;
+}
+
+.stagesSection,
+.applicationSection {
+  width: 100%;
+  padding: 7rem max(16px, calc((100% - 1180px) / 2));
+  color: #f2f4f1;
+  background: var(--graphite);
+}
+
+.stagesSection .kicker,
+.applicationSection .kicker,
+.finalCta .kicker {
+  color: var(--green);
+}
+
+.stagesSection .sectionHeading > p:not(.kicker),
+.applicationSection .sectionHeading > p:not(.kicker) {
+  color: rgba(242, 244, 241, 0.67);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stageCard {
+  min-height: 380px;
+  padding: 2rem;
+  background: #141a17;
+}
+
+.stageCard > span {
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.15em;
+}
+
+.stageCard h3,
+.applicationGrid h3,
+.compareGrid h3 {
+  margin: 1.3rem 0 1.2rem;
+  font-size: 1.35rem;
+}
+
+.stageCard p,
+.applicationGrid p {
+  margin-top: 0.8rem;
+  color: rgba(242, 244, 241, 0.66);
+  line-height: 1.68;
+}
+
+.compareGrid,
+.applicationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-block: 2.5rem;
+}
+
+.compareGrid article {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 20px 55px rgba(17, 22, 20, 0.06);
+}
+
+.compareGrid h3 {
+  margin-top: 0;
+}
+
+.listIntro {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-weight: 850;
+  line-height: 1.6;
+}
+
+.compareGrid ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.compareGrid li {
+  margin-block: 0.55rem;
+}
+
+.applicationGrid article {
+  min-height: 350px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.applicationGrid article > span {
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+}
+
+.autonomySection {
+  position: relative;
+}
+
+.autonomySection::after {
+  content: "AUTONOMÍA";
+  position: absolute;
+  right: 0;
+  bottom: 1rem;
+  z-index: -1;
+  color: rgba(17, 22, 20, 0.035);
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.benefitsSection,
+.reviewSection,
+.progressSection {
+  border-block: 1px solid var(--border);
+}
+
+.benefitGrid,
+.audienceList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.benefitGrid li,
+.audienceList li {
+  position: relative;
+  padding: 1.15rem 1.2rem 1.15rem 3rem;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+.benefitGrid li::before,
+.audienceList li::before {
+  content: "✓";
+  position: absolute;
+  left: 1.1rem;
+  color: var(--green-dark);
+  font-weight: 950;
+}
+
+.medicalNote {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  display: grid;
+  gap: 0.85rem;
+  border-left: 4px solid var(--green);
+  color: var(--muted);
+  background: rgba(34, 214, 91, 0.07);
+  line-height: 1.7;
+}
+
+.reviewCallout {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  gap: 1rem 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border-radius: 24px;
+  color: #f2f4f1;
+  background: var(--graphite);
+}
+
+.reviewCallout span {
+  grid-row: span 2;
+  color: var(--green);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1;
+}
+
+.reviewCallout p {
+  color: rgba(242, 244, 241, 0.72);
+  line-height: 1.65;
+}
+
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.faqList details {
+  align-self: start;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 14px 40px rgba(17, 22, 20, 0.04);
+}
+
+.faqList summary {
+  position: relative;
+  padding: 1.35rem 3.3rem 1.35rem 1.35rem;
+  cursor: pointer;
+  font-weight: 850;
+  list-style: none;
+}
+
+.faqList summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqList summary::after {
+  content: "+";
+  position: absolute;
+  top: 1.1rem;
+  right: 1.3rem;
+  color: var(--green-dark);
+  font-size: 1.45rem;
+}
+
+.faqList details[open] summary::after {
+  content: "−";
+}
+
+.faqList details > div {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0 1.35rem 1.35rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.finalCta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 0.42fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem;
+  border-radius: 30px;
+  color: #f2f4f1;
+  background: var(--graphite);
+  box-shadow: 0 28px 80px rgba(7, 10, 9, 0.22);
+}
+
+.finalCta p:not(.kicker) {
+  max-width: 760px;
+  margin-top: 1rem;
+  color: rgba(242, 244, 241, 0.7);
+  line-height: 1.7;
+}
+
+.finalCta .ctaRow {
+  margin-top: 2rem;
+}
+
+.finalPrinciples {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.finalPrinciples span {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(242, 244, 241, 0.75);
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 800;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem 0;
+  color: rgba(17, 22, 20, 0.62);
+  font-size: 0.88rem;
+}
+
+.footer a:last-child {
+  color: var(--green-dark);
+  font-weight: 850;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .heroVisual {
+    width: min(680px, 100%);
+  }
+
+  .heroImage {
+    aspect-ratio: 16 / 10;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .stageGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stageCard {
+    min-height: auto;
+  }
+
+  .finalCta {
+    grid-template-columns: 1fr;
+  }
+
+  .finalPrinciples {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .headerButton {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 4rem 0;
+    gap: 2rem;
+  }
+
+  .heroVisual {
+    width: 100%;
+  }
+
+  .heroImage {
+    aspect-ratio: 4 / 5;
+    border-radius: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 14vw, 4.6rem);
+  }
+
+  .introSection,
+  .adaptSection,
+  .autonomySection,
+  .benefitsSection,
+  .audienceSection,
+  .assessmentSection,
+  .reviewSection,
+  .criteriaSection,
+  .progressSection,
+  .faqSection,
+  .stagesSection,
+  .applicationSection {
+    padding-block: 5rem;
+  }
+
+  .proseColumns,
+  .stageGrid,
+  .compareGrid,
+  .applicationGrid,
+  .benefitGrid,
+  .audienceList,
+  .faqList,
+  .reviewCallout {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewCallout span {
+    grid-row: auto;
+  }
+
+  .ctaRow > * {
+    width: 100%;
+  }
+
+  .finalCta {
+    width: calc(100% - 24px);
+    padding: 2rem 1.25rem;
+    border-radius: 22px;
+  }
+
+  .finalPrinciples {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerButton,
+  .primaryButton,
+  .secondaryButton,
+  .lightButton,
+  .nav a,
+  .breadcrumb a,
+  .footer a {
+    transition: none;
+  }
+}

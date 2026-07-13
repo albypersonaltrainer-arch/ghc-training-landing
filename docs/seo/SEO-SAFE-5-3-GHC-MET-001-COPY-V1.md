@@ -51,7 +51,7 @@ No debe competir directamente con:
 
 **SEO title:** Método GHC | Entrenamiento personalizado con criterio
 
-**Meta description:** Conoce el Método GHC: valoración, planificación, seguimiento y ajustes para diseñar un entrenamiento personalizado, online o presencial en Madrid.
+**Meta description:** Conoce el Método GHC: valoración, planificación, seguimiento y ajustes para programas online o con valoraciones y revisiones presenciales en Madrid.
 
 **Canonical:** `https://ghctraining.com/metodo-ghc`
 
@@ -214,6 +214,8 @@ El Método GHC puede aplicarse a personas con objetivos, niveles de experiencia 
 Puede orientar procesos relacionados con la mejora de la fuerza, la movilidad, la composición corporal, la recuperación de la condición física o el rendimiento, siempre dentro de los límites profesionales correspondientes y adaptando la planificación a cada caso.
 
 ### Valoración presencial en Madrid
+
+Las valoraciones y revisiones presenciales en Madrid se realizan en un lugar previamente acordado.
 
 En la modalidad presencial nos desplazamos en Madrid para conocer directamente a la persona, analizar su punto de partida y comprender las condiciones reales en las que va a desarrollar el programa.
 
