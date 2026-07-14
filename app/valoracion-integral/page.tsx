@@ -4,7 +4,7 @@ import Link from "next/link";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 import styles from "./page.module.css";
 
-const siteUrl = "https://ghctraining.com";
+const siteUrl = "https://www.ghctraining.com";
 const pageUrl = `${siteUrl}/valoracion-integral`;
 
 const description =

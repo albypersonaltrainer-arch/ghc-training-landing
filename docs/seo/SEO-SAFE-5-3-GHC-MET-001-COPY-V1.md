@@ -53,7 +53,7 @@ No debe competir directamente con:
 
 **Meta description:** Conoce el Método GHC: valoración, planificación, seguimiento y ajustes para programas online o con valoraciones y revisiones presenciales en Madrid.
 
-**Canonical:** `https://ghctraining.com/metodo-ghc`
+**Canonical:** `https://www.ghctraining.com/metodo-ghc`
 
 **H1:** Método GHC: entrenamiento personalizado con criterio
 

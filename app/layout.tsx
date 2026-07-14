@@ -14,7 +14,7 @@ const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
 });
 
-const siteUrl = "https://ghctraining.com";
+const siteUrl = "https://www.ghctraining.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
