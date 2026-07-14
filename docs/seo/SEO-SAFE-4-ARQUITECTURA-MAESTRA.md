@@ -1,7 +1,7 @@
 # SEO SAFE 4 — Arquitectura maestra de GHC Training
 
 **Proyecto:** GHC Training
-**Dominio:** https://ghctraining.com
+**Dominio canónico oficial:** https://www.ghctraining.com
 **Repositorio:** `albypersonaltrainer-arch/ghc-training-landing`
 **Versión:** V1.0
 **Estado:** Aprobado / baseline oficial

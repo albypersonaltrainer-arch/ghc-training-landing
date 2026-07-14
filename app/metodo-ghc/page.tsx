@@ -4,7 +4,7 @@ import Link from "next/link";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 import styles from "./page.module.css";
 
-const siteUrl = "https://ghctraining.com";
+const siteUrl = "https://www.ghctraining.com";
 const pageUrl = `${siteUrl}/metodo-ghc`;
 const description =
   "Conoce el Método GHC: valoración, planificación, seguimiento y ajustes para programas online o con valoraciones y revisiones presenciales en Madrid.";

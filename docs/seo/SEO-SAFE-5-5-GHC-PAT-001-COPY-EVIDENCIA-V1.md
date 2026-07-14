@@ -381,7 +381,7 @@ La valoración, la explicación, el seguimiento y las revisiones pueden realizar
 
 ### Canonical
 
-`https://ghctraining.com/entrenamiento-fibromialgia`
+`https://www.ghctraining.com/entrenamiento-fibromialgia`
 
 ### H1
 

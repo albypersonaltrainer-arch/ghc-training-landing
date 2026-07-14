@@ -130,7 +130,7 @@ Esta condición:
 
 ### Canonical
 
-`https://ghctraining.com/valoracion-integral`
+`https://www.ghctraining.com/valoracion-integral`
 
 ### H1
 
