@@ -365,7 +365,7 @@ export default function Home() {
           <h2>Alby Aguiar</h2>
           <p className="ghc26-founder-role">Fundador y director de GHC Training</p>
           <p>
-            Más de 30 años de experiencia profesional en entrenamiento, fuerza, movilidad, composición corporal, nutrición estratégica y salud activa. En GHC la experiencia no se utiliza para imponer una receta: se utiliza para tomar mejores decisiones sobre cada caso.
+            Más de 30 años de experiencia profesional en entrenamiento, fuerza, movilidad, composición corporal, nutrición estratégica y salud activa. Una trayectoria construida entre deporte de alto nivel, dirección, formación y trabajo con perfiles muy distintos, convertida hoy en un método propio: menos recetas, más criterio y una estrategia diseñada alrededor de cada persona.
           </p>
           <a href="/sobre-ghc-training" className="ghc-button ghc-button-dark">Conocer GHC Training <Arrow /></a>
         </div>
