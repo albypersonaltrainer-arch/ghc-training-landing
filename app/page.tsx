@@ -3,6 +3,7 @@ import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 import HexVideo from "@/components/home/HexVideo";
 import QuickPath from "@/components/home/QuickPath";
 import { ghcMedia, ghcTraining } from "@/config/ghcTraining";
+import "./home-2026.css";
 
 const whatsappText = encodeURIComponent(
   "Hola Alby, quiero información para empezar con una valoración GHC Training."
