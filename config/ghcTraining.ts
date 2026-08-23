@@ -276,10 +276,10 @@ export const ghcMedia = {
     },
     {
       type: "video",
-      src: "https://www.pexels.com/download/video/31510696/",
-      sourcePage: "https://www.pexels.com/video/intense-workout-session-with-personal-trainer-31510696/",
+      src: "https://www.pexels.com/download/video/12188782/",
+      sourcePage: "https://www.pexels.com/video/man-exercising-with-personal-trainer-12188782/",
       provider: "Pexels",
-      creator: "Alexander Oliver",
+      creator: "utopia 36",
       license: "Pexels License",
     },
     {
