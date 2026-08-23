@@ -1,0 +1,203 @@
+export const ghcTraining = {
+  identity: {
+    name: "GHC Training",
+    slogan: "Health Through Strength",
+    domain: "https://www.ghctraining.com",
+    founder: "Alby Aguiar",
+    founded: "2016",
+  },
+  contact: {
+    email: "info@ghctraining.com",
+    phone: "+34 628 79 88 59",
+    phoneE164: "34628798859",
+  },
+  positioning: {
+    eyebrow: "GHC Training · Health Through Strength",
+    headline: "Tu cuerpo. Tu contexto. Tu estrategia.",
+    subheadline:
+      "Entrenamiento personalizado construido desde una valoración real, no desde una plantilla.",
+    statement:
+      "No empezamos por los ejercicios. Empezamos por entender tu punto de partida.",
+  },
+  services: [
+    {
+      id: "valuation",
+      eyebrow: "Punto de partida",
+      title: "Valoración GHC",
+      duration: "1 sesión · unos 60 min",
+      description:
+        "Entrevista, historial, hábitos, medidas, movilidad, postura y fuerza básica para definir prioridades antes de diseñar cualquier plan.",
+      online: { label: "Online", price: 75, env: "NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL" },
+      madrid: { label: "Madrid", price: 120, env: "NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL" },
+      note: "La valoración se descuenta si continúas.",
+    },
+    {
+      id: "plan4",
+      eyebrow: "Construir",
+      title: "Plan GHC",
+      duration: "4 semanas",
+      description:
+        "Primer bloque completo con valoración, entrenamiento personalizado, pauta nutricional, seguimiento y ajustes.",
+      online: { label: "Online", price: 220, env: "NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL" },
+      madrid: { label: "Madrid", price: 360, env: "NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL" },
+      note: "Un bloque de trabajo con dirección y autonomía.",
+    },
+    {
+      id: "program12",
+      eyebrow: "Evolucionar",
+      title: "Programa GHC",
+      duration: "12 semanas",
+      description:
+        "Tres bloques progresivos de entrenamiento y nutrición, seguimiento semanal y revisiones en semanas 4, 8 y 12.",
+      online: { label: "Online", price: 580, env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL" },
+      madrid: { label: "Madrid", price: 960, env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL" },
+      note: "Mayor profundidad, revisión y acompañamiento.",
+    },
+  ],
+  profileSignals: [
+    "Objetivo",
+    "Historial",
+    "Fuerza",
+    "Movilidad",
+    "Experiencia",
+    "Disponibilidad",
+    "Entorno",
+    "Material",
+    "Recuperación",
+    "Limitaciones",
+  ],
+  method: [
+    { step: "01", title: "Valoramos", text: "Entendemos tu cuerpo, tu historia y tu punto de partida." },
+    { step: "02", title: "Priorizamos", text: "Separamos lo importante de lo accesorio y ordenamos objetivos." },
+    { step: "03", title: "Diseñamos", text: "Construimos entrenamiento, nutrición y progresión para tu contexto." },
+    { step: "04", title: "Guiamos", text: "Te explicamos qué hacer, cómo hacerlo y por qué." },
+    { step: "05", title: "Revisamos", text: "Observamos respuesta, molestias, energía y evolución real." },
+    { step: "06", title: "Ajustamos", text: "Modificamos la estrategia para que siga avanzando contigo." },
+  ],
+  modalities: [
+    {
+      id: "madrid",
+      title: "Madrid · nos desplazamos",
+      text: "La valoración, la explicación de la planificación y las revisiones pueden realizarse en tu domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado. Después entrenas con autonomía y libertad horaria.",
+      tags: ["Domicilio", "Gimnasio", "Urbanización", "Empresa", "Hotel", "Espacio acordado"],
+    },
+    {
+      id: "online",
+      title: "Online · España y América Latina",
+      text: "Valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, planificación personalizada, nutrición estratégica y seguimiento.",
+      tags: ["Casa", "Gimnasio", "Exterior", "Viajes", "Libertad horaria"],
+    },
+  ],
+  specialties: [
+    { title: "Pérdida de grasa", href: "/perdida-de-grasa" },
+    { title: "Fuerza y masa muscular", href: "/metodo-ghc" },
+    { title: "Movilidad y vuelta al entrenamiento", href: "/valoracion-integral" },
+    { title: "Fibromialgia", href: "/entrenamiento-fibromialgia" },
+    { title: "Lipedema", href: "/entrenamiento-lipedema" },
+    { title: "Linfedema", href: "/metodo-ghc" },
+    { title: "Dolor crónico", href: "/metodo-ghc" },
+    { title: "Envejecimiento activo", href: "/metodo-ghc" },
+    { title: "Entrenamiento online", href: "/entrenador-personal-online" },
+    { title: "Entrenamiento en Madrid", href: "/entrenador-personal-madrid" },
+  ],
+  quickPath: {
+    goals: ["Perder grasa", "Ganar fuerza", "Volver a entrenar", "Moverme mejor", "Salud / patología", "Mejorar rendimiento"],
+    places: ["Casa", "Gimnasio", "Exterior", "Viajo mucho", "Todavía no lo sé"],
+    modes: ["Madrid", "Online"],
+  },
+  manifesto: [
+    ["Fuerza", "Capacidad"],
+    ["Fuerza", "Autonomía"],
+    ["Fuerza", "Salud"],
+    ["Fuerza", "Longevidad"],
+  ],
+  proof: [
+    {
+      label: "Lipedema · fuerza adaptada",
+      title: "Volver a confiar en su cuerpo",
+      text: "De convivir con piernas pesadas y doloridas a recuperar capacidad para subir escaleras y sentir que el trabajo de fuerza complementa el tratamiento profesional.",
+    },
+    {
+      label: "Fibromialgia · progresión",
+      title: "Más estabilidad y menos miedo al movimiento",
+      text: "Un proceso construido alrededor de tolerancia, progresión y acompañamiento, respetando siempre el diagnóstico y el seguimiento sanitario.",
+    },
+    {
+      label: "Composición corporal",
+      title: "Orden antes que castigo",
+      text: "Entrenamiento y nutrición estructurados para salir del ciclo de empezar, abandonar y volver a empezar.",
+    },
+    {
+      label: "Sedentarismo · vuelta al entrenamiento",
+      title: "Pasar de evitarlo a integrarlo",
+      text: "Aprender a entrenar sin miedo, con una progresión comprensible y sostenible en la vida real.",
+    },
+  ],
+  faq: [
+    ["¿Te desplazas para realizar valoraciones y revisiones en Madrid?", "Sí. Podemos realizar la valoración y las revisiones en domicilio, gimnasio privado, urbanización, empresa, hotel o un espacio acordado. No necesitas depender de un centro GHC."],
+    ["¿Trabajas online fuera de Madrid?", "Sí. El servicio online está disponible para España y América Latina con valoración inicial, planificación personalizada, seguimiento y revisiones."],
+    ["¿Qué diferencia hay entre valoración, plan de 4 semanas y programa de 12 semanas?", "La valoración define el punto de partida. El plan de 4 semanas es el primer bloque completo de trabajo. El programa de 12 semanas permite una intervención más profunda y varias revisiones."],
+    ["¿Puedo empezar si llevo años sin entrenar?", "Sí. Precisamente en esos casos tiene más sentido valorar antes de prescribir: necesitamos saber desde dónde empezar y cómo progresar con seguridad."],
+    ["¿Trabajas con fibromialgia, lipedema, linfedema o dolor crónico?", "Sí, desde el entrenamiento adaptado, la fuerza progresiva, la movilidad y los hábitos. GHC Training no sustituye al médico ni al fisioterapeuta; complementa su trabajo desde el ámbito del entrenamiento."],
+  ],
+} as const;
+
+export const ghcMedia = {
+  hero: {
+    type: "video",
+    src: "https://www.pexels.com/download/video/6548470/",
+    sourcePage: "https://www.pexels.com/video/athlete-and-personal-trainer-in-gym-6548470/",
+    provider: "Pexels",
+    creator: "Andres Ayrton",
+    license: "Pexels License",
+    poster: "https://images.pexels.com/photos/6740295/pexels-photo-6740295.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  },
+  method: [
+    {
+      type: "video",
+      src: "https://www.pexels.com/download/video/4777201/",
+      sourcePage: "https://www.pexels.com/video/personal-trainer-talking-to-a-woman-4777201/",
+      provider: "Pexels",
+      creator: "Anna Shvets",
+      license: "Pexels License",
+    },
+    {
+      type: "video",
+      src: "https://www.pexels.com/download/video/6023247/",
+      sourcePage: "https://www.pexels.com/video/a-man-working-out-with-a-personal-trainer-6023247/",
+      provider: "Pexels",
+      creator: "Kampus Production",
+      license: "Pexels License",
+    },
+    {
+      type: "video",
+      src: "https://www.pexels.com/download/video/4108055/",
+      sourcePage: "https://www.pexels.com/video/a-woman-doing-rope-exercise-with-personal-trainer-4108055/",
+      provider: "Pexels",
+      creator: "Cliff Booth",
+      license: "Pexels License",
+    },
+  ],
+  online: {
+    type: "video",
+    src: "https://www.pexels.com/download/video/6525499/",
+    sourcePage: "https://www.pexels.com/video/woman-stretching-6525499/",
+    provider: "Pexels",
+    creator: "Polina Tankilevitch",
+    license: "Pexels License",
+  },
+  technologyImage: {
+    src: "https://images.pexels.com/photos/3912956/pexels-photo-3912956.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    sourcePage: "https://www.pexels.com/photo/person-holding-black-tablet-3912956/",
+    provider: "Pexels",
+    creator: "ThisIsEngineering",
+    license: "Pexels License",
+  },
+  mobilityImage: {
+    src: "https://images.pexels.com/photos/6922119/pexels-photo-6922119.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    sourcePage: "https://www.pexels.com/photo/man-doing-stretching-with-a-woman-6922119/",
+    provider: "Pexels",
+    creator: "Kampus Production",
+    license: "Pexels License",
+  },
+} as const;
