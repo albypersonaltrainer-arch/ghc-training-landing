@@ -3,7 +3,9 @@ import GHCTrainingLogo from "@/components/GHCTrainingLogo";
 import HexVideo from "@/components/home/HexVideo";
 import QuickPath from "@/components/home/QuickPath";
 import { ghcMedia, ghcTraining } from "@/config/ghcTraining";
+import { ghcMediaTuning } from "@/config/ghcMediaTuning";
 import "./home-2026.css";
+import "./home-2026-tuning.css";
 
 const whatsappText = encodeURIComponent(
   "Hola Alby, quiero información para empezar con una valoración GHC Training."
@@ -181,7 +183,7 @@ export default function Home() {
 
         <div className="ghc26-method-stage">
           <div className="ghc26-method-media" aria-hidden="true">
-            <HexVideo src={ghcMedia.method[0].src} className="hex-a" />
+            <HexVideo src={ghcMediaTuning.methodLead.src} className="hex-a" />
             <HexVideo src={ghcMedia.method[1].src} className="hex-b" />
             <HexVideo src={ghcMedia.method[2].src} className="hex-c" />
           </div>
@@ -221,11 +223,9 @@ export default function Home() {
               </div>
               <a href="/entrenador-personal-madrid" className="ghc-text-link">Entrenamiento personal en Madrid <Arrow /></a>
             </div>
-            <img
-              src={ghcMedia.mobilityImage.src}
-              alt="Entrenamiento guiado y movilidad en un entorno de gimnasio"
-              loading="lazy"
-            />
+            <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+              <source src={ghcMediaTuning.madrid.src} />
+            </video>
           </article>
 
           <article className="ghc26-modality-card ghc26-modality-online">
@@ -472,10 +472,11 @@ export default function Home() {
             <p>Los vídeos e imágenes de stock utilizados en esta versión proceden de Pexels y se emplean bajo la Pexels License. No implican respaldo de GHC Training por parte de las personas mostradas.</p>
             <ul>
               <li><a href={ghcMedia.hero.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.hero.creator} · Pexels</a></li>
-              {ghcMedia.method.map((media) => <li key={media.sourcePage}><a href={media.sourcePage} target="_blank" rel="noreferrer">{media.creator} · Pexels</a></li>)}
+              <li><a href={ghcMediaTuning.methodLead.sourcePage} target="_blank" rel="noreferrer">{ghcMediaTuning.methodLead.creator} · Pexels</a></li>
+              {ghcMedia.method.slice(1).map((media) => <li key={media.sourcePage}><a href={media.sourcePage} target="_blank" rel="noreferrer">{media.creator} · Pexels</a></li>)}
+              <li><a href={ghcMediaTuning.madrid.sourcePage} target="_blank" rel="noreferrer">{ghcMediaTuning.madrid.creator} · Pexels</a></li>
               <li><a href={ghcMedia.online.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.online.creator} · Pexels</a></li>
               <li><a href={ghcMedia.technologyImage.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.technologyImage.creator} · Pexels</a></li>
-              <li><a href={ghcMedia.mobilityImage.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.mobilityImage.creator} · Pexels</a></li>
             </ul>
           </div>
         </details>
