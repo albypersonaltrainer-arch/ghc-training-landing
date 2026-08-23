@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ghcMediaTuning } from "@/config/ghcMediaTuning";
 
 type HexVideoProps = {
   src: string;
@@ -8,20 +9,12 @@ type HexVideoProps = {
   className?: string;
 };
 
-const METHOD_SECOND_VIDEO = {
-  src: "https://www.pexels.com/download/video/35585625/",
-  sourcePage: "https://www.pexels.com/video/personal-training-session-in-modern-gym-setting-35585625/",
-  provider: "Pexels",
-  creator: "khezez | خزاز",
-  license: "Pexels License",
-} as const;
-
 export default function HexVideo({ src, label, className = "" }: HexVideoProps) {
   const rootRef = useRef<HTMLElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const isSecondMethodVideo = className.split(/\s+/).includes("hex-b");
-  const resolvedSrc = isSecondMethodVideo ? METHOD_SECOND_VIDEO.src : src;
+  const resolvedSrc = isSecondMethodVideo ? ghcMediaTuning.methodSecond.src : src;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -58,8 +51,8 @@ export default function HexVideo({ src, label, className = "" }: HexVideoProps) 
     <figure
       ref={rootRef}
       className={`ghc-hex-video ${className}`}
-      data-media-source={isSecondMethodVideo ? METHOD_SECOND_VIDEO.sourcePage : undefined}
-      data-media-license={isSecondMethodVideo ? METHOD_SECOND_VIDEO.license : undefined}
+      data-media-source={isSecondMethodVideo ? ghcMediaTuning.methodSecond.sourcePage : undefined}
+      data-media-license={isSecondMethodVideo ? ghcMediaTuning.methodSecond.license : undefined}
     >
       <div className="ghc-hex-video-inner">
         {shouldLoad ? (
