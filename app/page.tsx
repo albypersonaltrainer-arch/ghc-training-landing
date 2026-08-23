@@ -6,6 +6,7 @@ import { ghcMedia, ghcTraining } from "@/config/ghcTraining";
 import { ghcMediaTuning } from "@/config/ghcMediaTuning";
 import "./home-2026.css";
 import "./home-2026-tuning.css";
+import "./home-2026-polish.css";
 
 const whatsappText = encodeURIComponent(
   "Hola Alby, quiero información para empezar con una valoración GHC Training."
@@ -73,14 +74,7 @@ export default function Home() {
 
       <section id="inicio" className="ghc26-hero">
         <div className="ghc26-hero-media" aria-hidden="true">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={ghcMedia.hero.poster}
-          >
+          <video autoPlay muted loop playsInline preload="metadata" poster={ghcMedia.hero.poster}>
             <source src={ghcMedia.hero.src} />
           </video>
           <div className="ghc26-hero-scrim" />
@@ -254,13 +248,20 @@ export default function Home() {
 
         <div className="ghc26-solutions-grid">
           {ghcTraining.specialties.map((item, index) => (
-            <a href={item.href} key={item.title} className={index === 0 || index === 4 ? "is-featured" : ""}>
+            <article
+              key={item.title}
+              className={index === 0 || index === 4 ? "is-featured" : ""}
+              tabIndex={0}
+              aria-label={`${item.title}. ${item.blurb}`}
+            >
               <small>{String(index + 1).padStart(2, "0")}</small>
               <strong>{item.title}</strong>
-              <Arrow />
-            </a>
+              <p className="ghc26-solution-blurb">{item.blurb}</p>
+              <span className="ghc26-solution-hint" aria-hidden="true">Detalle</span>
+            </article>
           ))}
         </div>
+        <p className="ghc26-solutions-note">Pasa el cursor o toca cada área para ver una explicación breve.</p>
       </section>
 
       <section id="programas" className="ghc26-section ghc26-programs-section">
