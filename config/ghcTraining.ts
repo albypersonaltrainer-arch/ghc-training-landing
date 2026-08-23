@@ -202,12 +202,13 @@ export const ghcTraining = {
 export const ghcMedia = {
   hero: {
     type: "video",
-    src: "https://www.pexels.com/download/video/6740234/",
-    sourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-her-exercises-6740234/",
+    src: "https://www.pexels.com/download/video/6740135/",
+    sourcePage: "https://www.pexels.com/video/people-exercising-in-the-gym-6740135/",
     provider: "Pexels",
     creator: "Mikhail Nilov",
     license: "Pexels License",
     poster: "https://images.pexels.com/videos/6740234/adults-african-afro-american-6740234.jpeg?auto=compress&dpr=1&h=1080&w=1920",
+    posterSourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-her-exercises-6740234/",
   },
   method: [
     {
@@ -220,8 +221,8 @@ export const ghcMedia = {
     },
     {
       type: "video",
-      src: "https://www.pexels.com/download/video/6023247/",
-      sourcePage: "https://www.pexels.com/video/a-man-working-out-with-a-personal-trainer-6023247/",
+      src: "https://www.pexels.com/download/video/6111079/",
+      sourcePage: "https://www.pexels.com/video/a-woman-teaching-a-man-in-stretching-his-arms-6111079/",
       provider: "Pexels",
       creator: "Kampus Production",
       license: "Pexels License",
