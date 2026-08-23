@@ -20,18 +20,7 @@ const siteUrl = ghcTraining.identity.domain;
 const contactEmail = ghcTraining.contact.email;
 const contactPhone = `+${ghcTraining.contact.phoneE164}`;
 
-const madridServiceAreas = [
-  "Madrid",
-  "Getafe",
-  "Leganés",
-  "Alcorcón",
-  "Móstoles",
-  "Alcobendas",
-  "Majadahonda",
-  "Boadilla del Monte",
-  "Las Rozas de Madrid",
-  "Pozuelo de Alarcón",
-].map((name) => ({
+const madridServiceAreas = ghcTraining.serviceAreas.map((name) => ({
   "@type": "City",
   name,
   containedInPlace: {
@@ -68,19 +57,7 @@ const coreOffers = ghcTraining.services.flatMap((service) => [
   },
 ]);
 
-const specialistServices = [
-  "Entrenamiento para pérdida de grasa",
-  "Entrenamiento adaptado para fibromialgia",
-  "Entrenamiento adaptado para lipedema",
-  "Entrenamiento para fuerza y masa muscular",
-  "Movilidad y recuperación de la condición física",
-  "Entrenamiento adaptado para dolor crónico",
-  "Entrenamiento para envejecimiento activo y autonomía",
-  "Entrenamiento online personalizado",
-  "Entrenamiento personal en Madrid",
-  "Entrenamiento adaptado para linfedema",
-  "Valoración integral de la condición física",
-];
+const specialistServices = ghcTraining.specialties.map((specialty) => specialty.schemaName);
 
 const knowsAbout = [
   "Entrenamiento personal",
