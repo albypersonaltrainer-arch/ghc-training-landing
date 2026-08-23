@@ -1,13 +1,26 @@
-/* Final visual polish: uniform GHC rings, non-navigating specialty cards, and compact hover/tap context. */
+/* Final visual polish: uniform GHC brand hexagons, on-page specialty context, and media tuning. */
 
-/* Remove the oversized side wedges from brand hexagons while keeping the current GHC identity. */
+/*
+ * GHC BRAND HEXAGON — one shared language everywhere.
+ * Single silver/white -> green rim, dark inner field, no side wedges/triangles,
+ * and no nested logo inside the logo. The container itself is the brand mark.
+ */
 .ghc26-hero-mark,
 .ghc26-profile-core,
 .ghc26-founder-hex {
+  isolation: isolate;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 70% 68%, rgba(34, 214, 91, .13), transparent 34%),
-    linear-gradient(145deg, #0c1410 0%, #050907 74%);
+  border: 0;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  background: linear-gradient(
+    142deg,
+    #f8f9f7 0%,
+    #e2e6e3 27%,
+    #9ca49f 51%,
+    #36e86a 72%,
+    #22d65b 100%
+  );
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .22));
 }
 
 .ghc26-hero-mark::before,
@@ -15,34 +28,27 @@
 .ghc26-founder-hex::before {
   content: "";
   position: absolute;
-  z-index: 1;
-  inset: 0;
-  padding: 7px;
-  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
-  background: linear-gradient(
-    142deg,
-    #f7f8f6 0%,
-    #dfe3e1 26%,
-    #979f9b 52%,
-    #22d65b 78%,
-    #16b94b 100%
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  filter: none;
-  box-shadow: none;
+  z-index: 0;
+  inset: 8px;
+  padding: 0;
+  clip-path: inherit;
+  -webkit-mask: none;
+  mask: none;
+  background:
+    radial-gradient(circle at 72% 68%, rgba(34, 214, 91, .13), transparent 35%),
+    linear-gradient(145deg, #111a16 0%, #070c09 74%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .08),
+    inset 0 -26px 52px rgba(34, 214, 91, .045);
   pointer-events: none;
 }
 
+/* Explicitly kill every legacy inner-ring/side-chevron artefact. */
 .ghc26-hero-mark::after,
 .ghc26-profile-core::after,
 .ghc26-founder-hex::after {
-  inset: 22%;
-  padding: 5px;
-  z-index: 2;
+  content: none !important;
+  display: none !important;
 }
 
 .ghc26-hero-mark span,
@@ -50,10 +56,84 @@
 .ghc26-profile-core strong,
 .ghc26-profile-core b,
 .ghc26-profile-core small {
-  z-index: 4;
+  position: relative;
+  z-index: 2;
 }
 
-/* Specialty grid now explains each area in place instead of sending the user away. */
+.ghc26-hero-mark {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .30);
+}
+
+.ghc26-hero-mark span {
+  margin-left: .05em;
+  font-size: 38px;
+  line-height: .92;
+  font-weight: 950;
+  letter-spacing: -.035em;
+  background: linear-gradient(90deg, #f2f4f1 0 68%, #22d65b 68% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.ghc26-hero-mark small {
+  margin-top: 9px;
+  color: var(--ghc26-green);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .27em;
+}
+
+.ghc26-profile-core {
+  color: var(--ghc26-white);
+  box-shadow: 0 30px 80px rgba(8, 11, 10, .18);
+}
+
+.ghc26-profile-core strong {
+  margin-bottom: 34px;
+  color: rgba(242, 244, 241, .68);
+}
+
+.ghc26-profile-core b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #f2f4f1 0 67%, #22d65b 67% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.ghc26-profile-core small {
+  margin-top: 64px;
+  color: rgba(242, 244, 241, .62);
+}
+
+.ghc26-founder-hex {
+  box-shadow: 0 18px 48px rgba(8, 11, 10, .16);
+  opacity: .88;
+}
+
+/* Keep every profile signal centered exactly on the visible orbit. */
+.ghc26-profile-orbit > span {
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateX(207px)
+    rotate(calc(var(--angle) * -1));
+  transform-origin: center;
+  min-width: 116px;
+}
+
+/* Specialty grid explains each area in place instead of sending the user away. */
 .ghc26-solutions-grid article {
   position: relative;
   min-height: 168px;
@@ -178,104 +258,10 @@
   letter-spacing: .03em;
 }
 
-/* Better crop for the professional male-to-male Method clip. */
+/* Second Method clip: male trainer visibly guiding a male client. */
 .ghc-hex-video.hex-b .ghc-hex-video-inner video {
-  object-position: 50% 48%;
-  transform: scale(1.03);
-}
-
-/*
- * PERFIL GHC — brand-faithful rebuild.
- * Keep the dark central hex, restore the original double-hex / silver-green language,
- * remove the side-chevron artefacts, and center every signal on the visible orbit.
- */
-.ghc26-profile-orbit > span {
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--angle))
-    translateX(207px)
-    rotate(calc(var(--angle) * -1));
-  transform-origin: center;
-  min-width: 116px;
-}
-
-.ghc26-profile-core {
-  overflow: hidden;
-  background: linear-gradient(
-    142deg,
-    #f7f8f6 0%,
-    #dfe3e1 23%,
-    #8e9792 50%,
-    #22d65b 78%,
-    #16b94b 100%
-  );
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .20));
-}
-
-.ghc26-profile-core::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  z-index: 0;
-  padding: 0;
-  clip-path: inherit;
-  -webkit-mask: none;
-  mask: none;
-  background:
-    radial-gradient(circle at 70% 68%, rgba(34,214,91,.12), transparent 35%),
-    linear-gradient(145deg, #0d1511 0%, #050907 76%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.08),
-    inset 0 -28px 50px rgba(34,214,91,.045);
-}
-
-.ghc26-profile-core::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  inset: 17%;
-  padding: 0;
-  clip-path: none;
-  -webkit-mask: none;
-  mask: none;
-  filter: drop-shadow(4px 7px 9px rgba(34,214,91,.18));
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='15' y1='10' x2='88' y2='92' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F2F4F1'/%3E%3Cstop offset='.5' stop-color='%2398A09C'/%3E%3Cstop offset='1' stop-color='%2322D65B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5L88.97 27.5V72.5L50 95L11.03 72.5V27.5L50 5Z' stroke='url(%23g)' stroke-width='8' stroke-linejoin='round'/%3E%3Cpath d='M50 24L73 37.5V62.5L50 76L27 62.5V37.5L50 24Z' stroke='%23F2F4F1' stroke-opacity='.78' stroke-width='8' stroke-linejoin='round'/%3E%3Cpath d='M50 24L73 37.5V62.5L50 76' stroke='%2322D65B' stroke-width='8' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.ghc26-profile-core strong,
-.ghc26-profile-core b,
-.ghc26-profile-core small {
-  position: relative;
-  z-index: 3;
-}
-
-.ghc26-profile-core strong {
-  margin-bottom: 38px;
-}
-
-.ghc26-profile-core b {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: -.055em;
-  white-space: nowrap;
-  background: linear-gradient(90deg, #f2f4f1 0 67%, #22d65b 67% 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: none;
-}
-
-.ghc26-profile-core small {
-  margin-top: 68px;
+  object-position: 50% 46%;
+  transform: scale(1.055);
 }
 
 @media (max-width: 720px) {
@@ -305,14 +291,14 @@
   }
 
   .ghc26-profile-core strong {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
   }
 
   .ghc26-profile-core b {
-    font-size: 42px;
+    font-size: 43px;
   }
 
   .ghc26-profile-core small {
-    margin-top: 56px;
+    margin-top: 54px;
   }
 }
