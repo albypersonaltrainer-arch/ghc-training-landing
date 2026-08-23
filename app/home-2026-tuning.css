@@ -16,6 +16,154 @@
   border-color: rgba(255, 255, 255, .18);
 }
 
+.ghc26-hero-media video {
+  object-position: 54% 44%;
+  filter: saturate(.78) contrast(1.06) brightness(.70);
+}
+
+/*
+ * Lenguaje hexagonal GHC
+ * Los hexágonos de marca comparten doble contorno, acento verde y el trazo
+ * horizontal inspirado en la C del isotipo oficial.
+ */
+.ghc26-hero-mark {
+  border: 0;
+  background:
+    radial-gradient(circle at 68% 68%, rgba(34, 214, 91, .13), transparent 38%),
+    rgba(6, 14, 9, .76);
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 244, 241, .72),
+    inset 0 0 0 6px rgba(34, 214, 91, .10),
+    0 30px 80px rgba(0, 0, 0, .30);
+}
+
+.ghc26-hero-mark::before {
+  content: "";
+  position: absolute;
+  inset: 17%;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .52);
+  pointer-events: none;
+}
+
+.ghc26-hero-mark::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 49%;
+  right: 12%;
+  width: 29%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ghc26-green);
+  box-shadow: 0 0 18px rgba(34, 214, 91, .44);
+  pointer-events: none;
+}
+
+.ghc26-hero-mark span {
+  position: relative;
+  z-index: 3;
+  font-size: 34px;
+  letter-spacing: .08em;
+  color: var(--ghc26-white);
+}
+
+.ghc26-hero-mark small {
+  position: relative;
+  z-index: 3;
+  margin-top: 10px;
+  color: var(--ghc26-green);
+  letter-spacing: .28em;
+}
+
+.ghc26-profile-core {
+  background:
+    radial-gradient(circle at 68% 68%, rgba(34, 214, 91, .13), transparent 38%),
+    var(--ghc26-ink);
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 244, 241, .70),
+    inset 0 0 0 6px rgba(34, 214, 91, .09),
+    0 30px 80px rgba(8, 11, 10, .18);
+}
+
+.ghc26-profile-core::before {
+  inset: 15%;
+  border: 0;
+  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .40);
+}
+
+.ghc26-profile-core::after {
+  content: "";
+  position: absolute;
+  top: 49%;
+  right: 10%;
+  width: 27%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ghc26-green);
+  box-shadow: 0 0 16px rgba(34, 214, 91, .38);
+}
+
+.ghc-hex-video-overlay {
+  background: linear-gradient(145deg, rgba(34,214,91,.05), transparent 46%, rgba(0,0,0,.30));
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 244, 241, .68),
+    inset 0 0 0 6px rgba(34, 214, 91, .11);
+}
+
+.ghc-hex-video-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  box-shadow: inset 0 0 0 1px rgba(242, 244, 241, .38);
+}
+
+.ghc-hex-video-overlay::after {
+  content: "";
+  position: absolute;
+  top: 49.5%;
+  right: 4%;
+  width: 17%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(34, 214, 91, .82);
+  box-shadow: 0 0 14px rgba(34, 214, 91, .28);
+}
+
+.ghc-hex-video.hex-b .ghc-hex-video-inner video {
+  object-position: 58% 50%;
+  transform: scale(1.04);
+}
+
+.ghc26-founder-hex {
+  background: rgba(8, 11, 10, .34);
+  border: 0;
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 244, 241, .68),
+    inset 0 0 0 6px rgba(34, 214, 91, .10),
+    0 18px 48px rgba(8, 11, 10, .16);
+}
+
+.ghc26-founder-hex::before {
+  content: "";
+  position: absolute;
+  inset: 17%;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .42);
+}
+
+.ghc26-founder-hex::after {
+  content: "";
+  position: absolute;
+  top: 49%;
+  right: 10%;
+  width: 28%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ghc26-green);
+}
+
 .ghc26-trust-rail {
   background: #e4e7e0;
 }
@@ -64,14 +212,71 @@
   filter: saturate(.70) contrast(1.02) brightness(.58);
 }
 
+/* Áreas de trabajo: más contraste y señal de interacción. */
 .ghc26-solutions-section {
-  background: #dfe3db;
+  background: #cfd5cc;
+}
+
+.ghc26-solutions-grid {
+  border-top-color: rgba(8, 11, 10, .30);
+  border-left-color: rgba(8, 11, 10, .30);
+  box-shadow: 0 22px 70px rgba(8, 11, 10, .06);
+}
+
+.ghc26-solutions-grid a {
+  cursor: pointer;
+  background: rgba(242, 244, 241, .42);
+  border-right-color: rgba(8, 11, 10, .30);
+  border-bottom-color: rgba(8, 11, 10, .30);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+
+.ghc26-solutions-grid a:nth-child(even) {
+  background: rgba(226, 230, 223, .66);
 }
 
 .ghc26-solutions-grid a.is-featured {
-  background: rgba(34, 214, 91, .07);
+  background: rgba(34, 214, 91, .12);
 }
 
+.ghc26-solutions-grid a > span:last-child {
+  width: auto;
+  min-width: 64px;
+  height: 34px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 999px;
+  background: rgba(8, 11, 10, .88);
+  color: var(--ghc26-white);
+  font-size: 12px;
+  box-shadow: 0 10px 24px rgba(8, 11, 10, .12);
+}
+
+.ghc26-solutions-grid a > span:last-child::before {
+  content: "VER";
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: .13em;
+}
+
+.ghc26-solutions-grid a:hover {
+  z-index: 2;
+  transform: translateY(-4px);
+  background: var(--ghc26-ink);
+  color: var(--ghc26-white);
+  box-shadow: 0 22px 42px rgba(8, 11, 10, .18);
+}
+
+.ghc26-solutions-grid a:hover > span:last-child {
+  background: var(--ghc26-green);
+  color: #061008;
+}
+
+/* Programas: misma familia visual; el programa de 12 semanas destaca sin invertir toda la tarjeta. */
 .ghc26-programs-section {
   position: relative;
   background: #ebe8e1;
@@ -81,6 +286,51 @@
 
 .ghc26-program-grid article {
   background: #f0eee8;
+}
+
+.ghc26-program-grid article.is-primary {
+  position: relative;
+  background: #e3e6df;
+  color: var(--ghc26-ink);
+  border-color: rgba(34, 214, 91, .58);
+  transform: translateY(-10px);
+  box-shadow: 0 28px 70px rgba(8, 11, 10, .12);
+}
+
+.ghc26-program-grid article.is-primary::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: var(--ghc26-green);
+  box-shadow: 0 0 20px rgba(34, 214, 91, .28);
+}
+
+.ghc26-program-grid .is-primary .ghc26-program-topline {
+  border-color: var(--ghc26-line);
+}
+
+.ghc26-program-grid .is-primary .ghc26-program-topline span,
+.ghc26-program-grid .is-primary .ghc26-program-duration,
+.ghc26-program-grid .is-primary .ghc26-price-grid span {
+  color: var(--ghc26-green-dark) !important;
+}
+
+.ghc26-program-grid .is-primary > p {
+  color: rgba(8, 11, 10, .62);
+}
+
+.ghc26-program-grid .is-primary .ghc26-price-grid a {
+  border-color: var(--ghc26-line);
+  background: rgba(242, 244, 241, .48);
+}
+
+.ghc26-program-grid .is-primary footer {
+  border-color: var(--ghc26-line);
+  color: rgba(8, 11, 10, .54);
 }
 
 .ghc26-proof-section {
@@ -123,10 +373,16 @@
   margin-top: 30px;
 }
 
+/* Conserva el archivo fotográfico original; solo eliminamos el tratamiento pictórico de presentación. */
+.ghc26-founder-image {
+  filter: saturate(1.02) contrast(1.055) brightness(1.02) !important;
+  image-rendering: auto;
+}
+
 .ghc26-founder-photo::after {
   background:
-    linear-gradient(90deg, #dedfd8, transparent 28%),
-    linear-gradient(0deg, rgba(8, 11, 10, .22), transparent 45%);
+    linear-gradient(90deg, #dedfd8, transparent 18%),
+    linear-gradient(0deg, rgba(8, 11, 10, .10), transparent 42%);
 }
 
 .ghc26-faq-section {
@@ -143,6 +399,26 @@
 }
 
 @media (max-width: 720px) {
+  .ghc26-hero-mark::after,
+  .ghc26-profile-core::after,
+  .ghc26-founder-hex::after {
+    height: 3px;
+  }
+
+  .ghc26-solutions-grid a > span:last-child {
+    min-width: 54px;
+    height: 30px;
+    padding-inline: 9px;
+  }
+
+  .ghc26-solutions-grid a > span:last-child::before {
+    font-size: 7px;
+  }
+
+  .ghc26-program-grid article.is-primary {
+    transform: none;
+  }
+
   .ghc26-founder-copy h2 {
     margin-bottom: 22px;
     font-size: clamp(3.1rem, 16vw, 5rem);
@@ -154,6 +430,6 @@
   }
 
   .ghc26-founder-photo::after {
-    background: linear-gradient(0deg, #dedfd8, transparent 30%);
+    background: linear-gradient(0deg, #dedfd8, transparent 22%);
   }
 }
