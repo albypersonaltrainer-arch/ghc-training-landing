@@ -178,10 +178,104 @@
   letter-spacing: .03em;
 }
 
-/* Better crop for the new professional second Method clip. */
+/* Better crop for the professional male-to-male Method clip. */
 .ghc-hex-video.hex-b .ghc-hex-video-inner video {
-  object-position: 50% 50%;
-  transform: scale(1.045);
+  object-position: 50% 48%;
+  transform: scale(1.03);
+}
+
+/*
+ * PERFIL GHC — brand-faithful rebuild.
+ * Keep the dark central hex, restore the original double-hex / silver-green language,
+ * remove the side-chevron artefacts, and center every signal on the visible orbit.
+ */
+.ghc26-profile-orbit > span {
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateX(207px)
+    rotate(calc(var(--angle) * -1));
+  transform-origin: center;
+  min-width: 116px;
+}
+
+.ghc26-profile-core {
+  overflow: hidden;
+  background: linear-gradient(
+    142deg,
+    #f7f8f6 0%,
+    #dfe3e1 23%,
+    #8e9792 50%,
+    #22d65b 78%,
+    #16b94b 100%
+  );
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .20));
+}
+
+.ghc26-profile-core::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  z-index: 0;
+  padding: 0;
+  clip-path: inherit;
+  -webkit-mask: none;
+  mask: none;
+  background:
+    radial-gradient(circle at 70% 68%, rgba(34,214,91,.12), transparent 35%),
+    linear-gradient(145deg, #0d1511 0%, #050907 76%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    inset 0 -28px 50px rgba(34,214,91,.045);
+}
+
+.ghc26-profile-core::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 17%;
+  padding: 0;
+  clip-path: none;
+  -webkit-mask: none;
+  mask: none;
+  filter: drop-shadow(4px 7px 9px rgba(34,214,91,.18));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='15' y1='10' x2='88' y2='92' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F2F4F1'/%3E%3Cstop offset='.5' stop-color='%2398A09C'/%3E%3Cstop offset='1' stop-color='%2322D65B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5L88.97 27.5V72.5L50 95L11.03 72.5V27.5L50 5Z' stroke='url(%23g)' stroke-width='8' stroke-linejoin='round'/%3E%3Cpath d='M50 24L73 37.5V62.5L50 76L27 62.5V37.5L50 24Z' stroke='%23F2F4F1' stroke-opacity='.78' stroke-width='8' stroke-linejoin='round'/%3E%3Cpath d='M50 24L73 37.5V62.5L50 76' stroke='%2322D65B' stroke-width='8' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.ghc26-profile-core strong,
+.ghc26-profile-core b,
+.ghc26-profile-core small {
+  position: relative;
+  z-index: 3;
+}
+
+.ghc26-profile-core strong {
+  margin-bottom: 38px;
+}
+
+.ghc26-profile-core b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #f2f4f1 0 67%, #22d65b 67% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.ghc26-profile-core small {
+  margin-top: 68px;
 }
 
 @media (max-width: 720px) {
@@ -199,5 +293,26 @@
 
   .ghc26-solution-hint {
     display: none;
+  }
+
+  .ghc26-profile-orbit > span {
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--angle))
+      translateX(155px)
+      rotate(calc(var(--angle) * -1));
+    min-width: 88px;
+  }
+
+  .ghc26-profile-core strong {
+    margin-bottom: 30px;
+  }
+
+  .ghc26-profile-core b {
+    font-size: 42px;
+  }
+
+  .ghc26-profile-core small {
+    margin-top: 56px;
   }
 }
