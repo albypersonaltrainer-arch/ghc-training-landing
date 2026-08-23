@@ -19,6 +19,20 @@ export const ghcTraining = {
     statement:
       "No empezamos por los ejercicios. Empezamos por entender tu punto de partida.",
   },
+  knowledgeAreas: [
+    "Entrenamiento personal",
+    "Valoración de la condición física",
+    "Entrenamiento de fuerza",
+    "Movilidad",
+    "Pérdida de grasa",
+    "Composición corporal",
+    "Fibromialgia",
+    "Lipedema",
+    "Linfedema",
+    "Dolor crónico",
+    "Envejecimiento activo",
+    "Nutrición estratégica",
+  ],
   serviceAreas: [
     "Madrid",
     "Getafe",
@@ -39,8 +53,18 @@ export const ghcTraining = {
       duration: "1 sesión · unos 60 min",
       description:
         "Entrevista, historial, hábitos, medidas, movilidad, postura y fuerza básica para definir prioridades antes de diseñar cualquier plan.",
-      online: { label: "Online", price: 75, env: "NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL" },
-      madrid: { label: "Madrid", price: 120, env: "NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL" },
+      online: {
+        label: "Online",
+        schemaName: "Valoración GHC online",
+        price: 75,
+        env: "NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL",
+      },
+      madrid: {
+        label: "Madrid",
+        schemaName: "Valoración GHC presencial en Madrid",
+        price: 120,
+        env: "NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL",
+      },
       note: "La valoración se descuenta si continúas.",
     },
     {
@@ -50,8 +74,18 @@ export const ghcTraining = {
       duration: "4 semanas",
       description:
         "Primer bloque completo con valoración, entrenamiento personalizado, pauta nutricional, seguimiento y ajustes.",
-      online: { label: "Online", price: 220, env: "NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL" },
-      madrid: { label: "Madrid", price: 360, env: "NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL" },
+      online: {
+        label: "Online",
+        schemaName: "Plan GHC online de 4 semanas",
+        price: 220,
+        env: "NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL",
+      },
+      madrid: {
+        label: "Madrid",
+        schemaName: "Plan GHC presencial Madrid de 4 semanas",
+        price: 360,
+        env: "NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL",
+      },
       note: "Un bloque de trabajo con dirección y autonomía.",
     },
     {
@@ -61,8 +95,18 @@ export const ghcTraining = {
       duration: "12 semanas",
       description:
         "Tres bloques progresivos de entrenamiento y nutrición, seguimiento semanal y revisiones en semanas 4, 8 y 12.",
-      online: { label: "Online", price: 580, env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL" },
-      madrid: { label: "Madrid", price: 960, env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL" },
+      online: {
+        label: "Online",
+        schemaName: "Programa GHC online de 12 semanas",
+        price: 580,
+        env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL",
+      },
+      madrid: {
+        label: "Madrid",
+        schemaName: "Programa GHC presencial Madrid de 12 semanas",
+        price: 960,
+        env: "NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL",
+      },
       note: "Mayor profundidad, revisión y acompañamiento.",
     },
   ],
