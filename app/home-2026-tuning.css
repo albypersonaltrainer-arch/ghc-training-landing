@@ -5,6 +5,9 @@
   --ghc26-surface-soft: #e7e9e2;
   --ghc26-surface-deep: #dfe3db;
   --ghc26-white: #f2f4f1;
+  --ghc26-silver: #c8cdca;
+  --ghc26-hex-green: #22d65b;
+  --ghc26-hex-black: #070c09;
 }
 
 .ghc26-shell {
@@ -17,151 +20,196 @@
 }
 
 .ghc26-hero-media video {
-  object-position: 54% 44%;
-  filter: saturate(.78) contrast(1.06) brightness(.70);
+  object-position: 52% 44%;
+  filter: saturate(.78) contrast(1.06) brightness(.68);
 }
 
 /*
- * Lenguaje hexagonal GHC
- * Los hexágonos de marca comparten doble contorno, acento verde y el trazo
- * horizontal inspirado en la C del isotipo oficial.
+ * GHC HEX SYSTEM
+ * Derivado del isotipo: anillo exterior plata->verde, núcleo negro,
+ * segundo anillo interior blanco/metal->verde y GHC como firma central.
+ * No se usa ya la raya horizontal decorativa de la iteración anterior.
  */
-.ghc26-hero-mark {
+.ghc26-hero-mark,
+.ghc26-profile-core,
+.ghc26-founder-hex {
+  isolation: isolate;
+  border: 0;
+  overflow: visible;
+  background: linear-gradient(
+    142deg,
+    #f7f8f6 0%,
+    #dfe3e1 25%,
+    #979f9b 52%,
+    #22d65b 78%,
+    #16b94b 100%
+  );
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .22));
+}
+
+.ghc26-hero-mark::before,
+.ghc26-profile-core::before,
+.ghc26-founder-hex::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 8px;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
   border: 0;
   background:
-    radial-gradient(circle at 68% 68%, rgba(34, 214, 91, .13), transparent 38%),
-    rgba(6, 14, 9, .76);
+    radial-gradient(circle at 70% 66%, rgba(34, 214, 91, .18), transparent 35%),
+    linear-gradient(145deg, #0c1410, #050907 72%);
   box-shadow:
-    inset 0 0 0 2px rgba(242, 244, 241, .72),
-    inset 0 0 0 6px rgba(34, 214, 91, .10),
-    0 30px 80px rgba(0, 0, 0, .30);
+    inset 0 0 0 1px rgba(255, 255, 255, .08),
+    inset 0 -24px 50px rgba(34, 214, 91, .05);
+  pointer-events: none;
 }
 
-.ghc26-hero-mark::before {
+.ghc26-hero-mark::after,
+.ghc26-profile-core::after,
+.ghc26-founder-hex::after {
   content: "";
   position: absolute;
-  inset: 17%;
+  z-index: 1;
+  inset: 22%;
+  padding: 6px;
   clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
-  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .52);
+  background: linear-gradient(
+    138deg,
+    #f7f8f6 0%,
+    #eef0ef 39%,
+    #bcc2bf 52%,
+    #28ef66 61%,
+    #22d65b 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(5px 8px 10px rgba(34, 214, 91, .23));
   pointer-events: none;
 }
 
-.ghc26-hero-mark::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 49%;
-  right: 12%;
-  width: 29%;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--ghc26-green);
-  box-shadow: 0 0 18px rgba(34, 214, 91, .44);
-  pointer-events: none;
+.ghc26-hero-mark {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .30);
+}
+
+.ghc26-hero-mark span,
+.ghc26-hero-mark small,
+.ghc26-profile-core strong,
+.ghc26-profile-core b,
+.ghc26-profile-core small {
+  position: relative;
+  z-index: 3;
 }
 
 .ghc26-hero-mark span {
-  position: relative;
-  z-index: 3;
+  margin-left: .08em;
   font-size: 34px;
   letter-spacing: .08em;
-  color: var(--ghc26-white);
+  background: linear-gradient(90deg, #f2f4f1 0 66%, #22d65b 66% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px rgba(34, 214, 91, .08);
 }
 
 .ghc26-hero-mark small {
-  position: relative;
-  z-index: 3;
   margin-top: 10px;
   color: var(--ghc26-green);
   letter-spacing: .28em;
 }
 
 .ghc26-profile-core {
-  background:
-    radial-gradient(circle at 68% 68%, rgba(34, 214, 91, .13), transparent 38%),
-    var(--ghc26-ink);
-  box-shadow:
-    inset 0 0 0 2px rgba(242, 244, 241, .70),
-    inset 0 0 0 6px rgba(34, 214, 91, .09),
-    0 30px 80px rgba(8, 11, 10, .18);
+  color: var(--ghc26-white);
+  box-shadow: 0 30px 80px rgba(8, 11, 10, .18);
 }
 
-.ghc26-profile-core::before {
-  inset: 15%;
-  border: 0;
-  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .40);
+.ghc26-profile-core strong {
+  color: rgba(242, 244, 241, .68);
 }
 
-.ghc26-profile-core::after {
-  content: "";
-  position: absolute;
-  top: 49%;
-  right: 10%;
-  width: 27%;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--ghc26-green);
-  box-shadow: 0 0 16px rgba(34, 214, 91, .38);
+.ghc26-profile-core b {
+  margin-left: .05em;
+  background: linear-gradient(90deg, #f2f4f1 0 66%, #22d65b 66% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ghc26-profile-core small {
+  color: rgba(242, 244, 241, .62);
+}
+
+/* Los vídeos mantienen la imagen completa, y el marco reproduce los dos anillos del isotipo. */
+.ghc-hex-video-inner {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, .24);
 }
 
 .ghc-hex-video-overlay {
-  background: linear-gradient(145deg, rgba(34,214,91,.05), transparent 46%, rgba(0,0,0,.30));
-  box-shadow:
-    inset 0 0 0 2px rgba(242, 244, 241, .68),
-    inset 0 0 0 6px rgba(34, 214, 91, .11);
+  background:
+    radial-gradient(circle at 72% 68%, rgba(34, 214, 91, .10), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.02), transparent 45%, rgba(0,0,0,.30));
+  box-shadow: none;
 }
 
-.ghc-hex-video-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 10%;
-  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
-  box-shadow: inset 0 0 0 1px rgba(242, 244, 241, .38);
-}
-
+.ghc-hex-video-overlay::before,
 .ghc-hex-video-overlay::after {
   content: "";
   position: absolute;
-  top: 49.5%;
-  right: 4%;
-  width: 17%;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(34, 214, 91, .82);
-  box-shadow: 0 0 14px rgba(34, 214, 91, .28);
+  pointer-events: none;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ghc-hex-video-overlay::before {
+  inset: 0;
+  padding: 7px;
+  background: linear-gradient(
+    142deg,
+    rgba(247,248,246,.96) 0%,
+    rgba(205,211,208,.90) 33%,
+    rgba(132,142,137,.78) 53%,
+    rgba(34,214,91,.96) 78%,
+    rgba(34,214,91,.82) 100%
+  );
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.14));
+}
+
+.ghc-hex-video-overlay::after {
+  inset: 14%;
+  padding: 4px;
+  background: linear-gradient(
+    138deg,
+    rgba(247,248,246,.88) 0%,
+    rgba(235,238,236,.82) 42%,
+    rgba(34,214,91,.94) 62%,
+    rgba(34,214,91,.96) 100%
+  );
+  filter: drop-shadow(5px 7px 9px rgba(34,214,91,.20));
+}
+
+.ghc-hex-video.hex-a .ghc-hex-video-inner video {
+  object-position: 50% 50%;
 }
 
 .ghc-hex-video.hex-b .ghc-hex-video-inner video {
-  object-position: 58% 50%;
-  transform: scale(1.04);
+  object-position: 50% 46%;
+  transform: scale(1.015);
+}
+
+.ghc-hex-video.hex-c .ghc-hex-video-inner video {
+  object-position: 50% 50%;
 }
 
 .ghc26-founder-hex {
-  background: rgba(8, 11, 10, .34);
-  border: 0;
-  box-shadow:
-    inset 0 0 0 2px rgba(242, 244, 241, .68),
-    inset 0 0 0 6px rgba(34, 214, 91, .10),
-    0 18px 48px rgba(8, 11, 10, .16);
-}
-
-.ghc26-founder-hex::before {
-  content: "";
-  position: absolute;
-  inset: 17%;
-  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
-  box-shadow: inset 0 0 0 2px rgba(242, 244, 241, .42);
-}
-
-.ghc26-founder-hex::after {
-  content: "";
-  position: absolute;
-  top: 49%;
-  right: 10%;
-  width: 28%;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--ghc26-green);
+  box-shadow: 0 18px 48px rgba(8, 11, 10, .16);
+  opacity: .88;
 }
 
 .ghc26-trust-rail {
@@ -212,7 +260,7 @@
   filter: saturate(.70) contrast(1.02) brightness(.58);
 }
 
-/* Áreas de trabajo: más contraste y señal de interacción. */
+/* Áreas de trabajo: contraste suficiente, rejilla visible y CTA inequívoco. */
 .ghc26-solutions-section {
   background: #cfd5cc;
 }
@@ -233,11 +281,11 @@
 }
 
 .ghc26-solutions-grid a:nth-child(even) {
-  background: rgba(226, 230, 223, .66);
+  background: rgba(218, 224, 216, .78);
 }
 
 .ghc26-solutions-grid a.is-featured {
-  background: rgba(34, 214, 91, .12);
+  background: rgba(34, 214, 91, .13);
 }
 
 .ghc26-solutions-grid a > span:last-child {
@@ -250,7 +298,7 @@
   justify-content: center;
   gap: 7px;
   border-radius: 999px;
-  background: rgba(8, 11, 10, .88);
+  background: rgba(8, 11, 10, .90);
   color: var(--ghc26-white);
   font-size: 12px;
   box-shadow: 0 10px 24px rgba(8, 11, 10, .12);
@@ -276,25 +324,43 @@
   color: #061008;
 }
 
-/* Programas: misma familia visual; el programa de 12 semanas destaca sin invertir toda la tarjeta. */
+/*
+ * Programas: las tres tarjetas pertenecen a la misma familia grafito.
+ * La jerarquía se expresa con el borde/acento, no cambiando una tarjeta a blanco.
+ */
 .ghc26-programs-section {
   position: relative;
-  background: #ebe8e1;
-  box-shadow: 0 0 0 100vmax #ebe8e1;
+  background: #d9ddd5;
+  box-shadow: 0 0 0 100vmax #d9ddd5;
   clip-path: inset(0 -100vmax);
 }
 
-.ghc26-program-grid article {
-  background: #f0eee8;
-}
-
+.ghc26-program-grid article,
 .ghc26-program-grid article.is-primary {
   position: relative;
-  background: #e3e6df;
-  color: var(--ghc26-ink);
-  border-color: rgba(34, 214, 91, .58);
-  transform: translateY(-10px);
-  box-shadow: 0 28px 70px rgba(8, 11, 10, .12);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(34,214,91,.055), transparent 30%),
+    linear-gradient(155deg, #131a17 0%, #0b100e 100%);
+  color: var(--ghc26-white);
+  border-color: rgba(242, 244, 241, .20);
+  transform: none;
+  box-shadow: 0 24px 58px rgba(8, 11, 10, .11);
+}
+
+.ghc26-program-grid article:nth-child(1) {
+  border-color: rgba(218, 224, 221, .30);
+}
+
+.ghc26-program-grid article:nth-child(2) {
+  border-color: rgba(151, 165, 158, .40);
+}
+
+.ghc26-program-grid article:nth-child(3),
+.ghc26-program-grid article.is-primary {
+  border-color: rgba(34, 214, 91, .62);
+  box-shadow:
+    0 28px 66px rgba(8, 11, 10, .16),
+    0 0 0 1px rgba(34, 214, 91, .10);
 }
 
 .ghc26-program-grid article.is-primary::before {
@@ -305,32 +371,49 @@
   right: 28px;
   height: 3px;
   border-radius: 0 0 999px 999px;
-  background: var(--ghc26-green);
+  background: linear-gradient(90deg, rgba(242,244,241,.72), var(--ghc26-green));
   box-shadow: 0 0 20px rgba(34, 214, 91, .28);
 }
 
+.ghc26-program-grid .ghc26-program-topline,
 .ghc26-program-grid .is-primary .ghc26-program-topline {
-  border-color: var(--ghc26-line);
+  border-color: rgba(242, 244, 241, .15);
 }
 
+.ghc26-program-grid .ghc26-program-topline span,
 .ghc26-program-grid .is-primary .ghc26-program-topline span,
+.ghc26-program-grid .ghc26-program-duration,
 .ghc26-program-grid .is-primary .ghc26-program-duration,
+.ghc26-program-grid .ghc26-price-grid span,
 .ghc26-program-grid .is-primary .ghc26-price-grid span {
-  color: var(--ghc26-green-dark) !important;
+  color: var(--ghc26-green) !important;
 }
 
+.ghc26-program-grid article > p,
 .ghc26-program-grid .is-primary > p {
-  color: rgba(8, 11, 10, .62);
+  color: rgba(242, 244, 241, .64);
 }
 
+.ghc26-program-grid .ghc26-price-grid a,
 .ghc26-program-grid .is-primary .ghc26-price-grid a {
-  border-color: var(--ghc26-line);
-  background: rgba(242, 244, 241, .48);
+  border-color: rgba(242, 244, 241, .15);
+  background: rgba(242, 244, 241, .045);
+  color: var(--ghc26-white);
 }
 
+.ghc26-program-grid .ghc26-price-grid a:hover {
+  border-color: rgba(34, 214, 91, .50);
+  background: rgba(34, 214, 91, .08);
+}
+
+.ghc26-program-grid footer,
 .ghc26-program-grid .is-primary footer {
-  border-color: var(--ghc26-line);
-  color: rgba(8, 11, 10, .54);
+  border-color: rgba(242, 244, 241, .14);
+  color: rgba(242, 244, 241, .54);
+}
+
+.ghc26-program-note {
+  color: rgba(8, 11, 10, .63);
 }
 
 .ghc26-proof-section {
@@ -373,7 +456,7 @@
   margin-top: 30px;
 }
 
-/* Conserva el archivo fotográfico original; solo eliminamos el tratamiento pictórico de presentación. */
+/* Se conserva el archivo fotográfico actual de Alby sin nuevas intervenciones en esta ronda. */
 .ghc26-founder-image {
   filter: saturate(1.02) contrast(1.055) brightness(1.02) !important;
   image-rendering: auto;
@@ -396,13 +479,36 @@
   .ghc26-founder-copy h2 {
     margin-bottom: 24px;
   }
-}
 
-@media (max-width: 720px) {
   .ghc26-hero-mark::after,
   .ghc26-profile-core::after,
   .ghc26-founder-hex::after {
-    height: 3px;
+    inset: 23%;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .ghc26-hero-mark::before,
+  .ghc26-profile-core::before,
+  .ghc26-founder-hex::before {
+    inset: 6px;
+  }
+
+  .ghc26-hero-mark::after,
+  .ghc26-profile-core::after,
+  .ghc26-founder-hex::after {
+    inset: 22%;
+    padding: 4px;
+  }
+
+  .ghc-hex-video-overlay::before {
+    padding: 5px;
+  }
+
+  .ghc-hex-video-overlay::after {
+    inset: 15%;
+    padding: 3px;
   }
 
   .ghc26-solutions-grid a > span:last-child {
@@ -415,6 +521,7 @@
     font-size: 7px;
   }
 
+  .ghc26-program-grid article,
   .ghc26-program-grid article.is-primary {
     transform: none;
   }
