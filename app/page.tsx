@@ -471,7 +471,7 @@ export default function Home() {
           <div>
             <p>Los vídeos e imágenes de stock utilizados en esta versión proceden de Pexels y se emplean bajo la Pexels License. No implican respaldo de GHC Training por parte de las personas mostradas.</p>
             <ul>
-              <li><a href={ghcMedia.hero.sourcePage} target="_blank" rel="noreferrer">Andres Ayrton · Pexels</a></li>
+              <li><a href={ghcMedia.hero.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.hero.creator} · Pexels</a></li>
               {ghcMedia.method.map((media) => <li key={media.sourcePage}><a href={media.sourcePage} target="_blank" rel="noreferrer">{media.creator} · Pexels</a></li>)}
               <li><a href={ghcMedia.online.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.online.creator} · Pexels</a></li>
               <li><a href={ghcMedia.technologyImage.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.technologyImage.creator} · Pexels</a></li>
