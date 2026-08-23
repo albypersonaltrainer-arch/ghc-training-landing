@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Noto_Serif } from "next/font/google";
 import { Suspense } from "react";
 import MetaPixel from "@/components/MetaPixel";
+import GHCEcosystemLinks from "@/components/GHCEcosystemLinks";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -315,6 +316,7 @@ export default function RootLayout({
           <MetaPixel pixelId={metaPixelId} />
         </Suspense>
         {children}
+        <GHCEcosystemLinks />
       </body>
     </html>
   );
