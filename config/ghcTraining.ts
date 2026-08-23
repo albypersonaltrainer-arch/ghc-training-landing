@@ -202,13 +202,13 @@ export const ghcTraining = {
 export const ghcMedia = {
   hero: {
     type: "video",
-    src: "https://www.pexels.com/download/video/6740135/",
-    sourcePage: "https://www.pexels.com/video/people-exercising-in-the-gym-6740135/",
+    src: "https://www.pexels.com/download/video/3209241/",
+    sourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-using-the-flat-pulldown-weights-equipment-in-a-gym-3209241/",
     provider: "Pexels",
-    creator: "Mikhail Nilov",
+    creator: "Pressmaster",
     license: "Pexels License",
-    poster: "https://images.pexels.com/videos/6740234/adults-african-afro-american-6740234.jpeg?auto=compress&dpr=1&h=1080&w=1920",
-    posterSourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-her-exercises-6740234/",
+    poster: "https://images.pexels.com/videos/3209241/free-video-3209241.jpg?auto=compress&dpr=1&h=1080&w=1920",
+    posterSourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-using-the-flat-pulldown-weights-equipment-in-a-gym-3209241/",
   },
   method: [
     {
@@ -221,10 +221,10 @@ export const ghcMedia = {
     },
     {
       type: "video",
-      src: "https://www.pexels.com/download/video/6111079/",
-      sourcePage: "https://www.pexels.com/video/a-woman-teaching-a-man-in-stretching-his-arms-6111079/",
+      src: "https://www.pexels.com/download/video/12188782/",
+      sourcePage: "https://www.pexels.com/video/man-exercising-with-personal-trainer-12188782/",
       provider: "Pexels",
-      creator: "Kampus Production",
+      creator: "utopia 36",
       license: "Pexels License",
     },
     {
