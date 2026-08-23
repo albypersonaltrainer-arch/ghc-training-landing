@@ -29,50 +29,21 @@ const madridServiceAreas = ghcTraining.serviceAreas.map((name) => ({
   },
 }));
 
-const offerNames = {
-  valuation: {
-    online: "Valoración GHC online",
-    madrid: "Valoración GHC presencial en Madrid",
-  },
-  plan4: {
-    online: "Plan GHC online de 4 semanas",
-    madrid: "Plan GHC presencial Madrid de 4 semanas",
-  },
-  program12: {
-    online: "Programa GHC online de 12 semanas",
-    madrid: "Programa GHC presencial Madrid de 12 semanas",
-  },
-} as const;
-
 const coreOffers = ghcTraining.services.flatMap((service) => [
   {
-    name: offerNames[service.id].online,
+    name: service.online.schemaName,
     price: String(service.online.price),
     description: service.description,
   },
   {
-    name: offerNames[service.id].madrid,
+    name: service.madrid.schemaName,
     price: String(service.madrid.price),
     description: service.description,
   },
 ]);
 
 const specialistServices = ghcTraining.specialties.map((specialty) => specialty.schemaName);
-
-const knowsAbout = [
-  "Entrenamiento personal",
-  "Valoración de la condición física",
-  "Entrenamiento de fuerza",
-  "Movilidad",
-  "Pérdida de grasa",
-  "Composición corporal",
-  "Fibromialgia",
-  "Lipedema",
-  "Linfedema",
-  "Dolor crónico",
-  "Envejecimiento activo",
-  "Nutrición estratégica",
-];
+const knowsAbout = ghcTraining.knowledgeAreas;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -220,7 +191,12 @@ const structuredData = {
       },
       description:
         "Entrenador personal y director de GHC Training con más de 30 años de experiencia en entrenamiento, nutrición estratégica, fuerza, movilidad y salud activa.",
-      knowsAbout: knowsAbout.filter((item) => item !== "Valoración de la condición física" && item !== "Composición corporal" && item !== "Nutrición estratégica"),
+      knowsAbout: knowsAbout.filter(
+        (item) =>
+          item !== "Valoración de la condición física" &&
+          item !== "Composición corporal" &&
+          item !== "Nutrición estratégica"
+      ),
     },
     {
       "@type": "Service",
