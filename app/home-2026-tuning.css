@@ -1,0 +1,159 @@
+:root {
+  --ghc26-paper: #ece9e2;
+  --ghc26-paper-2: #dfe3dc;
+  --ghc26-surface: #f1efe9;
+  --ghc26-surface-soft: #e7e9e2;
+  --ghc26-surface-deep: #dfe3db;
+  --ghc26-white: #f2f4f1;
+}
+
+.ghc26-shell {
+  background: var(--ghc26-paper);
+}
+
+.ghc26-header {
+  background: rgba(238, 237, 231, .90);
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.ghc26-trust-rail {
+  background: #e4e7e0;
+}
+
+.ghc26-profile-section {
+  position: relative;
+  background: #efede7;
+  box-shadow: 0 0 0 100vmax #efede7;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-profile-orbit > span {
+  background: rgba(240, 239, 233, .90);
+}
+
+.ghc26-path-section {
+  position: relative;
+  background: #e7e9e2;
+  box-shadow: 0 0 0 100vmax #e7e9e2;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc-path-card {
+  background: #f0eee8;
+  box-shadow: 0 30px 90px rgba(8, 11, 10, .06);
+}
+
+.ghc-choice-grid button,
+.ghc-path-summary span {
+  background: #e5e7e0;
+}
+
+.ghc26-modalities-section {
+  position: relative;
+  background: #ece9e2;
+  box-shadow: 0 0 0 100vmax #ece9e2;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-modality-card > video {
+  transform: scale(1.025);
+}
+
+.ghc26-modality-madrid > video {
+  object-position: center 42%;
+  filter: saturate(.70) contrast(1.02) brightness(.58);
+}
+
+.ghc26-solutions-section {
+  background: #dfe3db;
+}
+
+.ghc26-solutions-grid a.is-featured {
+  background: rgba(34, 214, 91, .07);
+}
+
+.ghc26-programs-section {
+  position: relative;
+  background: #ebe8e1;
+  box-shadow: 0 0 0 100vmax #ebe8e1;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-program-grid article {
+  background: #f0eee8;
+}
+
+.ghc26-proof-section {
+  background: #dce1d9;
+}
+
+.ghc26-manifesto-section {
+  background: #e7e5de;
+}
+
+.ghc26-founder-section {
+  background: #dedfd8;
+}
+
+.ghc26-founder-copy {
+  justify-content: center;
+  gap: 0;
+}
+
+.ghc26-founder-copy .ghc-kicker {
+  margin-bottom: 22px;
+}
+
+.ghc26-founder-copy h2 {
+  margin: 0 0 30px;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.ghc26-founder-role {
+  margin: 0 0 20px;
+  line-height: 1.45 !important;
+}
+
+.ghc26-founder-copy > p:not(.ghc-kicker):not(.ghc26-founder-role) {
+  margin: 0;
+}
+
+.ghc26-founder-copy .ghc-button {
+  margin-top: 30px;
+}
+
+.ghc26-founder-photo::after {
+  background:
+    linear-gradient(90deg, #dedfd8, transparent 28%),
+    linear-gradient(0deg, rgba(8, 11, 10, .22), transparent 45%);
+}
+
+.ghc26-faq-section {
+  position: relative;
+  background: #e9ebe4;
+  box-shadow: 0 0 0 100vmax #e9ebe4;
+  clip-path: inset(0 -100vmax);
+}
+
+@media (max-width: 1100px) {
+  .ghc26-founder-copy h2 {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .ghc26-founder-copy h2 {
+    margin-bottom: 22px;
+    font-size: clamp(3.1rem, 16vw, 5rem);
+    line-height: 1;
+  }
+
+  .ghc26-founder-role {
+    margin-bottom: 18px;
+  }
+
+  .ghc26-founder-photo::after {
+    background: linear-gradient(0deg, #dedfd8, transparent 30%);
+  }
+}
