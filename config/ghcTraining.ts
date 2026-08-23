@@ -145,12 +145,12 @@ export const ghcTraining = {
 export const ghcMedia = {
   hero: {
     type: "video",
-    src: "https://www.pexels.com/download/video/6548470/",
-    sourcePage: "https://www.pexels.com/video/athlete-and-personal-trainer-in-gym-6548470/",
+    src: "https://www.pexels.com/download/video/6740234/",
+    sourcePage: "https://www.pexels.com/video/a-man-assisting-a-woman-in-her-exercises-6740234/",
     provider: "Pexels",
-    creator: "Andres Ayrton",
+    creator: "Mikhail Nilov",
     license: "Pexels License",
-    poster: "https://images.pexels.com/photos/6740295/pexels-photo-6740295.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    poster: "https://images.pexels.com/videos/6740234/adults-african-afro-american-6740234.jpeg?auto=compress&dpr=1&h=1080&w=1920",
   },
   method: [
     {
