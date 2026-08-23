@@ -1,0 +1,203 @@
+/* Final visual polish: uniform GHC rings, non-navigating specialty cards, and compact hover/tap context. */
+
+/* Remove the oversized side wedges from brand hexagons while keeping the current GHC identity. */
+.ghc26-hero-mark,
+.ghc26-profile-core,
+.ghc26-founder-hex {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 68%, rgba(34, 214, 91, .13), transparent 34%),
+    linear-gradient(145deg, #0c1410 0%, #050907 74%);
+}
+
+.ghc26-hero-mark::before,
+.ghc26-profile-core::before,
+.ghc26-founder-hex::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: 7px;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  background: linear-gradient(
+    142deg,
+    #f7f8f6 0%,
+    #dfe3e1 26%,
+    #979f9b 52%,
+    #22d65b 78%,
+    #16b94b 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.ghc26-hero-mark::after,
+.ghc26-profile-core::after,
+.ghc26-founder-hex::after {
+  inset: 22%;
+  padding: 5px;
+  z-index: 2;
+}
+
+.ghc26-hero-mark span,
+.ghc26-hero-mark small,
+.ghc26-profile-core strong,
+.ghc26-profile-core b,
+.ghc26-profile-core small {
+  z-index: 4;
+}
+
+/* Specialty grid now explains each area in place instead of sending the user away. */
+.ghc26-solutions-grid article {
+  position: relative;
+  min-height: 168px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px 18px;
+  align-items: start;
+  padding: 25px 26px 22px;
+  overflow: hidden;
+  border-right: 1px solid rgba(8, 11, 10, .30);
+  border-bottom: 1px solid rgba(8, 11, 10, .30);
+  background: rgba(242, 244, 241, .42);
+  color: var(--ghc26-ink);
+  cursor: default;
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+
+.ghc26-solutions-grid article:nth-child(even) {
+  background: rgba(218, 224, 216, .78);
+}
+
+.ghc26-solutions-grid article.is-featured {
+  background: rgba(34, 214, 91, .13);
+}
+
+.ghc26-solutions-grid article > small {
+  grid-column: 1;
+  grid-row: 1;
+  color: rgba(8, 11, 10, .42);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .14em;
+}
+
+.ghc26-solutions-grid article > strong {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.ghc26-solution-blurb {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  max-width: 31ch;
+  margin: 0;
+  color: rgba(8, 11, 10, .66);
+  font-size: 12px;
+  line-height: 1.48;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, color .2s ease;
+}
+
+.ghc26-solution-hint {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(8, 11, 10, .88);
+  color: var(--ghc26-white);
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease;
+}
+
+.ghc26-solution-hint::after {
+  content: "+";
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ghc26-solutions-grid article:hover,
+.ghc26-solutions-grid article:focus,
+.ghc26-solutions-grid article:focus-visible {
+  z-index: 2;
+  transform: translateY(-4px);
+  background: var(--ghc26-ink);
+  color: var(--ghc26-white);
+  box-shadow: 0 22px 42px rgba(8, 11, 10, .18);
+}
+
+.ghc26-solutions-grid article:hover > small,
+.ghc26-solutions-grid article:focus > small,
+.ghc26-solutions-grid article:focus-visible > small {
+  color: rgba(242, 244, 241, .48);
+}
+
+.ghc26-solutions-grid article:hover .ghc26-solution-blurb,
+.ghc26-solutions-grid article:focus .ghc26-solution-blurb,
+.ghc26-solutions-grid article:focus-visible .ghc26-solution-blurb {
+  opacity: 1;
+  transform: translateY(0);
+  color: rgba(242, 244, 241, .72);
+}
+
+.ghc26-solutions-grid article:hover .ghc26-solution-hint,
+.ghc26-solutions-grid article:focus .ghc26-solution-hint,
+.ghc26-solutions-grid article:focus-visible .ghc26-solution-hint {
+  background: var(--ghc26-green);
+  color: #061008;
+}
+
+.ghc26-solutions-note {
+  width: min(1220px, calc(100% - 40px));
+  margin: 18px auto 0;
+  color: rgba(8, 11, 10, .52);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
+/* Better crop for the new professional second Method clip. */
+.ghc-hex-video.hex-b .ghc-hex-video-inner video {
+  object-position: 50% 50%;
+  transform: scale(1.045);
+}
+
+@media (max-width: 720px) {
+  .ghc26-solutions-grid article {
+    min-height: 156px;
+    padding: 20px;
+  }
+
+  .ghc26-solution-blurb {
+    opacity: 1;
+    transform: none;
+    font-size: 11px;
+    line-height: 1.44;
+  }
+
+  .ghc26-solution-hint {
+    display: none;
+  }
+}
