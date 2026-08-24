@@ -3,6 +3,7 @@ import { Manrope, Noto_Serif } from "next/font/google";
 import { Suspense } from "react";
 import MetaPixel from "@/components/MetaPixel";
 import GHCEcosystemLinks from "@/components/GHCEcosystemLinks";
+import GHCEcosystemAttribution from "@/components/GHCEcosystemAttribution";
 import { ghcTraining } from "@/config/ghcTraining";
 import "./globals.css";
 
@@ -250,6 +251,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <MetaPixel pixelId={metaPixelId} />
         </Suspense>
+        <GHCEcosystemAttribution />
         {children}
         <GHCEcosystemLinks />
       </body>
