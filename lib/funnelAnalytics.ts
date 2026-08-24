@@ -2,11 +2,12 @@
 
 type FunnelValue = string | number | boolean;
 type FunnelData = Record<string, FunnelValue>;
-
 type EcosystemSource = "ghcacademy" | "ghcnutrition";
 
 const SESSION_KEY = "ghc_training_funnel_session";
 const ECOSYSTEM_KEY = "ghc_training_ecosystem_source";
+const ANALYTICS_ENDPOINT = "https://fqjtmpsdrocejlgiogss.supabase.co/functions/v1/ghc-training-funnel-event";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_V3BJykjVQ_et162tsMwV0A_OOCciXMR";
 
 declare global {
   interface Window {
@@ -53,24 +54,15 @@ function sendFirstPartyEvent(name: string, data: FunnelData) {
     data,
   });
 
-  try {
-    if (typeof navigator.sendBeacon === "function") {
-      const sent = navigator.sendBeacon(
-        "/api/funnel-event",
-        new Blob([payload], { type: "application/json" })
-      );
-      if (sent) return;
-    }
-  } catch {
-    // Fall through to keepalive fetch.
-  }
-
-  void fetch("/api/funnel-event", {
+  void fetch(ANALYTICS_ENDPOINT, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: {
+      apikey: SUPABASE_PUBLISHABLE_KEY,
+      "content-type": "application/json",
+    },
     body: payload,
     keepalive: true,
-    credentials: "same-origin",
+    credentials: "omit",
   }).catch(() => {
     // Analytics must never interrupt the conversion path.
   });
