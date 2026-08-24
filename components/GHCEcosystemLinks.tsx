@@ -1,7 +1,17 @@
 const sites = [
-  { label: 'GHC Training', href: 'https://www.ghctraining.com', current: true },
-  { label: 'GHC Academy', href: 'https://ghcacademy.net', current: false },
-  { label: 'GHC Nutrition', href: 'https://www.ghcnutrition.com', current: false },
+  { label: 'GHC Training', href: 'https://www.ghctraining.com', current: true, role: 'Entrenamiento personal' },
+  {
+    label: 'GHC Academy',
+    href: 'https://ghcacademy.net?utm_source=ghctraining&utm_medium=ecosystem&utm_campaign=ghc_ecosystem',
+    current: false,
+    role: 'Formación profesional',
+  },
+  {
+    label: 'GHC Nutrition',
+    href: 'https://www.ghcnutrition.com?utm_source=ghctraining&utm_medium=ecosystem&utm_campaign=ghc_ecosystem',
+    current: false,
+    role: 'Nutrición y suplementación',
+  },
 ] as const;
 
 export default function GHCEcosystemLinks() {
@@ -39,9 +49,13 @@ export default function GHCEcosystemLinks() {
         </span>
         {sites.map((site) => (
           <a
-            key={site.href}
+            key={site.label}
             href={site.href}
             aria-current={site.current ? 'page' : undefined}
+            aria-label={`${site.label} · ${site.role}`}
+            title={site.role}
+            data-ghc-ecosystem-link={site.label}
+            data-ghc-source="ghctraining"
             style={{
               color: site.current ? '#F2F4F1' : 'rgba(242,244,241,.66)',
               fontSize: 13,
