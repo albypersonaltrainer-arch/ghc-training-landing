@@ -1,6 +1,8 @@
 'use client';
 
+import { Analytics } from '@vercel/analytics/next';
 import { useEffect } from 'react';
+import FunnelAnalytics from '@/components/FunnelAnalytics';
 
 const STORAGE_KEY = 'ghc_training_ecosystem_source';
 const CAMPAIGN = 'ghc_ecosystem';
@@ -110,5 +112,10 @@ export default function GHCEcosystemAttribution() {
     return () => observer.disconnect();
   }, []);
 
-  return null;
+  return (
+    <>
+      <FunnelAnalytics />
+      <Analytics />
+    </>
+  );
 }
