@@ -88,31 +88,14 @@ function isAllowedOrigin(request: Request) {
 }
 
 export async function GET() {
-  const healthSession = "00000000-0000-4000-8000-000000000001";
-
   try {
     const supabase = getSupabaseAdmin();
-    const { error: insertError } = await supabase.from("ghc_training_funnel_events").insert({
-      session_id: healthSession,
-      event_name: "funnel_start",
-      page_path: "/__analytics_health",
-      ecosystem_source: null,
-      event_source: "healthcheck",
-      properties: { temporary: true },
-    });
-
-    if (insertError) {
-      return NextResponse.json({ ok: false, stage: "insert" }, { status: 500 });
-    }
-
-    const { error: deleteError } = await supabase
+    const { error } = await supabase
       .from("ghc_training_funnel_events")
-      .delete()
-      .eq("session_id", healthSession)
-      .eq("page_path", "/__analytics_health");
+      .select("id", { head: true, count: "exact" });
 
-    if (deleteError) {
-      return NextResponse.json({ ok: false, stage: "cleanup" }, { status: 500 });
+    if (error) {
+      return NextResponse.json({ ok: false, stage: "storage" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true, storage: "supabase" });
