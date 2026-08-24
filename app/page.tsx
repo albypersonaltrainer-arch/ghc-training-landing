@@ -371,9 +371,8 @@ export default function Home() {
         </div>
 
         <div className="ghc26-founder-photo">
-          <div className="ghc26-founder-hex" aria-hidden="true" />
           <Image
-            src="/alby-ghc-training.png"
+            src="/alby-ghc-training-winner.webp"
             alt="Alby Aguiar, fundador y director de GHC Training"
             fill
             sizes="(max-width: 800px) 100vw, 50vw"
