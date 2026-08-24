@@ -215,7 +215,7 @@ export default function Home() {
               <div className="ghc26-tag-row">
                 {ghcTraining.modalities[0].tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
-              <a href="/entrenador-personal-madrid" className="ghc-text-link">Entrenamiento personal en Madrid <Arrow /></a>
+              <a href="#empezar" className="ghc-text-link">Quiero empezar en Madrid <Arrow /></a>
             </div>
             <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
               <source src={ghcMediaTuning.madrid.src} />
@@ -231,7 +231,7 @@ export default function Home() {
               <div className="ghc26-tag-row">
                 {ghcTraining.modalities[1].tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
-              <a href="/entrenador-personal-online" className="ghc-text-link">Entrenamiento personal online <Arrow /></a>
+              <a href="#empezar" className="ghc-text-link">Quiero empezar online <Arrow /></a>
             </div>
             <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
               <source src={ghcMedia.online.src} />
@@ -367,7 +367,6 @@ export default function Home() {
           <p>
             Más de 30 años de experiencia profesional en entrenamiento, fuerza, movilidad, composición corporal, nutrición estratégica y salud activa. Una trayectoria construida entre deporte de alto nivel, dirección, formación y trabajo con perfiles muy distintos, convertida hoy en un método propio: menos recetas, más criterio y una estrategia diseñada alrededor de cada persona.
           </p>
-          <a href="/sobre-ghc-training" className="ghc-button ghc-button-dark">Conocer GHC Training <Arrow /></a>
         </div>
 
         <div className="ghc26-founder-photo">
@@ -418,7 +417,7 @@ export default function Home() {
         </div>
         <div className="ghc26-faq-list">
           {ghcTraining.faq.map(([question, answer], index) => (
-            <details key={question} open={index === 0}>
+            <details key={question}>
               <summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<b>+</b></summary>
               <p>{answer}</p>
             </details>
@@ -453,11 +452,11 @@ export default function Home() {
           <GHCTrainingLogo size="md" darkText={false} />
           <p>Entrenamiento, nutrición estratégica y salud activa con criterio.</p>
           <div className="ghc26-footer-links">
-            <a href="/metodo-ghc">Método GHC</a>
-            <a href="/valoracion-integral">Valoración integral</a>
-            <a href="/entrenador-personal-madrid">Madrid</a>
-            <a href="/entrenador-personal-online">Online</a>
-            <a href="/sobre-ghc-training">Sobre GHC</a>
+            <a href="#metodo">Método GHC</a>
+            <a href="#empezar">Valoración</a>
+            <a href="#modalidades">Madrid + Online</a>
+            <a href="#programas">Programas</a>
+            <a href="#inicio">Inicio</a>
           </div>
         </div>
 
