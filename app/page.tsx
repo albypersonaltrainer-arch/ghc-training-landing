@@ -367,7 +367,6 @@ export default function Home() {
           <p>
             Más de 30 años de experiencia profesional en entrenamiento, fuerza, movilidad, composición corporal, nutrición estratégica y salud activa. Una trayectoria construida entre deporte de alto nivel, dirección, formación y trabajo con perfiles muy distintos, convertida hoy en un método propio: menos recetas, más criterio y una estrategia diseñada alrededor de cada persona.
           </p>
-          <a href="#empezar" className="ghc-button ghc-button-dark">Empezar con GHC Training <Arrow /></a>
         </div>
 
         <div className="ghc26-founder-photo">
