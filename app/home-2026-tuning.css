@@ -1,0 +1,542 @@
+:root {
+  --ghc26-paper: #ece9e2;
+  --ghc26-paper-2: #dfe3dc;
+  --ghc26-surface: #f1efe9;
+  --ghc26-surface-soft: #e7e9e2;
+  --ghc26-surface-deep: #dfe3db;
+  --ghc26-white: #f2f4f1;
+  --ghc26-silver: #c8cdca;
+  --ghc26-hex-green: #22d65b;
+  --ghc26-hex-black: #070c09;
+}
+
+.ghc26-shell {
+  background: var(--ghc26-paper);
+}
+
+.ghc26-header {
+  background: rgba(238, 237, 231, .90);
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.ghc26-hero-media video {
+  object-position: 52% 44%;
+  filter: saturate(.78) contrast(1.06) brightness(.68);
+}
+
+/*
+ * GHC HEX SYSTEM
+ * Derivado del isotipo: anillo exterior plata->verde, núcleo negro,
+ * segundo anillo interior blanco/metal->verde y GHC como firma central.
+ * No se usa ya la raya horizontal decorativa de la iteración anterior.
+ */
+.ghc26-hero-mark,
+.ghc26-profile-core,
+.ghc26-founder-hex {
+  isolation: isolate;
+  border: 0;
+  overflow: visible;
+  background: linear-gradient(
+    142deg,
+    #f7f8f6 0%,
+    #dfe3e1 25%,
+    #979f9b 52%,
+    #22d65b 78%,
+    #16b94b 100%
+  );
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .22));
+}
+
+.ghc26-hero-mark::before,
+.ghc26-profile-core::before,
+.ghc26-founder-hex::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 8px;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  border: 0;
+  background:
+    radial-gradient(circle at 70% 66%, rgba(34, 214, 91, .18), transparent 35%),
+    linear-gradient(145deg, #0c1410, #050907 72%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .08),
+    inset 0 -24px 50px rgba(34, 214, 91, .05);
+  pointer-events: none;
+}
+
+.ghc26-hero-mark::after,
+.ghc26-profile-core::after,
+.ghc26-founder-hex::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 22%;
+  padding: 6px;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  background: linear-gradient(
+    138deg,
+    #f7f8f6 0%,
+    #eef0ef 39%,
+    #bcc2bf 52%,
+    #28ef66 61%,
+    #22d65b 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(5px 8px 10px rgba(34, 214, 91, .23));
+  pointer-events: none;
+}
+
+.ghc26-hero-mark {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .30);
+}
+
+.ghc26-hero-mark span,
+.ghc26-hero-mark small,
+.ghc26-profile-core strong,
+.ghc26-profile-core b,
+.ghc26-profile-core small {
+  position: relative;
+  z-index: 3;
+}
+
+.ghc26-hero-mark span {
+  margin-left: .08em;
+  font-size: 34px;
+  letter-spacing: .08em;
+  background: linear-gradient(90deg, #f2f4f1 0 66%, #22d65b 66% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px rgba(34, 214, 91, .08);
+}
+
+.ghc26-hero-mark small {
+  margin-top: 10px;
+  color: var(--ghc26-green);
+  letter-spacing: .28em;
+}
+
+.ghc26-profile-core {
+  color: var(--ghc26-white);
+  box-shadow: 0 30px 80px rgba(8, 11, 10, .18);
+}
+
+.ghc26-profile-core strong {
+  color: rgba(242, 244, 241, .68);
+}
+
+.ghc26-profile-core b {
+  margin-left: .05em;
+  background: linear-gradient(90deg, #f2f4f1 0 66%, #22d65b 66% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ghc26-profile-core small {
+  color: rgba(242, 244, 241, .62);
+}
+
+/* Los vídeos mantienen la imagen completa, y el marco reproduce los dos anillos del isotipo. */
+.ghc-hex-video-inner {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, .24);
+}
+
+.ghc-hex-video-overlay {
+  background:
+    radial-gradient(circle at 72% 68%, rgba(34, 214, 91, .10), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.02), transparent 45%, rgba(0,0,0,.30));
+  box-shadow: none;
+}
+
+.ghc-hex-video-overlay::before,
+.ghc-hex-video-overlay::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ghc-hex-video-overlay::before {
+  inset: 0;
+  padding: 7px;
+  background: linear-gradient(
+    142deg,
+    rgba(247,248,246,.96) 0%,
+    rgba(205,211,208,.90) 33%,
+    rgba(132,142,137,.78) 53%,
+    rgba(34,214,91,.96) 78%,
+    rgba(34,214,91,.82) 100%
+  );
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.14));
+}
+
+.ghc-hex-video-overlay::after {
+  inset: 14%;
+  padding: 4px;
+  background: linear-gradient(
+    138deg,
+    rgba(247,248,246,.88) 0%,
+    rgba(235,238,236,.82) 42%,
+    rgba(34,214,91,.94) 62%,
+    rgba(34,214,91,.96) 100%
+  );
+  filter: drop-shadow(5px 7px 9px rgba(34,214,91,.20));
+}
+
+.ghc-hex-video.hex-a .ghc-hex-video-inner video {
+  object-position: 50% 50%;
+}
+
+.ghc-hex-video.hex-b .ghc-hex-video-inner video {
+  object-position: 50% 46%;
+  transform: scale(1.015);
+}
+
+.ghc-hex-video.hex-c .ghc-hex-video-inner video {
+  object-position: 50% 50%;
+}
+
+.ghc26-founder-hex {
+  box-shadow: 0 18px 48px rgba(8, 11, 10, .16);
+  opacity: .88;
+}
+
+.ghc26-trust-rail {
+  background: #e4e7e0;
+}
+
+.ghc26-profile-section {
+  position: relative;
+  background: #efede7;
+  box-shadow: 0 0 0 100vmax #efede7;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-profile-orbit > span {
+  background: rgba(240, 239, 233, .90);
+}
+
+.ghc26-path-section {
+  position: relative;
+  background: #e7e9e2;
+  box-shadow: 0 0 0 100vmax #e7e9e2;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc-path-card {
+  background: #f0eee8;
+  box-shadow: 0 30px 90px rgba(8, 11, 10, .06);
+}
+
+.ghc-choice-grid button,
+.ghc-path-summary span {
+  background: #e5e7e0;
+}
+
+.ghc26-modalities-section {
+  position: relative;
+  background: #ece9e2;
+  box-shadow: 0 0 0 100vmax #ece9e2;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-modality-card > video {
+  transform: scale(1.025);
+}
+
+.ghc26-modality-madrid > video {
+  object-position: center 42%;
+  filter: saturate(.70) contrast(1.02) brightness(.58);
+}
+
+/* Áreas de trabajo: contraste suficiente, rejilla visible y CTA inequívoco. */
+.ghc26-solutions-section {
+  background: #cfd5cc;
+}
+
+.ghc26-solutions-grid {
+  border-top-color: rgba(8, 11, 10, .30);
+  border-left-color: rgba(8, 11, 10, .30);
+  box-shadow: 0 22px 70px rgba(8, 11, 10, .06);
+}
+
+.ghc26-solutions-grid a {
+  cursor: pointer;
+  background: rgba(242, 244, 241, .42);
+  border-right-color: rgba(8, 11, 10, .30);
+  border-bottom-color: rgba(8, 11, 10, .30);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+
+.ghc26-solutions-grid a:nth-child(even) {
+  background: rgba(218, 224, 216, .78);
+}
+
+.ghc26-solutions-grid a.is-featured {
+  background: rgba(34, 214, 91, .13);
+}
+
+.ghc26-solutions-grid a > span:last-child {
+  width: auto;
+  min-width: 64px;
+  height: 34px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 999px;
+  background: rgba(8, 11, 10, .90);
+  color: var(--ghc26-white);
+  font-size: 12px;
+  box-shadow: 0 10px 24px rgba(8, 11, 10, .12);
+}
+
+.ghc26-solutions-grid a > span:last-child::before {
+  content: "VER";
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: .13em;
+}
+
+.ghc26-solutions-grid a:hover {
+  z-index: 2;
+  transform: translateY(-4px);
+  background: var(--ghc26-ink);
+  color: var(--ghc26-white);
+  box-shadow: 0 22px 42px rgba(8, 11, 10, .18);
+}
+
+.ghc26-solutions-grid a:hover > span:last-child {
+  background: var(--ghc26-green);
+  color: #061008;
+}
+
+/*
+ * Programas: las tres tarjetas pertenecen a la misma familia grafito.
+ * La jerarquía se expresa con el borde/acento, no cambiando una tarjeta a blanco.
+ */
+.ghc26-programs-section {
+  position: relative;
+  background: #d9ddd5;
+  box-shadow: 0 0 0 100vmax #d9ddd5;
+  clip-path: inset(0 -100vmax);
+}
+
+.ghc26-program-grid article,
+.ghc26-program-grid article.is-primary {
+  position: relative;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(34,214,91,.055), transparent 30%),
+    linear-gradient(155deg, #131a17 0%, #0b100e 100%);
+  color: var(--ghc26-white);
+  border-color: rgba(242, 244, 241, .20);
+  transform: none;
+  box-shadow: 0 24px 58px rgba(8, 11, 10, .11);
+}
+
+.ghc26-program-grid article:nth-child(1) {
+  border-color: rgba(218, 224, 221, .30);
+}
+
+.ghc26-program-grid article:nth-child(2) {
+  border-color: rgba(151, 165, 158, .40);
+}
+
+.ghc26-program-grid article:nth-child(3),
+.ghc26-program-grid article.is-primary {
+  border-color: rgba(34, 214, 91, .62);
+  box-shadow:
+    0 28px 66px rgba(8, 11, 10, .16),
+    0 0 0 1px rgba(34, 214, 91, .10);
+}
+
+.ghc26-program-grid article.is-primary::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, rgba(242,244,241,.72), var(--ghc26-green));
+  box-shadow: 0 0 20px rgba(34, 214, 91, .28);
+}
+
+.ghc26-program-grid .ghc26-program-topline,
+.ghc26-program-grid .is-primary .ghc26-program-topline {
+  border-color: rgba(242, 244, 241, .15);
+}
+
+.ghc26-program-grid .ghc26-program-topline span,
+.ghc26-program-grid .is-primary .ghc26-program-topline span,
+.ghc26-program-grid .ghc26-program-duration,
+.ghc26-program-grid .is-primary .ghc26-program-duration,
+.ghc26-program-grid .ghc26-price-grid span,
+.ghc26-program-grid .is-primary .ghc26-price-grid span {
+  color: var(--ghc26-green) !important;
+}
+
+.ghc26-program-grid article > p,
+.ghc26-program-grid .is-primary > p {
+  color: rgba(242, 244, 241, .64);
+}
+
+.ghc26-program-grid .ghc26-price-grid a,
+.ghc26-program-grid .is-primary .ghc26-price-grid a {
+  border-color: rgba(242, 244, 241, .15);
+  background: rgba(242, 244, 241, .045);
+  color: var(--ghc26-white);
+}
+
+.ghc26-program-grid .ghc26-price-grid a:hover {
+  border-color: rgba(34, 214, 91, .50);
+  background: rgba(34, 214, 91, .08);
+}
+
+.ghc26-program-grid footer,
+.ghc26-program-grid .is-primary footer {
+  border-color: rgba(242, 244, 241, .14);
+  color: rgba(242, 244, 241, .54);
+}
+
+.ghc26-program-note {
+  color: rgba(8, 11, 10, .63);
+}
+
+.ghc26-proof-section {
+  background: #dce1d9;
+}
+
+.ghc26-manifesto-section {
+  background: #e7e5de;
+}
+
+.ghc26-founder-section {
+  background: #dedfd8;
+}
+
+.ghc26-founder-copy {
+  justify-content: center;
+  gap: 0;
+}
+
+.ghc26-founder-copy .ghc-kicker {
+  margin-bottom: 22px;
+}
+
+.ghc26-founder-copy h2 {
+  margin: 0 0 30px;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.ghc26-founder-role {
+  margin: 0 0 20px;
+  line-height: 1.45 !important;
+}
+
+.ghc26-founder-copy > p:not(.ghc-kicker):not(.ghc26-founder-role) {
+  margin: 0;
+}
+
+.ghc26-founder-copy .ghc-button {
+  margin-top: 30px;
+}
+
+/* Se conserva el archivo fotográfico actual de Alby sin nuevas intervenciones en esta ronda. */
+.ghc26-founder-image {
+  filter: saturate(1.02) contrast(1.055) brightness(1.02) !important;
+  image-rendering: auto;
+}
+
+.ghc26-founder-photo::after {
+  background:
+    linear-gradient(90deg, #dedfd8, transparent 18%),
+    linear-gradient(0deg, rgba(8, 11, 10, .10), transparent 42%);
+}
+
+.ghc26-faq-section {
+  position: relative;
+  background: #e9ebe4;
+  box-shadow: 0 0 0 100vmax #e9ebe4;
+  clip-path: inset(0 -100vmax);
+}
+
+@media (max-width: 1100px) {
+  .ghc26-founder-copy h2 {
+    margin-bottom: 24px;
+  }
+
+  .ghc26-hero-mark::after,
+  .ghc26-profile-core::after,
+  .ghc26-founder-hex::after {
+    inset: 23%;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .ghc26-hero-mark::before,
+  .ghc26-profile-core::before,
+  .ghc26-founder-hex::before {
+    inset: 6px;
+  }
+
+  .ghc26-hero-mark::after,
+  .ghc26-profile-core::after,
+  .ghc26-founder-hex::after {
+    inset: 22%;
+    padding: 4px;
+  }
+
+  .ghc-hex-video-overlay::before {
+    padding: 5px;
+  }
+
+  .ghc-hex-video-overlay::after {
+    inset: 15%;
+    padding: 3px;
+  }
+
+  .ghc26-solutions-grid a > span:last-child {
+    min-width: 54px;
+    height: 30px;
+    padding-inline: 9px;
+  }
+
+  .ghc26-solutions-grid a > span:last-child::before {
+    font-size: 7px;
+  }
+
+  .ghc26-program-grid article,
+  .ghc26-program-grid article.is-primary {
+    transform: none;
+  }
+
+  .ghc26-founder-copy h2 {
+    margin-bottom: 22px;
+    font-size: clamp(3.1rem, 16vw, 5rem);
+    line-height: 1;
+  }
+
+  .ghc26-founder-role {
+    margin-bottom: 18px;
+  }
+
+  .ghc26-founder-photo::after {
+    background: linear-gradient(0deg, #dedfd8, transparent 22%);
+  }
+}

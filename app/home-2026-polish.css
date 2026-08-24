@@ -1,0 +1,304 @@
+/* Final visual polish: uniform GHC brand hexagons, on-page specialty context, and media tuning. */
+
+/*
+ * GHC BRAND HEXAGON — one shared language everywhere.
+ * Single silver/white -> green rim, dark inner field, no side wedges/triangles,
+ * and no nested logo inside the logo. The container itself is the brand mark.
+ */
+.ghc26-hero-mark,
+.ghc26-profile-core,
+.ghc26-founder-hex {
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  clip-path: polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);
+  background: linear-gradient(
+    142deg,
+    #f8f9f7 0%,
+    #e2e6e3 27%,
+    #9ca49f 51%,
+    #36e86a 72%,
+    #22d65b 100%
+  );
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .22));
+}
+
+.ghc26-hero-mark::before,
+.ghc26-profile-core::before,
+.ghc26-founder-hex::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 8px;
+  padding: 0;
+  clip-path: inherit;
+  -webkit-mask: none;
+  mask: none;
+  background:
+    radial-gradient(circle at 72% 68%, rgba(34, 214, 91, .13), transparent 35%),
+    linear-gradient(145deg, #111a16 0%, #070c09 74%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .08),
+    inset 0 -26px 52px rgba(34, 214, 91, .045);
+  pointer-events: none;
+}
+
+/* Explicitly kill every legacy inner-ring/side-chevron artefact. */
+.ghc26-hero-mark::after,
+.ghc26-profile-core::after,
+.ghc26-founder-hex::after {
+  content: none !important;
+  display: none !important;
+}
+
+.ghc26-hero-mark span,
+.ghc26-hero-mark small,
+.ghc26-profile-core strong,
+.ghc26-profile-core b,
+.ghc26-profile-core small {
+  position: relative;
+  z-index: 2;
+}
+
+.ghc26-hero-mark {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .30);
+}
+
+.ghc26-hero-mark span {
+  margin-left: .05em;
+  font-size: 38px;
+  line-height: .92;
+  font-weight: 950;
+  letter-spacing: -.035em;
+  background: linear-gradient(90deg, #f2f4f1 0 68%, #22d65b 68% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.ghc26-hero-mark small {
+  margin-top: 9px;
+  color: var(--ghc26-green);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .27em;
+}
+
+.ghc26-profile-core {
+  color: var(--ghc26-white);
+  box-shadow: 0 30px 80px rgba(8, 11, 10, .18);
+}
+
+.ghc26-profile-core strong {
+  margin-bottom: 34px;
+  color: rgba(242, 244, 241, .68);
+}
+
+.ghc26-profile-core b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #f2f4f1 0 67%, #22d65b 67% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.ghc26-profile-core small {
+  margin-top: 64px;
+  color: rgba(242, 244, 241, .62);
+}
+
+.ghc26-founder-hex {
+  box-shadow: 0 18px 48px rgba(8, 11, 10, .16);
+  opacity: .88;
+}
+
+/* Keep every profile signal centered exactly on the visible orbit. */
+.ghc26-profile-orbit > span {
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateX(207px)
+    rotate(calc(var(--angle) * -1));
+  transform-origin: center;
+  min-width: 116px;
+}
+
+/* Specialty grid explains each area in place instead of sending the user away. */
+.ghc26-solutions-grid article {
+  position: relative;
+  min-height: 168px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px 18px;
+  align-items: start;
+  padding: 25px 26px 22px;
+  overflow: hidden;
+  border-right: 1px solid rgba(8, 11, 10, .30);
+  border-bottom: 1px solid rgba(8, 11, 10, .30);
+  background: rgba(242, 244, 241, .42);
+  color: var(--ghc26-ink);
+  cursor: default;
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+
+.ghc26-solutions-grid article:nth-child(even) {
+  background: rgba(218, 224, 216, .78);
+}
+
+.ghc26-solutions-grid article.is-featured {
+  background: rgba(34, 214, 91, .13);
+}
+
+.ghc26-solutions-grid article > small {
+  grid-column: 1;
+  grid-row: 1;
+  color: rgba(8, 11, 10, .42);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .14em;
+}
+
+.ghc26-solutions-grid article > strong {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.ghc26-solution-blurb {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  max-width: 31ch;
+  margin: 0;
+  color: rgba(8, 11, 10, .66);
+  font-size: 12px;
+  line-height: 1.48;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, color .2s ease;
+}
+
+.ghc26-solution-hint {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(8, 11, 10, .88);
+  color: var(--ghc26-white);
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease;
+}
+
+.ghc26-solution-hint::after {
+  content: "+";
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ghc26-solutions-grid article:hover,
+.ghc26-solutions-grid article:focus,
+.ghc26-solutions-grid article:focus-visible {
+  z-index: 2;
+  transform: translateY(-4px);
+  background: var(--ghc26-ink);
+  color: var(--ghc26-white);
+  box-shadow: 0 22px 42px rgba(8, 11, 10, .18);
+}
+
+.ghc26-solutions-grid article:hover > small,
+.ghc26-solutions-grid article:focus > small,
+.ghc26-solutions-grid article:focus-visible > small {
+  color: rgba(242, 244, 241, .48);
+}
+
+.ghc26-solutions-grid article:hover .ghc26-solution-blurb,
+.ghc26-solutions-grid article:focus .ghc26-solution-blurb,
+.ghc26-solutions-grid article:focus-visible .ghc26-solution-blurb {
+  opacity: 1;
+  transform: translateY(0);
+  color: rgba(242, 244, 241, .72);
+}
+
+.ghc26-solutions-grid article:hover .ghc26-solution-hint,
+.ghc26-solutions-grid article:focus .ghc26-solution-hint,
+.ghc26-solutions-grid article:focus-visible .ghc26-solution-hint {
+  background: var(--ghc26-green);
+  color: #061008;
+}
+
+.ghc26-solutions-note {
+  width: min(1220px, calc(100% - 40px));
+  margin: 18px auto 0;
+  color: rgba(8, 11, 10, .52);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
+/* Second Method clip: male trainer visibly guiding a male client. */
+.ghc-hex-video.hex-b .ghc-hex-video-inner video {
+  object-position: 50% 46%;
+  transform: scale(1.055);
+}
+
+@media (max-width: 720px) {
+  .ghc26-solutions-grid article {
+    min-height: 156px;
+    padding: 20px;
+  }
+
+  .ghc26-solution-blurb {
+    opacity: 1;
+    transform: none;
+    font-size: 11px;
+    line-height: 1.44;
+  }
+
+  .ghc26-solution-hint {
+    display: none;
+  }
+
+  .ghc26-profile-orbit > span {
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--angle))
+      translateX(155px)
+      rotate(calc(var(--angle) * -1));
+    min-width: 88px;
+  }
+
+  .ghc26-profile-core strong {
+    margin-bottom: 28px;
+  }
+
+  .ghc26-profile-core b {
+    font-size: 43px;
+  }
+
+  .ghc26-profile-core small {
+    margin-top: 54px;
+  }
+}

@@ -1,524 +1,485 @@
 import Image from "next/image";
 import GHCTrainingLogo from "@/components/GHCTrainingLogo";
+import HexVideo from "@/components/home/HexVideo";
+import QuickPath from "@/components/home/QuickPath";
+import { ghcMedia, ghcTraining } from "@/config/ghcTraining";
+import { ghcMediaTuning } from "@/config/ghcMediaTuning";
+import "./home-2026.css";
+import "./home-2026-tuning.css";
+import "./home-2026-polish.css";
 
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34628798859";
-const whatsappMessage = encodeURIComponent(
-  "Hola Alby, quiero información sobre la Valoración GHC Training."
+const whatsappText = encodeURIComponent(
+  "Hola Alby, quiero información para empezar con una valoración GHC Training."
 );
-const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+const whatsappUrl = `https://wa.me/${ghcTraining.contact.phoneE164}?text=${whatsappText}`;
 
-const contactEmail = "info@ghctraining.com";
-const valuationEmailSubject = encodeURIComponent("Quiero mi valoración GHC");
-const valuationEmailBody = encodeURIComponent(`Hola Alby,
+const emailSubject = encodeURIComponent("Quiero empezar con GHC Training");
+const emailBody = encodeURIComponent(
+  "Hola Alby,\n\nQuiero información para empezar con GHC Training.\n\nNombre:\nTeléfono / WhatsApp:\nModalidad: Madrid / Online\nObjetivo principal:\n\nGracias."
+);
+const emailUrl = `mailto:${ghcTraining.contact.email}?subject=${emailSubject}&body=${emailBody}`;
 
-Quiero información para empezar con una valoración GHC.
-
-Nombre completo:
-Teléfono / WhatsApp:
-Modalidad: Online / Presencial Madrid
-Objetivo principal:
-
-Gracias.`);
-const valuationEmailUrl = `mailto:${contactEmail}?subject=${valuationEmailSubject}&body=${valuationEmailBody}`;
+const paymentFallback = whatsappUrl;
 
 const paymentLinks = {
-  valoracionOnline: process.env.NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL || whatsappUrl,
-  valoracionPresencial: process.env.NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL || whatsappUrl,
-  plan4Online: process.env.NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL || whatsappUrl,
-  plan4Presencial: process.env.NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL || whatsappUrl,
-  programa12Online: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL || whatsappUrl,
-  programa12Presencial: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL || whatsappUrl,
-};
-
-const services = [
-  {
-    icon: "1 sesión",
-    title: "Valoración GHC",
-    text: "Sesión profesional de unos 60 minutos para conocer tu punto de partida real antes de diseñar cualquier plan.",
-    onlineLabel: "Online",
-    onlineAmount: "75 €",
-    onlineHref: paymentLinks.valoracionOnline,
-    presencialLabel: "Presencial Madrid",
-    presencialAmount: "120 €",
-    presencialHref: paymentLinks.valoracionPresencial,
-    includes: [
-      "Entrevista inicial y análisis de objetivo",
-      "Historial físico, lesiones, patologías y hábitos",
-      "Estudio corporal: peso, medidas, perímetros y evolución física",
-      "Valoración antropométrica y perimétrica básica",
-      "Movilidad, postura, fuerza básica y hoja de ruta orientativa",
-    ],
-    meta: "Unos 60 min",
-    note: "Descontable si continúas",
+  valuation: {
+    online: process.env.NEXT_PUBLIC_SUMUP_VALORACION_ONLINE_URL || paymentFallback,
+    madrid: process.env.NEXT_PUBLIC_SUMUP_VALORACION_PRESENCIAL_URL || paymentFallback,
   },
-  {
-    icon: "4 semanas",
-    title: "Plan GHC",
-    text: "Primer bloque real de trabajo con entrenamiento personalizado, pauta nutricional y seguimiento para empezar con orden.",
-    onlineLabel: "Online",
-    onlineAmount: "220 €",
-    onlineHref: paymentLinks.plan4Online,
-    presencialLabel: "Presencial Madrid",
-    presencialAmount: "360 €",
-    presencialHref: paymentLinks.plan4Presencial,
-    includes: [
-      "Valoración inicial y estudio del caso",
-      "Entrenamiento personalizado durante 4 semanas",
-      "Pauta nutricional personalizada durante 4 semanas",
-      "Seguimiento por WhatsApp y ajustes básicos",
-      "Si ya hiciste la valoración online: 145 € restantes",
-    ],
-    meta: "4 semanas",
-    note: "Primer bloque real",
+  plan4: {
+    online: process.env.NEXT_PUBLIC_SUMUP_PLAN4_ONLINE_URL || paymentFallback,
+    madrid: process.env.NEXT_PUBLIC_SUMUP_PLAN4_PRESENCIAL_URL || paymentFallback,
   },
-  {
-    icon: "12 semanas",
-    title: "Programa GHC",
-    text: "Programa completo de 3 meses para transformar hábitos, composición corporal, fuerza, movilidad y salud activa.",
-    onlineLabel: "Online",
-    onlineAmount: "580 €",
-    onlineHref: paymentLinks.programa12Online,
-    presencialLabel: "Presencial Madrid",
-    presencialAmount: "960 €",
-    presencialHref: paymentLinks.programa12Presencial,
-    includes: [
-      "Valoración inicial completa",
-      "3 bloques de entrenamiento de 4 semanas",
-      "3 bloques de nutrición ajustados según evolución",
-      "Seguimiento semanal y revisiones en semanas 4, 8 y 12",
-      "Se descuenta la valoración si continúas",
-    ],
-    meta: "12 semanas",
-    note: "Mayor acompañamiento",
+  program12: {
+    online: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_ONLINE_URL || paymentFallback,
+    madrid: process.env.NEXT_PUBLIC_SUMUP_PROGRAMA12_PRESENCIAL_URL || paymentFallback,
   },
-];
+} as const;
 
-const method = [
-  ["Valorar", "Entender tu cuerpo, tu historia y lo que te está frenando."],
-  ["Planificar", "Diseñar una estrategia realista de entrenamiento y nutrición."],
-  ["Entrenar", "Aplicar fuerza, movilidad y progresión sin improvisar."],
-  ["Nutrir", "Ajustar hábitos y alimentación a tu vida real."],
-  ["Ajustar", "Revisar respuesta, molestias, energía y evolución."],
-  ["Evolucionar", "Consolidar resultados sostenibles, no parches rápidos."],
-];
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
 
-
-const authorityItems = [
-  { icon: "trophy", title: "Más de 30 años", text: "experiencia real" },
-  { icon: "training", title: "Entrenamiento personal", text: "adaptado a ti" },
-  { icon: "nutrition", title: "Nutrición personalizada", text: "estrategia real" },
-  { icon: "heart", title: "Salud activa", text: "mejor calidad de vida" },
-  { icon: "brain", title: "Lesiones y patologías", text: "trabajo progresivo" },
-  { icon: "location", title: "Madrid y online", text: "España completa" },
-] as const;
-
-type AuthorityIconName = (typeof authorityItems)[number]["icon"];
-
-function AuthorityIcon({ name }: { name: AuthorityIconName }) {
-  const common = {
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 2.1,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    "aria-hidden": true,
-    className: "ghc-authority-icon-svg",
-  };
-
-  if (name === "trophy") {
-    return (
-      <svg {...common}>
-        <path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" />
-        <path d="M8 6H5.5a2.5 2.5 0 0 0 2.8 3.7" />
-        <path d="M16 6h2.5a2.5 2.5 0 0 1-2.8 3.7" />
-        <path d="M12 13v4" />
-        <path d="M8.5 20h7" />
-        <path d="M10 17h4" />
-      </svg>
-    );
-  }
-
-  if (name === "training") {
-    return (
-      <svg {...common}>
-        <path d="M5 8v8" />
-        <path d="M8 7v10" />
-        <path d="M16 7v10" />
-        <path d="M19 8v8" />
-        <path d="M8 12h8" />
-      </svg>
-    );
-  }
-
-  if (name === "nutrition") {
-    return (
-      <svg {...common}>
-        <path d="M12 7c4.5 0 7 2.6 7 6.1A6.9 6.9 0 0 1 12 20a6.9 6.9 0 0 1-7-6.9C5 9.6 7.5 7 12 7Z" />
-        <path d="M12 7c.2-2 1.4-3.2 3.6-3.8" />
-        <path d="M12 7c-1.2-1.6-2.7-2.1-4.6-1.8" />
-        <path d="M12 10v6" />
-      </svg>
-    );
-  }
-
-  if (name === "heart") {
-    return (
-      <svg {...common}>
-        <path d="M20.2 8.6c0 5.1-8.2 10.1-8.2 10.1S3.8 13.7 3.8 8.6A4.2 4.2 0 0 1 11 5.7l1 1 1-1a4.2 4.2 0 0 1 7.2 2.9Z" />
-        <path d="M7.5 12h2.2l1.1-2.2 2.3 4.5 1.2-2.3h2.2" />
-      </svg>
-    );
-  }
-
-  if (name === "brain") {
-    return (
-      <svg {...common}>
-        <path d="M9 5.2a3.2 3.2 0 0 0-3 4.3 3.3 3.3 0 0 0 .4 6.2A3.7 3.7 0 0 0 12 19V6.4A3.3 3.3 0 0 0 9 5.2Z" />
-        <path d="M15 5.2a3.2 3.2 0 0 1 3 4.3 3.3 3.3 0 0 1-.4 6.2A3.7 3.7 0 0 1 12 19" />
-        <path d="M8 10h2" />
-        <path d="M14 10h2" />
-        <path d="M8.5 14.5H11" />
-        <path d="M13 14.5h2.5" />
-      </svg>
-    );
-  }
-
+function Check() {
   return (
-    <svg {...common}>
-      <path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11Z" />
-      <circle cx="12" cy="10" r="2.2" />
+    <svg viewBox="0 0 20 20" aria-hidden="true" className="ghc-check">
+      <path d="M4 10.5 8 14l8-8" />
     </svg>
   );
 }
 
-const testimonials = [
-  {
-    title: "Lipedema · Fisio + fuerza adaptada",
-    text: "No sabes lo que me acordé hoy de ti, Alby. He subido las escaleras de casa sin esa sensación horrible de piernas pesadas y doloridas que tenía antes. Parece una tontería, pero para mí es enorme. Durante mucho tiempo iba al fisio y me ayudaba, claro que sí, pero sentía que siempre volvía al mismo punto. Desde que empecé a seguir el entrenamiento que diseñaste para mí y lo combiné con el trabajo de fisio, todo empezó a tener más sentido. Me quedo con eso: no solo he mejorado físicamente, he vuelto a confiar un poco más en mi cuerpo. Y eso, para mí, vale muchísimo.",
-    time: "10:31",
-  },
-  {
-    title: "Fibromialgia · Más de 6 meses sin crisis fuertes",
-    text: "Alby, hoy me he dado cuenta de algo muy fuerte. Antes de empezar contigo tenía una o dos crisis de fibromialgia casi todas las semanas. Vivía pendiente del dolor, del cansancio y del miedo a pasarme con cualquier cosa. Llevo más de 6 meses sin una crisis como las de antes. Sé que no he sido fácil muchas veces, porque venía con miedo, dudas y días muy malos. Por eso valoro tanto la paciencia que has tenido conmigo. No me empujaste, me acompañaste. Y eso fue justo lo que necesitaba.",
-    time: "11:07",
-  },
-  {
-    title: "Pérdida de volumen · Más ligera y fuerte",
-    text: "Te lo tenía que decir porque hoy me probé unos pantalones que no me cerraban desde hacía años. No es solo que haya bajado volumen, que se nota muchísimo. Es que me miro al espejo y me veo otra vez fuerte, más ligera y con mucha más seguridad. Antes iba de dieta en dieta, entrenaba a ratos y acababa frustrada. Contigo ha sido diferente porque por fin he entendido qué hacer, por qué lo hacía y cómo mantenerlo sin vivir castigándome. Gracias, Alby. Me has dado orden, cabeza y una forma de cuidarme que puedo sostener.",
-    time: "09:22",
-  },
-  {
-    title: "De sedentaria a activa · Entrenar sin miedo",
-    text: "Jamás pensé que te iba a escribir esto, pero ahora echo de menos entrenar cuando no puedo hacerlo. Yo era la típica que decía que el deporte no era para mí. Me cansaba rápido, me daba vergüenza empezar y siempre encontraba una excusa. Ahora entreno, lo disfruto y me siento mucho más ágil, con más energía y menos hinchada. Pero sobre todo me siento capaz. Gracias por tener paciencia al principio, por no hacerme sentir torpe y por enseñarme a entrenar sin miedo. Has conseguido que algo que evitaba se convierta en parte de mi vida.",
-    time: "18:43",
-  },
-];
-
-const faqs = [
-  {
-    q: "¿Trabajas con personas con fibromialgia?",
-    a: "Sí, siempre desde el entrenamiento adaptado, la movilidad, la fuerza progresiva y la gestión de hábitos. No sustituye el trabajo médico, lo complementa.",
-  },
-  {
-    q: "¿Puedes ayudarme si tengo lipedema o linfedema?",
-    a: "Puedo ayudarte a estructurar fuerza, movilidad, nutrición estratégica y salud activa, respetando siempre tu diagnóstico y el seguimiento de tus profesionales sanitarios.",
-  },
-  {
-    q: "¿Te desplazas para realizar valoraciones y revisiones en Madrid?",
-    a: "Sí. La valoración y las revisiones presenciales pueden realizarse a domicilio, en un gimnasio privado, urbanización, empresa, hotel o espacio acordado. Cuando es necesario, revisamos movimientos concretos y explicamos cómo aplicar la planificación antes de que entrenes con autonomía.",
-  },
-  {
-    q: "¿Trabajas online fuera de Madrid?",
-    a: "Sí. Trabajo online para España y América Latina con valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento personalizado, nutrición personalizada online y seguimiento.",
-  },
-  {
-    q: "¿Qué diferencia hay entre valoración, plan de 4 semanas y programa de 12 semanas?",
-    a: "La valoración detecta el punto de partida y la hoja de ruta. El plan de 4 semanas es el primer bloque completo de trabajo. El programa de 12 semanas permite una transformación más profunda y ajustada.",
-  },
-  {
-    q: "¿Puedo empezar si llevo años sin entrenar?",
-    a: "Sí. De hecho, es uno de los casos donde más sentido tiene valorar antes de entrenar: necesitamos seguridad, progresión y una estrategia adaptada a tu situación real.",
-  },
-];
-
-function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" className={className} fill="currentColor">
-      <path d="M16.02 3.2C8.96 3.2 3.22 8.86 3.22 15.81c0 2.23.6 4.4 1.74 6.31L3.1 28.8l6.93-1.8a12.97 12.97 0 0 0 5.99 1.5c7.06 0 12.8-5.65 12.8-12.6S23.08 3.2 16.02 3.2Zm0 23.15c-1.9 0-3.76-.5-5.39-1.45l-.39-.23-4.12 1.07 1.1-3.9-.26-.4a10.31 10.31 0 0 1-1.6-5.53c0-5.77 4.78-10.46 10.66-10.46 5.87 0 10.65 4.69 10.65 10.46 0 5.76-4.78 10.44-10.65 10.44Zm5.84-7.82c-.32-.16-1.89-.92-2.18-1.02-.3-.1-.51-.16-.72.16-.21.31-.82 1.02-1.01 1.23-.18.2-.37.23-.69.08-.32-.16-1.34-.49-2.56-1.55-.95-.83-1.59-1.85-1.78-2.16-.18-.32-.02-.49.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.2.05-.39-.03-.54-.08-.16-.72-1.7-.99-2.33-.26-.62-.52-.53-.72-.54h-.61c-.21 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.59s1.13 3.01 1.29 3.22c.16.2 2.23 3.35 5.4 4.7.75.32 1.34.51 1.8.65.76.24 1.44.21 1.98.13.6-.09 1.89-.76 2.16-1.49.27-.73.27-1.35.19-1.49-.08-.13-.29-.21-.61-.36Z" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#22D65B]/12 text-[12px] font-black text-[#10983D]">✓</span>;
-}
-
-function CtaButtons() {
-  return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <a href={valuationEmailUrl} className="ghc-primary-button">
-        Quiero mi valoración GHC
-        <span aria-hidden="true">→</span>
-      </a>
-      <a href={whatsappUrl} className="ghc-secondary-button">
-        <WhatsAppIcon />
-        Hablar por WhatsApp
-      </a>
-    </div>
-  );
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="ghc-kicker">{children}</p>;
 }
 
 export default function Home() {
   return (
-    <main className="ghc-page-shell">
-      <header className="ghc-header">
-        <a href="#inicio" aria-label="GHC Training" className="shrink-0">
+    <main className="ghc26-shell">
+      <header className="ghc26-header">
+        <a href="#inicio" className="ghc26-brand" aria-label="GHC Training, inicio">
           <GHCTrainingLogo size="md" />
         </a>
-        <nav className="hidden items-center gap-8 text-sm font-bold text-[#27302D] lg:flex">
-          <a href="#inicio" className="nav-link active">Inicio</a>
-          <a href="#servicios" className="nav-link">Servicios</a>
-          <a href="#metodo" className="nav-link">Método GHC</a>
-          <a href="#testimonios" className="nav-link">Testimonios</a>
-          <a href="#faq" className="nav-link">FAQ</a>
+
+        <nav className="ghc26-nav" aria-label="Navegación principal">
+          <a href="#perfil">Tu perfil</a>
+          <a href="#metodo">Método</a>
+          <a href="#modalidades">Madrid + Online</a>
+          <a href="#programas">Programas</a>
         </nav>
-        <a href={whatsappUrl} className="ghc-whatsapp-header">
-          <WhatsAppIcon />
-          WhatsApp
+
+        <a href="#empezar" className="ghc-button ghc-button-compact ghc-button-primary">
+          Empezar <Arrow />
         </a>
       </header>
 
-      <section id="inicio" className="ghc-hero-section">
-        <div className="ghc-hero-copy">
-          <p className="ghc-kicker">GHC Training · Health Through Strength</p>
+      <section id="inicio" className="ghc26-hero">
+        <div className="ghc26-hero-media" aria-hidden="true">
+          <video autoPlay muted loop playsInline preload="metadata" poster={ghcMedia.hero.poster}>
+            <source src={ghcMedia.hero.src} />
+          </video>
+          <div className="ghc26-hero-scrim" />
+          <div className="ghc26-hero-grid" />
+        </div>
+
+        <div className="ghc26-hero-content">
+          <SectionEyebrow>{ghcTraining.positioning.eyebrow}</SectionEyebrow>
           <h1>
-            Entrenamiento, nutrición y salud activa para que tu cuerpo <span>vuelva a responder</span>
+            Tu cuerpo.<br />
+            Tu contexto.<br />
+            <span>Tu estrategia.</span>
           </h1>
-          <p className="ghc-hero-text">
-            Más de 30 años de experiencia ayudando a personas a transformar su salud y rendimiento. Valoración física completa, entrenamiento personalizado y nutrición estratégica para pérdida de grasa, ganancia muscular, movilidad, lesiones y patologías.
-          </p>
-          <div className="ghc-statement">
-            <strong>No necesitas otro plan genérico.</strong>
-            <span>Necesitas una estrategia real para ti.</span>
+          <p>{ghcTraining.positioning.subheadline}</p>
+
+          <div className="ghc26-hero-actions">
+            <a href="#empezar" className="ghc-button ghc-button-primary">
+              Empezar mi valoración <Arrow />
+            </a>
+            <a href="#metodo" className="ghc-button ghc-button-ghost">
+              Conocer el Método GHC
+            </a>
           </div>
-          <CtaButtons />
-          <div className="ghc-trust-row">
-            <span>Atención personalizada</span>
-            <span>Resultados sostenibles</span>
-            <span>Enfoque humano</span>
+
+          <div className="ghc26-hero-meta">
+            <span><i /> Madrid · nos desplazamos</span>
+            <span><i /> Online · España + América Latina</span>
           </div>
         </div>
 
-        <div className="ghc-hero-image-wrap" aria-label="Alby Aguiar, GHC Training">
+        <div className="ghc26-hero-mark" aria-hidden="true">
+          <span>GHC</span>
+          <small>METHOD</small>
+        </div>
+      </section>
+
+      <section className="ghc26-trust-rail" aria-label="Principios GHC Training">
+        <span>VALORAR</span>
+        <i />
+        <span>DECIDIR</span>
+        <i />
+        <span>DISEÑAR</span>
+        <i />
+        <span>GUIAR</span>
+        <i />
+        <span>REVISAR</span>
+        <i />
+        <span>AJUSTAR</span>
+      </section>
+
+      <section id="perfil" className="ghc26-section ghc26-profile-section">
+        <div className="ghc26-section-copy ghc26-section-copy-large">
+          <SectionEyebrow>Antes de prescribir</SectionEyebrow>
+          <h2>
+            No empezamos por los ejercicios.<br />
+            <span>Empezamos por entenderte.</span>
+          </h2>
+          <p>
+            Tu edad, tu historial, tu disponibilidad, el lugar donde entrenas y cómo responde tu cuerpo cambian la decisión. Por eso dos personas con el mismo objetivo no deberían recibir el mismo plan.
+          </p>
+        </div>
+
+        <div className="ghc26-profile-system" aria-label="Variables que forman el Perfil GHC">
+          <div className="ghc26-profile-orbit">
+            {ghcTraining.profileSignals.map((signal, index) => (
+              <span key={signal} style={{ "--i": index } as React.CSSProperties}>
+                {signal}
+              </span>
+            ))}
+            <div className="ghc26-profile-core">
+              <strong>PERFIL</strong>
+              <b>GHC</b>
+              <small>Tu punto de partida</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="empezar" className="ghc26-section ghc26-path-section">
+        <div className="ghc26-section-copy">
+          <SectionEyebrow>Una web que empieza a adaptarse</SectionEyebrow>
+          <h2>Cuéntanos tres cosas. El resto necesita valoración.</h2>
+          <p>
+            No es un diagnóstico ni una prescripción automática. Es una forma rápida de situar tu contexto antes de hablar.
+          </p>
+        </div>
+        <QuickPath />
+      </section>
+
+      <section id="metodo" className="ghc26-method-section">
+        <div className="ghc26-method-heading">
+          <div>
+            <SectionEyebrow>Método GHC</SectionEyebrow>
+            <h2>Un sistema que cambia contigo.</h2>
+          </div>
+          <p>
+            La planificación no termina cuando entregamos un documento. Medimos respuesta, revisamos y ajustamos para mantener dirección sin convertir tu vida en una agenda de sesiones.
+          </p>
+        </div>
+
+        <div className="ghc26-method-stage">
+          <div className="ghc26-method-media" aria-hidden="true">
+            <HexVideo src={ghcMediaTuning.methodLead.src} className="hex-a" />
+            <HexVideo src={ghcMedia.method[1].src} className="hex-b" />
+            <HexVideo src={ghcMedia.method[2].src} className="hex-c" />
+          </div>
+
+          <div className="ghc26-method-list">
+            {ghcTraining.method.map((item) => (
+              <article key={item.step}>
+                <span>{item.step}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="modalidades" className="ghc26-section ghc26-modalities-section">
+        <div className="ghc26-section-copy ghc26-section-copy-large">
+          <SectionEyebrow>GHC va contigo</SectionEyebrow>
+          <h2>
+            No necesitas venir a GHC.<br />
+            <span>GHC se adapta a tu vida.</span>
+          </h2>
+        </div>
+
+        <div className="ghc26-modality-grid">
+          <article className="ghc26-modality-card ghc26-modality-madrid">
+            <div className="ghc26-modality-number">01</div>
+            <div className="ghc26-modality-content">
+              <p className="ghc-kicker">Presencial</p>
+              <h3>{ghcTraining.modalities[0].title}</h3>
+              <p>{ghcTraining.modalities[0].text}</p>
+              <div className="ghc26-tag-row">
+                {ghcTraining.modalities[0].tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              <a href="/entrenador-personal-madrid" className="ghc-text-link">Entrenamiento personal en Madrid <Arrow /></a>
+            </div>
+            <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+              <source src={ghcMediaTuning.madrid.src} />
+            </video>
+          </article>
+
+          <article className="ghc26-modality-card ghc26-modality-online">
+            <div className="ghc26-modality-number">02</div>
+            <div className="ghc26-modality-content">
+              <p className="ghc-kicker">A distancia</p>
+              <h3>{ghcTraining.modalities[1].title}</h3>
+              <p>{ghcTraining.modalities[1].text}</p>
+              <div className="ghc26-tag-row">
+                {ghcTraining.modalities[1].tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              <a href="/entrenador-personal-online" className="ghc-text-link">Entrenamiento personal online <Arrow /></a>
+            </div>
+            <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+              <source src={ghcMedia.online.src} />
+            </video>
+          </article>
+        </div>
+      </section>
+
+      <section className="ghc26-solutions-section">
+        <div className="ghc26-solutions-intro">
+          <SectionEyebrow>Áreas de trabajo</SectionEyebrow>
+          <h2>No entrenamos una etiqueta. Entrenamos a la persona que hay detrás.</h2>
+        </div>
+
+        <div className="ghc26-solutions-grid">
+          {ghcTraining.specialties.map((item, index) => (
+            <article
+              key={item.title}
+              className={index === 0 || index === 4 ? "is-featured" : ""}
+              tabIndex={0}
+              aria-label={`${item.title}. ${item.blurb}`}
+            >
+              <small>{String(index + 1).padStart(2, "0")}</small>
+              <strong>{item.title}</strong>
+              <p className="ghc26-solution-blurb">{item.blurb}</p>
+              <span className="ghc26-solution-hint" aria-hidden="true">Detalle</span>
+            </article>
+          ))}
+        </div>
+        <p className="ghc26-solutions-note">Pasa el cursor o toca cada área para ver una explicación breve.</p>
+      </section>
+
+      <section id="programas" className="ghc26-section ghc26-programs-section">
+        <div className="ghc26-programs-heading">
+          <div>
+            <SectionEyebrow>Cómo empezar</SectionEyebrow>
+            <h2>Tres niveles. Una misma lógica.</h2>
+          </div>
+          <div className="ghc26-program-flow" aria-hidden="true">
+            <span>VALORAR</span><i />
+            <span>CONSTRUIR</span><i />
+            <span>EVOLUCIONAR</span>
+          </div>
+        </div>
+
+        <div className="ghc26-program-grid">
+          {ghcTraining.services.map((service, index) => {
+            const links = paymentLinks[service.id];
+            return (
+              <article key={service.id} className={index === 2 ? "is-primary" : ""}>
+                <div className="ghc26-program-topline">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <small>{service.eyebrow}</small>
+                </div>
+                <h3>{service.title}</h3>
+                <p className="ghc26-program-duration">{service.duration}</p>
+                <p>{service.description}</p>
+
+                <div className="ghc26-price-grid">
+                  <a href={links.online} target="_blank" rel="noreferrer">
+                    <small>{service.online.label}</small>
+                    <strong>{service.online.price} €</strong>
+                    <span>Empezar <Arrow /></span>
+                  </a>
+                  <a href={links.madrid} target="_blank" rel="noreferrer">
+                    <small>{service.madrid.label}</small>
+                    <strong>{service.madrid.price} €</strong>
+                    <span>Empezar <Arrow /></span>
+                  </a>
+                </div>
+
+                <footer><Check /> {service.note}</footer>
+              </article>
+            );
+          })}
+        </div>
+        <p className="ghc26-program-note">
+          Los importes llevan al enlace de pago configurado para cada modalidad. Si prefieres confirmar primero tu caso, puedes <a href={whatsappUrl} target="_blank" rel="noreferrer">hablar por WhatsApp</a>.
+        </p>
+      </section>
+
+      <section className="ghc26-proof-section">
+        <div className="ghc26-proof-heading">
+          <SectionEyebrow>Personas · contextos · evolución</SectionEyebrow>
+          <h2>El resultado que importa es recuperar capacidad para vivir mejor.</h2>
+        </div>
+
+        <div className="ghc26-proof-grid">
+          {ghcTraining.proof.map((item, index) => (
+            <article key={item.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <small>{item.label}</small>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+        <p className="ghc26-proof-disclaimer">
+          Los casos se presentan como experiencias de entrenamiento y no como promesas de resultado ni tratamiento médico.
+        </p>
+      </section>
+
+      <section className="ghc26-manifesto-section">
+        <div className="ghc26-manifesto-photo">
+          <img
+            src={ghcMedia.technologyImage.src}
+            alt="Uso de tecnología para revisar información durante una sesión de entrenamiento"
+            loading="lazy"
+          />
+        </div>
+        <div className="ghc26-manifesto-copy">
+          <SectionEyebrow>Health Through Strength</SectionEyebrow>
+          <h2>Fuerza no significa entrenar duro desde el primer día.</h2>
+          <p>
+            Significa recuperar capacidad, proteger articulaciones, moverte con más seguridad, ganar autonomía y volver a sentir que tu cuerpo responde.
+          </p>
+          <div className="ghc26-manifesto-list">
+            {ghcTraining.manifesto.map(([left, right]) => (
+              <div key={right}><span>{left}</span><i /> <strong>{right}</strong></div>
+            ))}
+          </div>
+          <blockquote>
+            No se trata de hacer más. Se trata de hacer lo adecuado, en el momento adecuado y con la progresión adecuada.
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="ghc26-founder-section">
+        <div className="ghc26-founder-copy">
+          <SectionEyebrow>Quién está detrás del método</SectionEyebrow>
+          <h2>Alby Aguiar</h2>
+          <p className="ghc26-founder-role">Fundador y director de GHC Training</p>
+          <p>
+            Más de 30 años de experiencia profesional en entrenamiento, fuerza, movilidad, composición corporal, nutrición estratégica y salud activa. Una trayectoria construida entre deporte de alto nivel, dirección, formación y trabajo con perfiles muy distintos, convertida hoy en un método propio: menos recetas, más criterio y una estrategia diseñada alrededor de cada persona.
+          </p>
+          <a href="/sobre-ghc-training" className="ghc-button ghc-button-dark">Conocer GHC Training <Arrow /></a>
+        </div>
+
+        <div className="ghc26-founder-photo">
           <Image
-            src="/alby-ghc-training.png"
-            alt="Alby Aguiar, entrenador personal de GHC Training"
+            src="/alby-ghc-training-winner.webp"
+            alt="Alby Aguiar, fundador y director de GHC Training"
             fill
-            sizes="(max-width: 900px) 100vw, 56vw"
-            className="ghc-hero-image"
-            priority
+            sizes="(max-width: 800px) 100vw, 50vw"
+            className="ghc26-founder-image"
           />
         </div>
       </section>
 
-      <section id="servicios" className="ghc-services-grid" aria-label="Servicios GHC Training">
-        {services.map((service) => (
-          <article key={service.title} className="ghc-service-card">
-            <div className="ghc-card-icon">{service.icon}</div>
-            <h2>{service.title}</h2>
-            <p>{service.text}</p>
-
-            <div className="ghc-service-pricing" aria-label={`Precios de ${service.title}`}>
-              <a
-                href={service.onlineHref}
-                className="ghc-price-pill ghc-price-pill-primary"
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Pagar ${service.title} ${service.onlineLabel} ${service.onlineAmount}`}
-              >
-                <span>{service.onlineLabel}</span>
-                <strong>{service.onlineAmount}</strong>
-                <em>Pagar ahora</em>
-              </a>
-              <a
-                href={service.presencialHref}
-                className="ghc-price-pill"
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Pagar ${service.title} ${service.presencialLabel} ${service.presencialAmount}`}
-              >
-                <span>{service.presencialLabel}</span>
-                <strong>{service.presencialAmount}</strong>
-                <em>Pagar ahora</em>
-              </a>
+      <section className="ghc26-future-section">
+        <div className="ghc26-future-grid" aria-hidden="true" />
+        <div className="ghc26-future-content">
+          <SectionEyebrow>Preparado para el siguiente nivel</SectionEyebrow>
+          <h2>Tu estrategia, también conectada.</h2>
+          <p>
+            La experiencia GHC está diseñada para evolucionar hacia una capa digital donde planificación, progreso, revisiones y comunicación formen parte del mismo sistema.
+          </p>
+          <div className="ghc26-future-status">
+            <span>PLANIFICACIÓN</span>
+            <span>PROGRESO</span>
+            <span>REVISIONES</span>
+            <span>APP · PRÓXIMAMENTE</span>
+          </div>
+        </div>
+        <div className="ghc26-device" aria-hidden="true">
+          <div className="ghc26-device-screen">
+            <div className="ghc26-device-brand">GHC</div>
+            <small>TODAY</small>
+            <strong>Tu estrategia</strong>
+            <div className="ghc26-device-line"><i style={{ width: "78%" }} /></div>
+            <div className="ghc26-device-metrics">
+              <span><b>04</b><small>semana</small></span>
+              <span><b>82%</b><small>adherencia</small></span>
             </div>
+            <div className="ghc26-device-card">Siguiente revisión <b>→</b></div>
+          </div>
+        </div>
+      </section>
 
-            <p className="ghc-payment-instruction">
-              Tras realizar el pago, enviar el justificante por WhatsApp con nombre completo y servicio contratado para confirmar la reserva.
-            </p>
+      <section className="ghc26-section ghc26-faq-section">
+        <div className="ghc26-section-copy">
+          <SectionEyebrow>Antes de empezar</SectionEyebrow>
+          <h2>Preguntas frecuentes.</h2>
+        </div>
+        <div className="ghc26-faq-list">
+          {ghcTraining.faq.map(([question, answer], index) => (
+            <details key={question} open={index === 0}>
+              <summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<b>+</b></summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
-            <ul className="ghc-service-includes">
-              {service.includes.map((item) => (
-                <li key={item}>
-                  <CheckIcon />
-                  <span>{item}</span>
-                </li>
-              ))}
+      <section className="ghc26-final-section">
+        <div className="ghc26-final-bg" aria-hidden="true">
+          <video autoPlay muted loop playsInline preload="metadata" poster={ghcMedia.hero.poster}>
+            <source src={ghcMedia.hero.src} />
+          </video>
+        </div>
+        <div className="ghc26-final-content">
+          <SectionEyebrow>Empieza por saber dónde estás</SectionEyebrow>
+          <h2>
+            Tu cuerpo no necesita<br />
+            otra rutina.<br />
+            <span>Necesita una estrategia.</span>
+          </h2>
+          <div className="ghc26-final-actions">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="ghc-button ghc-button-primary">
+              Hablar por WhatsApp <Arrow />
+            </a>
+            <a href={emailUrl} className="ghc-button ghc-button-ghost-light">Escribir por email</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="ghc26-footer">
+        <div className="ghc26-footer-main">
+          <GHCTrainingLogo size="md" darkText={false} />
+          <p>Entrenamiento, nutrición estratégica y salud activa con criterio.</p>
+          <div className="ghc26-footer-links">
+            <a href="/metodo-ghc">Método GHC</a>
+            <a href="/valoracion-integral">Valoración integral</a>
+            <a href="/entrenador-personal-madrid">Madrid</a>
+            <a href="/entrenador-personal-online">Online</a>
+            <a href="/sobre-ghc-training">Sobre GHC</a>
+          </div>
+        </div>
+
+        <div className="ghc26-footer-bottom">
+          <span>© 2026 GHC Training · Health Through Strength</span>
+          <span>{ghcTraining.contact.email} · {ghcTraining.contact.phone}</span>
+        </div>
+
+        <details className="ghc26-media-credits">
+          <summary>Créditos y procedencia de medios</summary>
+          <div>
+            <p>Los vídeos e imágenes de stock utilizados en esta versión proceden de Pexels y se emplean bajo la Pexels License. No implican respaldo de GHC Training por parte de las personas mostradas.</p>
+            <ul>
+              <li><a href={ghcMedia.hero.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.hero.creator} · Pexels</a></li>
+              <li><a href={ghcMediaTuning.methodLead.sourcePage} target="_blank" rel="noreferrer">{ghcMediaTuning.methodLead.creator} · Pexels</a></li>
+              {ghcMedia.method.slice(1).map((media) => <li key={media.sourcePage}><a href={media.sourcePage} target="_blank" rel="noreferrer">{media.creator} · Pexels</a></li>)}
+              <li><a href={ghcMediaTuning.madrid.sourcePage} target="_blank" rel="noreferrer">{ghcMediaTuning.madrid.creator} · Pexels</a></li>
+              <li><a href={ghcMedia.online.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.online.creator} · Pexels</a></li>
+              <li><a href={ghcMedia.technologyImage.sourcePage} target="_blank" rel="noreferrer">{ghcMedia.technologyImage.creator} · Pexels</a></li>
             </ul>
-
-            <div className="ghc-card-footer">
-              <span><CheckIcon /> {service.meta}</span>
-              <strong>{service.note}</strong>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <p className="ghc-services-note">
-        Cada precio es clicable y lleva a su enlace de pago correspondiente. Después de pagar, enviar el justificante por WhatsApp al +34 628 79 88 59 con nombre completo y servicio contratado. Así puedo identificar la reserva, confirmar disponibilidad y coordinar los siguientes pasos. El servicio online está disponible para España y América Latina.
-      </p>
-
-      <section className="ghc-authority-strip" aria-label="Autoridad y especialidades">
-        {authorityItems.map((item) => (
-          <div key={item.title} className="ghc-authority-item">
-            <span className="ghc-authority-emoji" aria-hidden="true"><AuthorityIcon name={item.icon} /></span>
-            <strong>{item.title}</strong>
-            <span>{item.text}</span>
           </div>
-        ))}
-      </section>
-
-      <section id="metodo" className="ghc-split-section">
-        <div>
-          <p className="ghc-kicker">Método GHC</p>
-          <h2>Primero estudio tu cuerpo. Después diseñamos la estrategia.</h2>
-          <p>
-            No vendo sesiones sueltas ni rutinas genéricas. El punto de partida es entender tu situación: historial físico, objetivo, hábitos, lesiones, patologías, movilidad, fuerza básica y disponibilidad real.
-          </p>
-        </div>
-        <div className="ghc-method-grid">
-          {method.map(([title, text]) => (
-            <article key={title}>
-              <strong>{title}</strong>
-              <span>{text}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="ghc-modalities-section">
-        <div className="ghc-section-heading">
-          <p className="ghc-kicker">Modalidades</p>
-          <h2>Valoración, planificación y revisiones en Madrid, con acompañamiento online para España y América Latina.</h2>
-        </div>
-        <div className="ghc-modalities-grid">
-          <article>
-            <h3>Valoración y revisiones presenciales en Madrid</h3>
-            <p>La valoración, la explicación de la planificación y las revisiones periódicas pueden realizarse en tu domicilio, gimnasio privado, urbanización, empresa, hotel o espacio acordado. Después entrenas con autonomía, con una planificación personalizada y libertad para organizar tus horarios.</p>
-          </article>
-          <article>
-            <h3>Online para España y América Latina</h3>
-            <p>Valoración por videollamada, fotos guiadas, medidas básicas, cuestionario inicial, entrenamiento personalizado, nutrición personalizada online y seguimiento para España y América Latina.</p>
-          </article>
-          <article>
-            <h3>Valoraciones presenciales fuera de Madrid</h3>
-            <p>Las valoraciones o revisiones presenciales fuera de Madrid se estudian individualmente según la ciudad, el desplazamiento, la disponibilidad y las necesidades del caso.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="testimonios" className="ghc-testimonials-section">
-        <div className="ghc-section-heading compact">
-          <h2>Historias habituales de transformación</h2>
-          <p>Situaciones reales que he acompañado durante más de 30 años de trabajo con entrenamiento personal, salud activa, lesiones, patologías, pérdida de volumen y recomposición corporal.</p>
-        </div>
-        <div className="ghc-testimonials-grid">
-          {testimonials.map((item) => (
-            <article key={item.title} className="ghc-testimonial-card">
-              <div className="ghc-whatsapp-capture">
-                <div className="ghc-whatsapp-bubble">
-                  {item.text}
-                  <span>{item.time} ✓✓</span>
-                </div>
-              </div>
-              <div className="ghc-testimonial-caption">
-                <strong>{item.title}</strong>
-                <span>Caso de éxito</span>
-              </div>
-            </article>
-          ))}
-        </div>
-        <p className="ghc-testimonial-note">
-          Casos de éxito redactados en formato conversación. Cuando tengas capturas reales, esta sección queda preparada para sustituirlas.
-        </p>
-      </section>
-
-      <section className="ghc-pathology-band">
-        <div className="ghc-pathology-icon">+</div>
-        <div>
-          <p className="ghc-kicker">Fuerza como pilar de salud</p>
-          <h2>Entrenar con criterio cuando tu cuerpo necesita algo más que fuerza de voluntad</h2>
-          <p>
-            El sistema GHC se basa en una idea sencilla: la fuerza es uno de los pilares más importantes de la salud. Pero fuerza no significa entrenar fuerte desde el primer día, levantar mucho peso o sufrir para mejorar. Fuerza significa recuperar capacidad, proteger articulaciones, moverte con más seguridad, ganar autonomía y volver a sentir que tu cuerpo responde.
-          </p>
-          <p>
-            Por eso, en GHC Training no trabajamos con planes genéricos. Cada proceso se adapta a tu punto de partida: tu edad, tu historial, tu movilidad, tus lesiones, tus patologías, tu nivel actual, tu energía, tu entorno y tu objetivo.
-          </p>
-          <p>
-            La clave está en la progresión. Empezamos donde tu cuerpo puede empezar, no donde una tabla estándar dice que deberías estar. A partir de ahí, avanzamos paso a paso, ajustando cargas, ejercicios, movilidad, descanso, nutrición y hábitos según tu evolución real.
-          </p>
-          <p>
-            Trabajo con personas que quieren perder grasa, ganar músculo o recomponer su cuerpo, pero también con quienes necesitan entrenar con más cuidado por lesiones, dolor crónico, fibromialgia, lipedema, linfedema, sobrepeso, falta de movilidad o años sin entrenar.
-          </p>
-          <p>
-            El proceso puede realizarse online para España y América Latina o incluir valoración y revisiones presenciales en Madrid. En ambos casos, partimos del estudio de tu situación para diseñar una planificación personalizada, guiar su aplicación y revisar tu evolución. Tú decides cuándo entrenar, sin depender de una cita fija, pero con dirección y revisión profesional.
-          </p>
-          <div className="ghc-pathology-highlight">
-            No se trata de hacer más. Se trata de hacer lo adecuado, en el momento adecuado y con la progresión adecuada.<br />
-            <strong>La fuerza no es solo rendimiento. Es salud, autonomía, longevidad y calidad de vida.</strong>
-          </div>
-          <div className="ghc-medical-note">
-            Este trabajo no sustituye al médico ni al fisioterapeuta. Lo complementa desde mi área: fuerza adaptada, movimiento, nutrición estratégica, salud activa y acompañamiento real, respetando siempre tu diagnóstico y tratamiento profesional.
-          </div>
-        </div>
-      </section>
-
-      <section id="faq" className="ghc-faq-section">
-        <div className="ghc-section-heading compact">
-          <p className="ghc-kicker">Preguntas frecuentes</p>
-          <h2>Lo que necesitas saber antes de empezar.</h2>
-        </div>
-        <div className="ghc-faq-grid">
-          {faqs.map((faq) => (
-            <article key={faq.q}>
-              <h3>{faq.q}</h3>
-              <p>{faq.a}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="ghc-final-cta">
-        <div>
-          <h2>Da el primer paso hacia tu mejor versión.</h2>
-          <p>Estoy aquí para ayudarte.</p>
-          <ul>
-            <li><CheckIcon /> Valoración completa</li>
-            <li><CheckIcon /> Plan 100% personalizado</li>
-            <li><CheckIcon /> Acompañamiento real</li>
-            <li><CheckIcon /> Resultados sostenibles</li>
-          </ul>
-        </div>
-        <div className="ghc-final-actions">
-          <CtaButtons />
-        </div>
-      </section>
-
-      <footer className="ghc-footer">
-        <GHCTrainingLogo size="sm" darkText={false} />
-        <p>© 2026 GHC Training · Alby Aguiar · Salud a través de la fuerza.</p>
-        <a href={whatsappUrl}>Contacto por WhatsApp</a>
+        </details>
       </footer>
     </main>
   );
