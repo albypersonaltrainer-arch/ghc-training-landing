@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { trackFunnelEvent } from "@/lib/funnelAnalytics";
 
-function textOf(element: Element | null) {
+function textOf(element: Element | null | undefined) {
   return element?.textContent?.replace(/\s+/g, " ").trim() || "";
 }
 
