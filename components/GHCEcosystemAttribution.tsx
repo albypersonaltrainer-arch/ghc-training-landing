@@ -1,6 +1,5 @@
 'use client';
 
-import { Analytics } from '@vercel/analytics/next';
 import { useEffect } from 'react';
 import FunnelAnalytics from '@/components/FunnelAnalytics';
 
@@ -112,10 +111,5 @@ export default function GHCEcosystemAttribution() {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <>
-      <FunnelAnalytics />
-      <Analytics />
-    </>
-  );
+  return <FunnelAnalytics />;
 }
