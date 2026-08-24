@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ghcTraining } from "@/config/ghcTraining";
+import { trackFunnelEvent } from "@/lib/funnelAnalytics";
 
 const steps = ["goal", "place", "mode"] as const;
 type Step = (typeof steps)[number];
@@ -28,9 +29,24 @@ export default function QuickPath() {
 
   const selectChoice = (key: Step, value: string) => {
     const next = { ...choices, [key]: value };
+    const index = steps.indexOf(key);
+
     setChoices(next);
 
-    const index = steps.indexOf(key);
+    trackFunnelEvent("quick_path_step", {
+      step: index + 1,
+    });
+
+    if (key === "goal" && !choices.goal) {
+      trackFunnelEvent("quick_path_start");
+    }
+
+    if (next.goal && next.place && next.mode) {
+      trackFunnelEvent("quick_path_complete", {
+        steps: steps.length,
+      });
+    }
+
     if (index < steps.length - 1) {
       setStep(steps[index + 1]);
     }
