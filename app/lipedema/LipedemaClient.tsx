@@ -59,7 +59,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
       if (value) attribution[key] = value.slice(0, 200);
     });
     setTracking(attribution);
-    trackFunnelEvent("LipedemaLandingView", { perfil: next }, "ViewContent");
+    trackFunnelEvent("EbookLandingView", {}, "ViewContent");
   }, []);
 
   const tailored = perfil === "descubre"
@@ -69,7 +69,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
     : { kicker: "Lipedema · GHC Academy", title: "Entiende tu cuerpo. Aprende qué puedes hacer.", desc: "Una guía práctica para descubrir el papel del movimiento, el entrenamiento de fuerza y la alimentación en tu día a día con lipedema." };
 
   function goToOffer(position: string) {
-    trackFunnelEvent("LipedemaCTAClick", { perfil, position });
+    trackFunnelEvent("EbookCTAClick", { position });
     document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -78,7 +78,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
     setBusy(true);
     setError("");
     try {
-      trackFunnelEvent("LipedemaCheckoutStart", { perfil }, "InitiateCheckout");
+      trackFunnelEvent("EbookCheckoutStart", {}, "InitiateCheckout");
       const response = await fetch("/api/lipedema/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
