@@ -171,3 +171,41 @@
  .footer{padding:32px 22px;grid-template-columns:1fr}.footer>div:nth-child(2){justify-content:flex-start;gap:15px}
 }
 @media(prefers-reduced-motion:reduce){.root *{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Portada auténtica del anuncio: se presenta sin remaquetar ningún elemento interior. */
+.book3d{
+  min-height:unset;
+  aspect-ratio:175/265;
+  width:64%;
+  max-width:310px;
+  background:transparent;
+  border:0;
+  outline:none;
+  border-radius:0;
+  overflow:hidden;
+  box-shadow:18px 27px 45px rgba(62,23,37,.32);
+}
+.book3d::before{display:none}
+.offerBook{
+  min-height:unset;
+  padding:0;
+  aspect-ratio:175/265;
+  width:60%;
+  max-width:295px;
+  border:0;
+  background:transparent;
+  overflow:hidden;
+  box-shadow:16px 27px 45px rgba(61,28,42,.28);
+}
+.approvedCoverImage{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  background:transparent;
+}
+@media(max-width:700px){
+  .book3d{min-height:unset;aspect-ratio:175/265;width:70%;max-width:270px}
+  .offerBook{min-height:unset;aspect-ratio:175/265;width:62%;max-width:260px}
+}
