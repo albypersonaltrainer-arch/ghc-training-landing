@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import styles from "./lipedema.module.css";
-import { LIPOEDEMA_COVER_APPROVED } from "./approved-cover";
 import { trackFunnelEvent } from "@/lib/funnelAnalytics";
 
 type Perfil = "consciente" | "descubre" | "general";
@@ -117,7 +116,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
         <div className={styles.heroVisual}>
           <div className={styles.visualArch} aria-hidden="true" />
           <div className={styles.heroEyebrow}>EDICIÓN DIGITAL <span>GHC ACADEMY</span></div>
-          <div className={styles.book3d}><img src={LIPOEDEMA_COVER_APPROVED} alt="Portada auténtica del ebook Lipedema: que no decida por ti, usada en los anuncios de GHC Academy" className={styles.approvedCoverImage} /></div>
+          <div className={styles.book3d}><img src="/lipedema-cover-original-c245b708.png" alt="Portada auténtica del ebook Lipedema: que no decida por ti, usada en los anuncios de GHC Academy" className={styles.approvedCoverImage} /></div>
           <div className={styles.visualBottom}><span>NO MÁS INFORMACIÓN SIN RUMBO.</span><b>APRENDE QUÉ HACER.</b></div>
         </div>
       </section>
@@ -174,7 +173,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
 
       <section className={styles.offer} id="oferta">
         <div className={styles.offerVisual}>
-          <div className={styles.offerBook}><img src={LIPOEDEMA_COVER_APPROVED} alt="Portada auténtica del ebook GHC Academy" className={styles.approvedCoverImage} /></div>
+          <div className={styles.offerBook}><img src="/lipedema-cover-original-c245b708.png" alt="Portada auténtica del ebook GHC Academy" className={styles.approvedCoverImage} /></div>
           <span className={styles.offerCaption}>EL EBOOK QUE NECESITAS PARA EMPEZAR A ENTENDER.</span>
         </div>
         <div className={styles.offerText}>

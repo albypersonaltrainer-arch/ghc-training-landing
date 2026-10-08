@@ -173,10 +173,10 @@
 @media(prefers-reduced-motion:reduce){.root *{scroll-behavior:auto!important;transition:none!important}}
 
 
-/* Portada auténtica del anuncio: se presenta sin remaquetar ningún elemento interior. */
+/* Portada original del ebook en sus proporciones 1024×1536 (2:3), sin remaquetar el contenido. */
 .book3d{
   min-height:unset;
-  aspect-ratio:175/265;
+  aspect-ratio:2/3;
   width:64%;
   max-width:310px;
   background:transparent;
@@ -190,7 +190,7 @@
 .offerBook{
   min-height:unset;
   padding:0;
-  aspect-ratio:175/265;
+  aspect-ratio:2/3;
   width:60%;
   max-width:295px;
   border:0;
@@ -206,6 +206,6 @@
   background:transparent;
 }
 @media(max-width:700px){
-  .book3d{min-height:unset;aspect-ratio:175/265;width:70%;max-width:270px}
-  .offerBook{min-height:unset;aspect-ratio:175/265;width:62%;max-width:260px}
+  .book3d{min-height:unset;aspect-ratio:2/3;width:70%;max-width:270px}
+  .offerBook{min-height:unset;aspect-ratio:2/3;width:62%;max-width:260px}
 }
