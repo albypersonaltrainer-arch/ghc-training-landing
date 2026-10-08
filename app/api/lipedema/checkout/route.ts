@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const ebookPath = process.env.LIPEDEMA_SUPABASE_STORAGE_PATH;
 
   // Never accept money until the actual price and secured ebook delivery are both configured.
-  if (!priceId || !ebookPath || !process.env.STRIPE_SECRET_KEY || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  if (!priceId || !ebookPath || !process.env.STRIPE_SECRET_KEY || !process.env.SUPABASE_SERVICE_ROLE_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.STRIPE_WEBHOOK_SECRET || !process.env.RESEND_API_KEY || !process.env.LIPEDEMA_EMAIL_FROM) {
     return NextResponse.json({ error: "La compra todavía no está disponible." }, { status: 503 });
   }
 
