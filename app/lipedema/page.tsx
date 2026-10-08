@@ -21,7 +21,7 @@ export default function LipedemaLandingPage() {
   return (
     <LipedemaClient
       checkoutReady={checkoutReady}
-      priceLabel={process.env.LIPEDEMA_PRICE_LABEL || ""}
+      priceLabel={"33 €"}
       introductionVideoUrl={process.env.NEXT_PUBLIC_LIPEDEMA_PRESENTACION_VIDEO_URL || ""}
     />
   );
