@@ -35,6 +35,11 @@ export async function POST(request: Request) {
 
   try {
     const stripe = getStripe();
+    const price = await stripe.prices.retrieve(priceId);
+    if (!price.active || price.currency.toLowerCase() !== "eur" || price.unit_amount !== 3300 || price.recurring) {
+      console.error("Lipedema price configuration mismatch");
+      return NextResponse.json({ error: "Precio no configurado correctamente." }, { status: 503 });
+    }
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
