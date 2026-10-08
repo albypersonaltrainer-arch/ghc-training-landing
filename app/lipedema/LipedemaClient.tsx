@@ -202,7 +202,7 @@ export default function LipedemaClient({ checkoutReady, priceLabel, introduction
 
       <section className={styles.about}>
         <div className={styles.sectionEyebrow}>EL CRITERIO DETRÁS DE LA GUÍA</div>
-        <div className={styles.aboutGrid}><h2>No una promesa.<br /><em>Una manera de entender.</em></h2><p>Alby Aguiar dirige GHC Training y trabaja desde hace más de 30 años en el ámbito del entrenamiento, la fuerza y la preparación física. Esta guía recoge una perspectiva educativa: comprender antes de actuar y adaptar en lugar de copiar rutinas.</p></div>
+        <div className={styles.aboutGrid}><h2>No una promesa.<br /><em>Una manera de entender.</em></h2><p>Alby Aguiar dirige GHC Training y cuenta con una larga trayectoria profesional en entrenamiento, fuerza y preparación física. Esta guía recoge una perspectiva educativa: comprender antes de actuar y adaptar en lugar de copiar rutinas.</p></div>
       </section>
 
       <section className={styles.faq} id="preguntas">
