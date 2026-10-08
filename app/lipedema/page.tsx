@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function LipedemaLandingPage() {
-  const checkoutReady = Boolean(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_LIPEDEMA_PRICE_ID && process.env.LIPEDEMA_SUPABASE_STORAGE_PATH && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  const checkoutReady = Boolean(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_LIPEDEMA_PRICE_ID && process.env.LIPEDEMA_SUPABASE_STORAGE_PATH && process.env.SUPABASE_SERVICE_ROLE_KEY && process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.STRIPE_WEBHOOK_SECRET && process.env.RESEND_API_KEY && process.env.LIPEDEMA_EMAIL_FROM);
   return (
     <LipedemaClient
       checkoutReady={checkoutReady}
