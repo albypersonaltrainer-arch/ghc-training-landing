@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { type Locale } from "@/config/challenge";
 import { sendPaidAccessEmail } from "@/lib/email";
+import { sendLipedemaEbookAccess } from "@/lib/lipedemaEmail";
 import { getStripe, getStripeWebhookSecret } from "@/lib/stripe";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 
@@ -182,7 +183,11 @@ export async function POST(request: Request) {
       const session = event.data.object as Stripe.Checkout.Session;
 
       if (session.payment_status === "paid") {
-        await handleCheckoutSessionCompleted(session);
+        if (session.metadata?.product === "lipedema-ebook") {
+          await sendLipedemaEbookAccess(session);
+        } else {
+          await handleCheckoutSessionCompleted(session);
+        }
       } else {
         console.log("Checkout session completed but payment is not paid:", {
           sessionId: session.id,
