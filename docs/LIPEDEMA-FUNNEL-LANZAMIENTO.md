@@ -15,6 +15,9 @@
 - `NEXT_PUBLIC_SITE_URL`: `https://www.ghctraining.com` en producción; asignar URL real de la preview solo para pruebas aisladas.
 - `NEXT_PUBLIC_SUPABASE_URL`: URL del proyecto de Supabase seleccionado.
 - `SUPABASE_SERVICE_ROLE_KEY`: clave de servidor, nunca expuesta al cliente.
+- `STRIPE_WEBHOOK_SECRET`: secreto de firma del webhook de Stripe apuntando a `/api/stripe/webhook`.
+- `RESEND_API_KEY`: clave de Resend para confirmación de compra.
+- `LIPEDEMA_EMAIL_FROM`: remitente verificado de GHC Academy para entregar el enlace de acceso.
 - `LIPEDEMA_SUPABASE_STORAGE_BUCKET`: bucket privado, sugerido `ghc-ebooks`.
 - `LIPEDEMA_SUPABASE_STORAGE_PATH`: ruta **privada** de la versión final del PDF; por ejemplo `lipedema/GHC_Lipedema_Que_No_Decida_Por_Ti_FINAL.pdf`. No poner el PDF en `public/`.
 
@@ -32,8 +35,8 @@ Nota: la web actual tiene enlaces SumUp para otros productos. El flujo de este e
   `https://www.ghctraining.com/lipedema?perfil=descubre&utm_source=meta&utm_medium=paid_social&utm_campaign=lipedema&utm_content=perfil2_video`.
 - Para estáticos usar `perfil1_estatico` y `perfil2_estatico` en `utm_content`.
 - El cliente calcula atributos UTM y se entregan al checkout como metadata; nunca acepta importes del cliente.
-- `LipedemaLandingView` → evento Meta `ViewContent`.
-- `LipedemaCheckoutStart` → `InitiateCheckout`, solo cuando se inicia checkout.
+- `EbookLandingView` → evento Meta `ViewContent` (sin atributos relativos a salud).
+- `EbookCheckoutStart` → `InitiateCheckout`, solo cuando se inicia checkout (sin datos sobre la condición).
 - Falta configurar el evento `Purchase` a partir de Stripe confirmado, evitando dobles conteos con CAPI / deduplicación por ID.
 
 ## Antes de publicar
@@ -42,7 +45,7 @@ Nota: la web actual tiene enlaces SumUp para otros productos. El flujo de este e
 3. Revisar que el PDF final sea exactamente el aprobado y cargarlo en Supabase Storage en un **bucket privado**.
 4. Crear Stripe Product/Price fijo 33 EUR (modo prueba primero) y configurar secretos de entorno por separado.
 5. Revisar los textos de aviso legal, privacidad, cookies y las condiciones de desistimiento para contenido digital en España; no activar tracking no esencial antes del consentimiento cuando aplique.
-6. Establecer política y automatización de correo de acceso (Resend u otro proveedor) con manejo de reintentos. Por ahora, la entrega depende de la pantalla de gracias.
+6. Configurar y probar la entrega por email de Resend ya implementada (`lib/lipedemaEmail.ts`), conectada al webhook de Stripe existente sin afectar al otro producto; verificar entrega única o implementar idempotencia antes de producción.
 7. Ejecutar pago real o en test con importe 33 €, validación de regreso, descarga con URL firmada, enlace expirado y bloqueo de sesión no pagada.
 8. Verificar mobile 360/390 px, Meta Pixel, atribución y envío de eventos, enlaces de compra, FAQs, y accesibilidad.
 9. Aprobar PR y fusionar a `main` solo después del QA. Retirar `noindex` cuando la landing esté lista para indexarse.
